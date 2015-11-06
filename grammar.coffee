@@ -8,7 +8,7 @@ module.exports = grammar
 	name: "swift"
 
 	rules:
-		program: -> repeat(@_statement)
+		program: -> @_statements
 
 
 		# Statements
