@@ -22,7 +22,7 @@ module.exports = grammar
 			# @_control_transfer_statement,
 			# @defer_statement,
 			# @do_statement
-		), ';')
+		), optional(';'))
 
 		_statements: -> repeat(@_statement)
 
