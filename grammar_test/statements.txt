@@ -24,6 +24,15 @@ for x: Int in y {}
 	(for_in_statement (identifier) (identifier))
 	(for_in_statement (identifier) (type (identifier)) (identifier)))
 
+======
+while statement
+======
+
+while #available(tvOS 1.0) {}
+
+---
+
+(program (while_statement (availability_condition)))
 
 ======
 switch statement
