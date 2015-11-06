@@ -23,3 +23,56 @@ for x: Int in y {}
 (program
 	(for_in_statement (identifier) (identifier))
 	(for_in_statement (identifier) (type (identifier)) (identifier)))
+
+
+======
+switch statement
+======
+
+switch x {
+case _:
+case let x:
+case var y:
+case ():
+case .A:
+case .A(_, _):
+case is Int:
+case _ as Int:
+default:
+}
+
+---
+
+(program
+	(switch_statement (identifier)
+		(case_statement (wildcard_pattern))
+		(case_statement (value_binding_pattern (identifier)))
+		(case_statement (value_binding_pattern (identifier)))
+		(case_statement (tuple_pattern))
+		(case_statement (enum_case_pattern (identifier)))
+		(case_statement (enum_case_pattern (identifier) (tuple_pattern (wildcard_pattern) (wildcard_pattern))))
+		(case_statement (is_pattern (type (identifier))))
+		(case_statement (as_pattern (wildcard_pattern) (type (identifier))))
+		(case_statement)))
+
+======
+multiple statements on a line
+======
+
+x;y;z
+
+---
+
+(program (identifier) (identifier) (identifier))
+
+======
+multiple statements on multiple lines
+======
+
+x
+y
+z
+
+---
+
+(program (identifier) (identifier) (identifier))

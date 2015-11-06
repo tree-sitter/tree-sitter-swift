@@ -7,6 +7,7 @@ commaSep = (rule) ->
 PREC =
 	CAST: 132
 	OPTIONAL_PATTERN: 10
+	TYPE_IDENTIFIER: 10
 
 module.exports = grammar
 	name: "swift"
@@ -26,8 +27,11 @@ module.exports = grammar
 		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
-			@_loop_statement,
-			# @_branch_statement,
+			@for_statement,
+			@for_in_statement,
+			# @while_statement,
+			# @repeat_while_statement,
+			@switch_statement
 			# @_labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
@@ -36,13 +40,6 @@ module.exports = grammar
 		), optional(';'))
 
 		_statements: -> repeat(@_statement)
-
-		_loop_statement: -> choice(
-			@for_statement,
-			@for_in_statement,
-			# @while_statement,
-			# @repeat_while_statement
-		)
 
 		for_statement: -> seq(
 			'for',
@@ -69,12 +66,34 @@ module.exports = grammar
 		for_in_statement: -> seq(
 			'for',
 			optional('case'),
-			@_pattern,
+			seq(@_pattern, optional(@_type_annotation)),
 			'in',
 			@_expression,
 			# optional(@_where_clause),
 			@_code_block
 		)
+
+		switch_statement: -> seq(
+			'switch',
+			@_expression,
+			'{',
+			repeat(@case_statement),
+			'}'
+		)
+
+		case_statement: -> seq(
+			choice(
+				seq(
+					'case',
+					commaSep1(seq(
+						@_pattern
+						# optional(@_where_clause)
+					)),
+					':'
+				),
+				seq('default', ':')
+			),
+			repeat(@_statement))
 
 		_code_block: -> seq(
 			'{',
@@ -109,13 +128,14 @@ module.exports = grammar
 		# Patterns
 
 		_pattern: -> choice(
-			seq(@wildcard_pattern, optional(@_type_annotation)),
+			@wildcard_pattern,
 			@value_binding_pattern,
-			seq(@tuple_pattern, optional(@_type_annotation)),
-			# @enum_case_pattern,
+			@tuple_pattern,
+			@enum_case_pattern,
 			@optional_pattern,
-			@_type_casting_pattern,
-			seq(@_expression, optional(@_type_annotation))
+			@is_pattern,
+			@as_pattern,
+			@_expression
 		)
 
 		wildcard_pattern: -> '_'
@@ -125,14 +145,10 @@ module.exports = grammar
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
 		_tuple_pattern_element_list: -> commaSep1(@_pattern)
 
-		# enum_case_pattern: -> seq(optional(@_type_identifier), '.', @_enum_case_name, optional(@tuple_pattern))
+		enum_case_pattern: -> seq(optional(@_type_identifier), '.', @identifier, optional(@tuple_pattern))
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
-		_type_casting_pattern: -> choice(
-			@is_pattern,
-			@as_pattern
-		)
 		is_pattern: -> seq('is', @type)
 		as_pattern: -> prec(PREC.CAST, seq(@_pattern, 'as', @type))
 
@@ -178,14 +194,14 @@ module.exports = grammar
 			@type
 		)
 
-		_type_identifier: -> seq(
+		_type_identifier: -> prec.left(PREC.TYPE_IDENTIFIER, seq(
 			@_type_name,
 			# optional(@_generic_argument_clause),
 			optional(seq(
 				'.',
 				@_type_identifier
 			))
-		)
+		))
 
 		_type_name: -> @identifier
 
