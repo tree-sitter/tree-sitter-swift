@@ -38,6 +38,16 @@ while let x = y, z = y {}
 	(while_statement (optional_binding_condition (optional_binding (identifier) (identifier)) (optional_binding (identifier) (identifier)))))
 
 ======
+repeat while statement
+======
+
+repeat {} while a
+
+---
+
+(program (repeat_while_statement (identifier)))
+
+======
 switch statement
 ======
 
