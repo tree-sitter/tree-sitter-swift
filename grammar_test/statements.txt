@@ -142,6 +142,16 @@ continue label
 	(continue_statement (identifier)))
 
 ======
+fallthrough statement
+======
+
+fallthrough
+
+---
+
+(program (fallthrough_statement))
+
+======
 multiple statements on a line
 ======
 
