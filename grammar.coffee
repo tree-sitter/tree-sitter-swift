@@ -36,6 +36,7 @@ module.exports = grammar
 			@switch_statement
 			@labeled_statement,
 			@break_statement,
+			@continue_statement,
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
@@ -197,6 +198,8 @@ module.exports = grammar
 		)
 
 		break_statement: -> prec(PREC.BREAK_STATEMENT, seq('break', optional(@identifier)))
+
+		continue_statement: -> seq('continue', optional(@identifier))
 
 
 		# Declarations
