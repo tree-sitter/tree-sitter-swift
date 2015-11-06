@@ -7,7 +7,7 @@ module.exports = grammar
 		_statement: -> choice(
 			@_expression,
 			@_declaration,
-			# @_loop_statement,
+			@_loop_statement,
 			# @_branch_statement,
 			# @_labeled_statement,
 			# @_control_transfer_statement,
