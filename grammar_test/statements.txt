@@ -1,9 +1,9 @@
 ======
-one
+for statement
 ======
 
-import A
+for (;;) {}
 
 ---
 
-(program)
+(program (for_statement))
