@@ -30,6 +30,7 @@ module.exports = grammar
 			@for_in_statement,
 			# @while_statement,
 			# @repeat_while_statement,
+			@switch_statement
 			# @_labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
@@ -69,6 +70,14 @@ module.exports = grammar
 			@_expression,
 			# optional(@_where_clause),
 			@_code_block
+		)
+
+		switch_statement: -> seq(
+			'switch',
+			@_expression,
+			'{',
+			repeat(@_switch_case),
+			'}'
 		)
 
 		_code_block: -> seq(
