@@ -76,11 +76,11 @@ module.exports = grammar
 			'switch',
 			@_expression,
 			'{',
-			repeat(@_switch_case),
+			repeat(@case_statement),
 			'}'
 		)
 
-		_switch_case: -> seq(
+		case_statement: -> seq(
 			choice(
 				seq(
 					'case',
