@@ -37,6 +37,6 @@ default:
 ---
 
 (program
-	(switch_statement
+	(switch_statement (identifier)
 		(case_statement (wildcard_pattern))
 		(case_statement)))
