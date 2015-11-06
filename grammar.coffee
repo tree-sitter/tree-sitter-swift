@@ -81,6 +81,8 @@ module.exports = grammar
 
 		_condition_clause: -> choice(
 			seq(@_expression, optional(seq(',', commaSep1(@_condition)))),
+			seq(commaSep1(@_condition)),
+			seq(@availability_condition, ',', @_expression)
 		)
 
 		_condition: -> choice(
