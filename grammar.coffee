@@ -20,14 +20,6 @@ module.exports = grammar
 			optional(@_statements)
 		)
 
-		_expression: ->
-			'try'
-
-		_expression_list: -> choice(
-			@_expression,
-			seq(@_expression, ',', @_expression_list)
-		)
-
 
 		# Loops
 
@@ -71,6 +63,17 @@ module.exports = grammar
 
 		_declaration: ->
 			'import'
+
+
+		# Expressions
+
+		_expression: ->
+			'try'
+
+		_expression_list: -> choice(
+			@_expression,
+			seq(@_expression, ',', @_expression_list)
+		)
 
 
 	ubiquitous: -> [
