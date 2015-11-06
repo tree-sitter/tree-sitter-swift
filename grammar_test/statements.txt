@@ -1,0 +1,9 @@
+======
+one
+======
+
+import A
+
+---
+
+(program)
