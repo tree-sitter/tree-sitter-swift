@@ -102,6 +102,12 @@ module.exports = grammar
 			# optional(@_where_clause)
 		))
 
+		optional_binding: -> seq(
+			@_pattern,
+			'=',
+			@_expression
+		)
+
 		availability_condition: -> seq(
 			'#available',
 			'(',
