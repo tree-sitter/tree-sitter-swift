@@ -32,7 +32,7 @@ module.exports = grammar
 			@for_statement,
 			@for_in_statement,
 			@while_statement,
-			# @repeat_while_statement,
+			@repeat_while_statement,
 			@switch_statement
 			# @_labeled_statement,
 			# @_control_transfer_statement,
@@ -133,6 +133,13 @@ module.exports = grammar
 		optional_binding: -> seq(
 			@_pattern,
 			'=',
+			@_expression
+		)
+
+		repeat_while_statement: -> seq(
+			'repeat',
+			@_code_block,
+			'while',
 			@_expression
 		)
 
