@@ -137,7 +137,7 @@ module.exports = grammar
 		# Expressions
 
 		_expression: ->
-			'try'
+			@identifier
 
 		_expression_list: -> commaSep1(@_expression)
 
