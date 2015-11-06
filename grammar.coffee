@@ -92,14 +92,14 @@ module.exports = grammar
 			@optional_binding_condition
 		)
 
-		optional_binding_condition: -> seq(
+		optional_binding_condition: -> prec.right(seq(
 			choice('let', 'var'),
 			@_pattern,
 			'=',
 			@_expression,
 			optional(seq(',', commaSep1(seq(optional(choice('let', 'var')), @_pattern, '=', @_expression))))
 			# optional(@_where_clause)
-		)
+		))
 
 		availability_condition: -> seq(
 			'#available',
