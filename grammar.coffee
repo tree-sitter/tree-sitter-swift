@@ -21,6 +21,13 @@ module.exports = grammar
 		_declaration: ->
 			'import'
 
+		_loop_statement: -> choice(
+			@for_statement,
+			@for_in_statement,
+			@while_statement,
+			@repeat_while_statement
+		)
+
 	ubiquitous: -> [
 		/\s+/
 	]
