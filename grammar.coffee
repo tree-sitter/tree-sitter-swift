@@ -4,7 +4,7 @@ module.exports = grammar
 	rules:
 		program: -> repeat(@_statement)
 
-		_statement: -> choice(
+		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
 			@_loop_statement,
@@ -13,7 +13,7 @@ module.exports = grammar
 			# @_control_transfer_statement,
 			# @defer_statement,
 			# @do_statement
-		)
+		), ';')
 
 		_statements: -> seq(
 			@statement,
