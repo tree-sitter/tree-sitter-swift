@@ -2,7 +2,7 @@
 one
 ======
 
-import A
+for (;;) {}
 
 ---
 
