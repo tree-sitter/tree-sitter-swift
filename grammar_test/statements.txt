@@ -129,6 +129,19 @@ break label
 	(break_statement (identifier)))
 
 ======
+continue statement
+======
+
+continue
+continue label
+
+---
+
+(program
+	(continue_statement)
+	(continue_statement (identifier)))
+
+======
 multiple statements on a line
 ======
 
