@@ -65,7 +65,7 @@ module.exports = grammar
 		for_in_statement: -> seq(
 			'for',
 			optional('case'),
-			@_pattern,
+			seq(@_pattern, optional(@_type_annotation)),
 			'in',
 			@_expression,
 			# optional(@_where_clause),
