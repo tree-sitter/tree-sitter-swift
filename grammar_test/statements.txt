@@ -103,6 +103,19 @@ default:
 		(case_statement)))
 
 ======
+labeled statement
+======
+
+label: for ;; {}
+label: if x {}
+
+---
+
+(program
+	(labeled_statement (for_statement))
+	(labeled_statement (if_statement (identifier))))
+
+======
 multiple statements on a line
 ======
 
