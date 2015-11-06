@@ -21,7 +21,8 @@ module.exports = grammar
 			# @_labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
-			# @do_statement
+			# @do_statement,
+			# @compiler_control_statement
 		), optional(';'))
 
 		_statements: -> repeat(@_statement)
