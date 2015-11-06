@@ -130,7 +130,7 @@ module.exports = grammar
 			@wildcard_pattern,
 			@value_binding_pattern,
 			@tuple_pattern,
-			# @enum_case_pattern,
+			@enum_case_pattern,
 			@optional_pattern,
 			@is_pattern,
 			@as_pattern,
@@ -144,7 +144,7 @@ module.exports = grammar
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
 		_tuple_pattern_element_list: -> commaSep1(@_pattern)
 
-		# enum_case_pattern: -> seq(optional(@_type_identifier), '.', @_enum_case_name, optional(@tuple_pattern))
+		enum_case_pattern: -> seq(optional(@_type_identifier), '.', @identifier, optional(@tuple_pattern))
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
