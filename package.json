@@ -4,6 +4,10 @@
   "description": "Swift grammar for tree-sitter",
   "main": "index.js",
   "keywords": [ "parser", "lexer" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrix/tree-sitter-swift.git"
+  },
   "scripts": {
     "prepublish": "tree-sitter compile",
     "test": "tree-sitter test"
@@ -14,7 +18,7 @@
     "bindings": "1.2.x",
     "nan": "^2.1.0"
   },
-  "dev-dependencies": {
+  "devDependencies": {
     "tree-sitter-compiler": "0.0.27"
   }
 }
