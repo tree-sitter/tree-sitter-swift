@@ -171,6 +171,7 @@ module.exports = grammar
 			@_type_identifier
 
 		_type_annotation: -> seq(
+			':',
 			# optional(@_attributes),
 			@type
 		)
