@@ -15,6 +15,11 @@ module.exports = grammar
 			# @do_statement
 		)
 
+		_statements: -> seq(
+			@statement,
+			optional(@statements)
+		)
+
 		_expression: ->
 			'try'
 
