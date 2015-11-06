@@ -4,6 +4,9 @@ module.exports = grammar
 	rules:
 		program: -> repeat(@_statement)
 
+
+		# Statements
+
 		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
