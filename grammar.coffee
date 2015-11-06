@@ -127,13 +127,13 @@ module.exports = grammar
 		# Patterns
 
 		_pattern: -> choice(
-			seq(@wildcard_pattern, optional(@_type_annotation)),
+			@wildcard_pattern,
 			@value_binding_pattern,
-			seq(@tuple_pattern, optional(@_type_annotation)),
+			@tuple_pattern,
 			# @enum_case_pattern,
 			@optional_pattern,
 			@_type_casting_pattern,
-			seq(@_expression, optional(@_type_annotation))
+			@_expression
 		)
 
 		wildcard_pattern: -> '_'
