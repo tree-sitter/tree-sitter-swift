@@ -34,7 +34,7 @@ module.exports = grammar
 			@guard_statement,
 			@switch_statement
 			@labeled_statement,
-			# @_control_transfer_statement,
+			@break_statement,
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
@@ -194,6 +194,8 @@ module.exports = grammar
 			':',
 			choice(@_loop_statement, @if_statement)
 		)
+
+		break_statement: -> seq('break', optional(@identifier))
 
 
 		# Declarations
