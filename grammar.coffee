@@ -11,6 +11,7 @@ PREC =
 	OPTIONAL_BINDING_CONDITION: 10
 	BREAK_STATEMENT: 10
 	CONTINUE_STATEMENT: 10
+	RETURN_STATEMENT: 10
 
 module.exports = grammar
 	name: "swift"
@@ -206,7 +207,7 @@ module.exports = grammar
 
 		fallthrough_statement: -> 'fallthrough'
 
-		return_statement: -> seq('return', optional(@_expression))
+		return_statement: -> prec(PREC.RETURN_STATEMENT, seq('return', optional(@_expression)))
 
 
 		# Declarations
