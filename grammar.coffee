@@ -8,6 +8,7 @@ PREC =
 	CAST: 132
 	OPTIONAL_PATTERN: 10
 	TYPE_IDENTIFIER: 10
+	OPTIONAL_BINDING_CONDITION: 10
 
 module.exports = grammar
 	name: "swift"
@@ -92,7 +93,7 @@ module.exports = grammar
 			@optional_binding_condition
 		)
 
-		optional_binding_condition: -> prec.right(seq(
+		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
 			choice('let', 'var'),
 			@_pattern,
 			'=',
