@@ -12,7 +12,7 @@ for ;; {}
 	(for_statement))
 
 ======
-for/in statement
+for in statement
 ======
 
 for x in y {}
