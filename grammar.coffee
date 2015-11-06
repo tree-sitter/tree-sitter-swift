@@ -132,7 +132,8 @@ module.exports = grammar
 			@tuple_pattern,
 			# @enum_case_pattern,
 			@optional_pattern,
-			@_type_casting_pattern,
+			@is_pattern,
+			@as_pattern,
 			@_expression
 		)
 
@@ -147,10 +148,6 @@ module.exports = grammar
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
-		_type_casting_pattern: -> choice(
-			@is_pattern,
-			@as_pattern
-		)
 		is_pattern: -> seq('is', @type)
 		as_pattern: -> prec(PREC.CAST, seq(@_pattern, 'as', @type))
 
