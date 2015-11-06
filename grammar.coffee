@@ -94,7 +94,7 @@ module.exports = grammar
 							'watchOS',
 							'tvOS'
 						),
-						/\d+(\.\d+){0,2}/
+						token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/))))))
 					)
 				)
 			),
