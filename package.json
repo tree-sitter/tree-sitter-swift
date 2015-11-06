@@ -1,0 +1,20 @@
+{
+  "name": "swift",
+  "version": "0.0.1",
+  "description": "Swift grammar for tree-sitter",
+  "main": "index.js",
+  "keywords": [ "parser", "lexer" ],
+  "scripts": {
+    "prepublish": "tree-sitter compile",
+    "test": "tree-sitter test"
+  },
+  "author": "Rob Rix",
+  "license": "MIT",
+  "dependencies": {
+    "bindings": "1.2.x",
+    "nan": "^2.1.0",
+  },
+  "dev-dependencies": {
+    "tree-sitter-compiler": "0.0.27"
+  }
+}
