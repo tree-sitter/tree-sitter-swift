@@ -39,7 +39,7 @@ module.exports = grammar
 				@_for_condition,
 				seq('(', @_for_condition, ')')
 			),
-			@code_block
+			@_code_block
 		)
 
 		_for_init: -> choice(
@@ -53,6 +53,12 @@ module.exports = grammar
 			optional(@_expression),
 			';',
 			optional(@_expression)
+		)
+
+		_code_block: -> seq(
+			'{',
+			@_statements,
+			'}'
 		)
 
 	ubiquitous: -> [
