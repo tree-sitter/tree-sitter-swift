@@ -125,7 +125,8 @@ module.exports = grammar
 		case_condition: -> seq(
 			'case',
 			@_pattern,
-			seq('=', @_expression)
+			'=',
+			@_expression
 			# optional(@_where_clause)
 		)
 
