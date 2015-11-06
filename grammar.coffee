@@ -131,8 +131,6 @@ module.exports = grammar
 		is_pattern: -> seq('is', @type)
 		as_pattern: -> prec.left(PREC.CAST, seq(@_pattern, 'as', @type))
 
-		expression_pattern: -> @_expression
-
 
 		# Expressions
 
