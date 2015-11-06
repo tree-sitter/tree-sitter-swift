@@ -15,7 +15,8 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_pattern, @_expression_list ]
+			[ @_pattern, @_expression_list ],
+			[ @_condition, @_condition_clause ]
 		]
 
 	rules:
