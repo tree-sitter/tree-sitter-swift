@@ -79,6 +79,15 @@ module.exports = grammar
 			@_code_block
 		)
 
+		_condition_clause: -> choice(
+			seq(@_expression, optional(seq(',', commaSep1(@_condition)))),
+		)
+
+		_condition: -> choice(
+			@availability_condition,
+			@case_condition
+		)
+
 		availability_condition: -> seq(
 			'#available',
 			'(',
@@ -99,6 +108,13 @@ module.exports = grammar
 				)
 			),
 			')'
+		)
+
+		case_condition: -> seq(
+			'case',
+			@_pattern,
+			seq('=', @_expression)
+			# optional(@_where_clause)
 		)
 
 		switch_statement: -> seq(
