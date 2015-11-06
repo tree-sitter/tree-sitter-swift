@@ -80,6 +80,20 @@ module.exports = grammar
 			'}'
 		)
 
+		_switch_case: -> seq(
+			choice(
+				seq(
+					'case',
+					commaSep1(seq(
+						@_pattern
+						# optional(@_where_clause)
+					)),
+					':'
+				),
+				seq('default', ':')
+			),
+			repeat(@_statement))
+
 		_code_block: -> seq(
 			'{',
 			@_statements,
