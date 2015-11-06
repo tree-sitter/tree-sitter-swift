@@ -31,6 +31,9 @@ module.exports = grammar
 		_declaration: ->
 			'import'
 
+
+		# Loops
+
 		_loop_statement: -> choice(
 			@for_statement,
 			# @for_in_statement,
