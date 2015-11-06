@@ -26,8 +26,10 @@ module.exports = grammar
 		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
-			@_loop_statement,
-			# @_branch_statement,
+			@for_statement,
+			@for_in_statement,
+			# @while_statement,
+			# @repeat_while_statement,
 			# @_labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
@@ -36,13 +38,6 @@ module.exports = grammar
 		), optional(';'))
 
 		_statements: -> repeat(@_statement)
-
-		_loop_statement: -> choice(
-			@for_statement,
-			@for_in_statement,
-			# @while_statement,
-			# @repeat_while_statement
-		)
 
 		for_statement: -> seq(
 			'for',
