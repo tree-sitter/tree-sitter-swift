@@ -63,6 +63,16 @@ if x {} else if y {}
 	(if_statement (identifier) (if_statement (identifier))))
 
 ======
+guard Statements
+======
+
+guard x else {}
+
+---
+
+(program (guard_statement (identifier)))
+
+======
 switch statement
 ======
 
