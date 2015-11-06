@@ -28,9 +28,6 @@ module.exports = grammar
 			seq(@_expression, ',', @_expression_list)
 		)
 
-		_declaration: ->
-			'import'
-
 
 		# Loops
 
@@ -68,6 +65,13 @@ module.exports = grammar
 			@_statements,
 			'}'
 		)
+
+
+		# Declarations
+
+		_declaration: ->
+			'import'
+
 
 	ubiquitous: -> [
 		/\s+/
