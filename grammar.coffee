@@ -34,6 +34,7 @@ module.exports = grammar
 			@while_statement,
 			@repeat_while_statement,
 			@if_statement,
+			@guard_statement,
 			@switch_statement
 			# @_labeled_statement,
 			# @_control_transfer_statement,
@@ -149,6 +150,13 @@ module.exports = grammar
 			@_condition_clause,
 			@_code_block,
 			optional(seq('else', choice(@_code_block, @if_statement)))
+		)
+
+		guard_statement: -> seq(
+			'guard',
+			@_condition_clause,
+			'else',
+			@_code_block
 		)
 
 		switch_statement: -> seq(
