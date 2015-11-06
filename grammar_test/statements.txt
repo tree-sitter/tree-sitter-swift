@@ -152,6 +152,19 @@ fallthrough
 (program (fallthrough_statement))
 
 ======
+return statement
+======
+
+return
+return x
+
+---
+
+(program
+	(return_statement)
+	(return_statement (identifier)))
+
+======
 multiple statements on a line
 ======
 
