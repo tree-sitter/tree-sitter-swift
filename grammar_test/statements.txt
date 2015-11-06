@@ -48,6 +48,21 @@ repeat {} while a
 (program (repeat_while_statement (identifier)))
 
 ======
+if statement
+======
+
+if x {}
+if x {} else {}
+if x {} else if y {}
+
+---
+
+(program
+	(if_statement (identifier))
+	(if_statement (identifier))
+	(if_statement (identifier) (if_statement (identifier))))
+
+======
 switch statement
 ======
 
