@@ -54,3 +54,25 @@ default:
 		(case_statement (is_pattern (type (identifier))))
 		(case_statement (as_pattern (wildcard_pattern) (type (identifier))))
 		(case_statement)))
+
+======
+multiple statements on a line
+======
+
+x;y;z
+
+---
+
+(program (identifier) (identifier) (identifier))
+
+======
+multiple statements on multiple lines
+======
+
+x
+y
+z
+
+---
+
+(program (identifier) (identifier) (identifier))
