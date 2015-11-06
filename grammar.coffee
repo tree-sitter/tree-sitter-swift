@@ -21,7 +21,7 @@ module.exports = grammar
 		]
 
 	rules:
-		program: -> @_statements
+		program: -> repeat(@_statement)
 
 
 		# Statements
@@ -42,8 +42,6 @@ module.exports = grammar
 			# @do_statement,
 			# @compiler_control_statement
 		), optional(';'))
-
-		_statements: -> repeat(@_statement)
 
 		for_statement: -> seq(
 			'for',
@@ -183,7 +181,7 @@ module.exports = grammar
 
 		_code_block: -> seq(
 			'{',
-			@_statements,
+			repeat(@_statement),
 			'}'
 		)
 
