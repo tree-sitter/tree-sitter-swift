@@ -7,6 +7,7 @@ commaSep = (rule) ->
 PREC =
 	CAST: 132
 	OPTIONAL_PATTERN: 10
+	TYPE_IDENTIFIER: 10
 
 module.exports = grammar
 	name: "swift"
@@ -193,14 +194,14 @@ module.exports = grammar
 			@type
 		)
 
-		_type_identifier: -> seq(
+		_type_identifier: -> prec.left(PREC.TYPE_IDENTIFIER, seq(
 			@_type_name,
 			# optional(@_generic_argument_clause),
 			optional(seq(
 				'.',
 				@_type_identifier
 			))
-		)
+		))
 
 		_type_name: -> @identifier
 
