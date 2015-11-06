@@ -79,6 +79,28 @@ module.exports = grammar
 			@_code_block
 		)
 
+		availability_condition: -> seq(
+			'#available',
+			'(',
+			commaSep1(
+				choice(
+					'*',
+					seq(
+						choice(
+							'iOS',
+							'iOSApplicationExtension'
+							'OSX',
+							'OSXApplicationExtension',
+							'watchOS',
+							'tvOS'
+						),
+						/\d+(\.\d+){0,2}/
+					)
+				)
+			),
+			')'
+		)
+
 		switch_statement: -> seq(
 			'switch',
 			@_expression,
