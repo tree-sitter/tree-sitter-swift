@@ -44,7 +44,7 @@ module.exports = grammar
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
-		), optional(';'))
+		), choice(';', /\n/))
 
 		_loop_statement: -> choice(
 			@for_statement,
