@@ -16,8 +16,8 @@ module.exports = grammar
 		), ';')
 
 		_statements: -> seq(
-			@statement,
-			optional(@statements)
+			@_statement,
+			optional(@_statements)
 		)
 
 		_expression: ->
