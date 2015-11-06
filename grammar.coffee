@@ -21,7 +21,7 @@ module.exports = grammar
 		]
 
 	rules:
-		program: -> @_statements
+		program: -> repeat(@_statement)
 
 
 		# Statements
@@ -29,21 +29,23 @@ module.exports = grammar
 		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
-			@for_statement,
-			@for_in_statement,
-			@while_statement,
-			@repeat_while_statement,
+			@_loop_statement,
 			@if_statement,
 			@guard_statement,
 			@switch_statement
-			# @_labeled_statement,
+			@labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
 		), optional(';'))
 
-		_statements: -> repeat(@_statement)
+		_loop_statement: -> choice(
+			@for_statement,
+			@for_in_statement,
+			@while_statement,
+			@repeat_while_statement
+		)
 
 		for_statement: -> seq(
 			'for',
@@ -183,8 +185,14 @@ module.exports = grammar
 
 		_code_block: -> seq(
 			'{',
-			@_statements,
+			repeat(@_statement),
 			'}'
+		)
+
+		labeled_statement: -> seq(
+			@identifier,
+			':',
+			choice(@_loop_statement, @if_statement)
 		)
 
 
