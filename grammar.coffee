@@ -111,6 +111,28 @@ module.exports = grammar
 		))
 
 
+		# Types
+
+		type: ->
+			@_type_identifier
+
+		_type_annotation: -> seq(
+			# optional(@_attributes),
+			@type
+		)
+
+		_type_identifier: -> seq(
+			@_type_name,
+			optional(@_generic_argument_clause),
+			optional(seq(
+				'.',
+				@_type_identifier
+			))
+		)
+
+		_type_name: -> @identifier
+
+
 	ubiquitous: -> [
 		/\s+/
 	]
