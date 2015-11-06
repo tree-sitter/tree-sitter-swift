@@ -1,3 +1,9 @@
+commaSep1 = (rule) ->
+  seq(rule, repeat(seq(",", rule)))
+
+commaSep = (rule) ->
+  optional(commaSep1(rule))
+
 module.exports = grammar
 	name: "swift"
 
