@@ -33,7 +33,7 @@ module.exports = grammar
 			@if_statement,
 			@guard_statement,
 			@switch_statement
-			@_labeled_statement,
+			@labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
 			# @do_statement,
@@ -189,7 +189,7 @@ module.exports = grammar
 			'}'
 		)
 
-		_labeled_statement: -> seq(
+		labeled_statement: -> seq(
 			@identifier,
 			':',
 			choice(@_loop_statement, @if_statement)
