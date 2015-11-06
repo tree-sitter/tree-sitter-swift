@@ -29,7 +29,7 @@ module.exports = grammar
 			@_declaration,
 			@for_statement,
 			@for_in_statement,
-			# @while_statement,
+			@while_statement,
 			# @repeat_while_statement,
 			@switch_statement
 			# @_labeled_statement,
@@ -70,6 +70,12 @@ module.exports = grammar
 			'in',
 			@_expression,
 			# optional(@_where_clause),
+			@_code_block
+		)
+
+		while_statement: -> seq(
+			'while',
+			@_condition_clause,
 			@_code_block
 		)
 
