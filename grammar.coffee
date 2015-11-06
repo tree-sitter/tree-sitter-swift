@@ -23,6 +23,11 @@ module.exports = grammar
 		_expression: ->
 			'try'
 
+		_expression_list: -> choice(
+			@_expression,
+			seq(@_expression, ',', @_expression_list)
+		)
+
 		_declaration: ->
 			'import'
 
