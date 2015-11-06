@@ -8,6 +8,7 @@ PREC =
 	CAST: 132
 	OPTIONAL_PATTERN: 10
 	TYPE_IDENTIFIER: 10
+	OPTIONAL_BINDING_CONDITION: 10
 
 module.exports = grammar
 	name: "swift"
@@ -15,7 +16,8 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_pattern, @_expression_list ]
+			[ @_pattern, @_expression_list ],
+			[ @_condition, @_condition_clause ]
 		]
 
 	rules:
@@ -29,8 +31,8 @@ module.exports = grammar
 			@_declaration,
 			@for_statement,
 			@for_in_statement,
-			# @while_statement,
-			# @repeat_while_statement,
+			@while_statement,
+			@repeat_while_statement,
 			@switch_statement
 			# @_labeled_statement,
 			# @_control_transfer_statement,
@@ -71,6 +73,74 @@ module.exports = grammar
 			@_expression,
 			# optional(@_where_clause),
 			@_code_block
+		)
+
+		while_statement: -> seq(
+			'while',
+			@_condition_clause,
+			@_code_block
+		)
+
+		_condition_clause: -> choice(
+			seq(@_expression, optional(seq(',', commaSep1(@_condition)))),
+			seq(commaSep1(@_condition)),
+			seq(@availability_condition, ',', @_expression)
+		)
+
+		_condition: -> choice(
+			@availability_condition,
+			@case_condition,
+			@optional_binding_condition
+		)
+
+		availability_condition: -> seq(
+			'#available',
+			'(',
+			commaSep1(
+				choice(
+					'*',
+					seq(
+						choice(
+							'iOS',
+							'iOSApplicationExtension'
+							'OSX',
+							'OSXApplicationExtension',
+							'watchOS',
+							'tvOS'
+						),
+						token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/))))))
+					)
+				)
+			),
+			')'
+		)
+
+		case_condition: -> seq(
+			'case',
+			@_pattern,
+			'=',
+			@_expression
+			# optional(@_where_clause)
+		)
+
+		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
+			choice('let', 'var'),
+			@optional_binding,
+			optional(seq(',', commaSep1(@optional_binding)))
+			# optional(@_where_clause)
+		))
+
+		optional_binding: -> seq(
+			@_pattern,
+			'=',
+			@_expression
+		)
+
+		repeat_while_statement: -> seq(
+			'repeat',
+			@_code_block,
+			'while',
+			@_expression
 		)
 
 		switch_statement: -> seq(

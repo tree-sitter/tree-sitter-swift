@@ -24,6 +24,28 @@ for x: Int in y {}
 	(for_in_statement (identifier) (identifier))
 	(for_in_statement (identifier) (type (identifier)) (identifier)))
 
+======
+while statement
+======
+
+while #available(tvOS 1.0) {}
+while let x = y, z = y {}
+
+---
+
+(program
+	(while_statement (availability_condition))
+	(while_statement (optional_binding_condition (optional_binding (identifier) (identifier)) (optional_binding (identifier) (identifier)))))
+
+======
+repeat while statement
+======
+
+repeat {} while a
+
+---
+
+(program (repeat_while_statement (identifier)))
 
 ======
 switch statement
