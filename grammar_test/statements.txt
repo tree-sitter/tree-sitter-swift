@@ -29,10 +29,13 @@ while statement
 ======
 
 while #available(tvOS 1.0) {}
+while let x = y, z = y {}
 
 ---
 
-(program (while_statement (availability_condition)))
+(program
+	(while_statement (availability_condition))
+	(while_statement (optional_binding_condition (identifier) (identifier) (identifier) (identifier))))
 
 ======
 switch statement
