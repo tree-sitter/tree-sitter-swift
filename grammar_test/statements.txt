@@ -6,4 +6,4 @@ for (;;) {}
 
 ---
 
-(program)
+(program (for_statement))
