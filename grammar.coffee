@@ -4,8 +4,18 @@ commaSep1 = (rule) ->
 commaSep = (rule) ->
   optional(commaSep1(rule))
 
+PREC =
+	CAST: 132
+	OPTIONAL_PATTERN: 10
+
 module.exports = grammar
 	name: "swift"
+
+	expectedConflicts: ->
+		[
+			[ @_variable_declaration_head, @value_binding_pattern ],
+			[ @_pattern, @_expression_list ]
+		]
 
 	rules:
 		program: -> @_statements
@@ -21,14 +31,15 @@ module.exports = grammar
 			# @_labeled_statement,
 			# @_control_transfer_statement,
 			# @defer_statement,
-			# @do_statement
+			# @do_statement,
+			# @compiler_control_statement
 		), optional(';'))
 
 		_statements: -> repeat(@_statement)
 
 		_loop_statement: -> choice(
 			@for_statement,
-			# @for_in_statement,
+			@for_in_statement,
 			# @while_statement,
 			# @repeat_while_statement
 		)
@@ -53,6 +64,16 @@ module.exports = grammar
 			optional(@_expression),
 			';',
 			optional(@_expression)
+		)
+
+		for_in_statement: -> seq(
+			'for',
+			optional('case'),
+			@_pattern,
+			'in',
+			@_expression,
+			# optional(@_where_clause),
+			@_code_block
 		)
 
 		_code_block: -> seq(
@@ -85,36 +106,65 @@ module.exports = grammar
 		_variable_name: -> @identifier
 
 
+		# Patterns
+
+		_pattern: -> choice(
+			seq(@wildcard_pattern, optional(@_type_annotation)),
+			@value_binding_pattern,
+			seq(@tuple_pattern, optional(@_type_annotation)),
+			# @enum_case_pattern,
+			@optional_pattern,
+			@_type_casting_pattern,
+			seq(@_expression, optional(@_type_annotation))
+		)
+
+		wildcard_pattern: -> '_'
+
+		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
+
+		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
+		_tuple_pattern_element_list: -> commaSep1(@_pattern)
+
+		# enum_case_pattern: -> seq(optional(@_type_identifier), '.', @_enum_case_name, optional(@tuple_pattern))
+
+		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
+
+		_type_casting_pattern: -> choice(
+			@is_pattern,
+			@as_pattern
+		)
+		is_pattern: -> seq('is', @type)
+		as_pattern: -> prec(PREC.CAST, seq(@_pattern, 'as', @type))
+
+
 		# Expressions
 
 		_expression: ->
-			'try'
+			@identifier
 
 		_expression_list: -> commaSep1(@_expression)
 
 
 		# Lexical Structure
 
-		identifier: -> token(choice(
-			seq(
-				@_identifier_head,
-				optional(@_identifier_characters)
-			),
-			seq(
-				'`',
-				@_identifier_head,
-				optional(@_identifier_characters),
-				'`'
-			)
-		))
-
-		_identifier_head: ->
-			/[A-Za-z_]/
-
-		_identifier_characters: -> repeat(choice(
-			@_identifier_head,
-			/[0-9]/
-		))
+		identifier: ->
+			_identifier_head = /[A-Za-z_]/
+			_identifier_characters = repeat(choice(
+				_identifier_head,
+				/[0-9]/
+			))
+			token(choice(
+				seq(
+					_identifier_head,
+					optional(_identifier_characters)
+				),
+				seq(
+					'`',
+					_identifier_head,
+					optional(_identifier_characters),
+					'`'
+				)
+			))
 
 
 		# Types
@@ -123,6 +173,7 @@ module.exports = grammar
 			@_type_identifier
 
 		_type_annotation: -> seq(
+			':',
 			# optional(@_attributes),
 			@type
 		)
