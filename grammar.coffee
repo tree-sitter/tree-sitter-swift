@@ -18,10 +18,7 @@ module.exports = grammar
 			# @do_statement
 		), ';')
 
-		_statements: -> seq(
-			@_statement,
-			optional(@_statements)
-		)
+		_statements: -> repeat(@_statement)
 
 		_loop_statement: -> choice(
 			@for_statement,
