@@ -28,6 +28,28 @@ module.exports = grammar
 			@repeat_while_statement
 		)
 
+		for_statement: -> seq(
+			'for',
+			choice(
+				@_for_condition,
+				seq('(', @_for_condition, ')')
+			),
+			@code_block
+		)
+
+		_for_init: -> choice(
+			@variable_declaration,
+			@_expression_list
+		)
+
+		_for_condition: -> seq(
+			optional(@_for_init),
+			';',
+			optional(@_expression),
+			';',
+			optional(@_expression)
+		)
+
 	ubiquitous: -> [
 		/\s+/
 	]
