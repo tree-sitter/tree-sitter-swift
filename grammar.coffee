@@ -67,7 +67,7 @@ module.exports = grammar
 			seq(@_variable_name, @_type_annotation, @_getter_setter_block),
 			seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
 			seq(@_variable_name, @_initializer, @_willSet_didSet_block),
-			seq(@_variable_name, @_type_annotation, optional(@_initializer), @_willSet_didSet_block),
+			seq(@_variable_name, @_type_annotation, optional(@_initializer), @_willSet_didSet_block)
 		))
 
 		_variable_declaration_head: -> seq(
