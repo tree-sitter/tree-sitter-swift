@@ -4,6 +4,9 @@ commaSep1 = (rule) ->
 commaSep = (rule) ->
   optional(commaSep1(rule))
 
+PREC =
+	CAST: 132
+
 module.exports = grammar
 	name: "swift"
 
