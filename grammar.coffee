@@ -23,9 +23,6 @@ module.exports = grammar
 			optional(@_statements)
 		)
 
-
-		# Loops
-
 		_loop_statement: -> choice(
 			@for_statement,
 			# @for_in_statement,
