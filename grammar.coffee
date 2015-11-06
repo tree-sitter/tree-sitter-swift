@@ -9,6 +9,7 @@ PREC =
 	OPTIONAL_PATTERN: 10
 	TYPE_IDENTIFIER: 10
 	OPTIONAL_BINDING_CONDITION: 10
+	BREAK_STATEMENT: 10
 
 module.exports = grammar
 	name: "swift"
@@ -195,7 +196,7 @@ module.exports = grammar
 			choice(@_loop_statement, @if_statement)
 		)
 
-		break_statement: -> seq('break', optional(@identifier))
+		break_statement: -> prec(PREC.BREAK_STATEMENT, seq('break', optional(@identifier)))
 
 
 		# Declarations
