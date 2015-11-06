@@ -113,8 +113,6 @@ module.exports = grammar
 
 		wildcard_pattern: -> '_'
 
-		identifier_pattern: -> @identifier
-
 		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
 
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
