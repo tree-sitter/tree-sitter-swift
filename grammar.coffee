@@ -11,6 +11,12 @@ PREC =
 module.exports = grammar
 	name: "swift"
 
+	expectedConflicts: ->
+		[
+			[ @_variable_declaration_head, @value_binding_pattern ],
+			[ @_pattern, @_expression_list ]
+		]
+
 	rules:
 		program: -> @_statements
 
