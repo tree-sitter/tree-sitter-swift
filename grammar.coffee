@@ -93,19 +93,6 @@ module.exports = grammar
 			@optional_binding_condition
 		)
 
-		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
-			choice('let', 'var'),
-			@optional_binding,
-			optional(seq(',', commaSep1(@optional_binding)))
-			# optional(@_where_clause)
-		))
-
-		optional_binding: -> seq(
-			@_pattern,
-			'=',
-			@_expression
-		)
-
 		availability_condition: -> seq(
 			'#available',
 			'(',
@@ -134,6 +121,19 @@ module.exports = grammar
 			'=',
 			@_expression
 			# optional(@_where_clause)
+		)
+
+		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
+			choice('let', 'var'),
+			@optional_binding,
+			optional(seq(',', commaSep1(@optional_binding)))
+			# optional(@_where_clause)
+		))
+
+		optional_binding: -> seq(
+			@_pattern,
+			'=',
+			@_expression
 		)
 
 		switch_statement: -> seq(
