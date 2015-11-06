@@ -6,6 +6,7 @@ commaSep = (rule) ->
 
 PREC =
 	CAST: 132
+	OPTIONAL_PATTERN: 10
 
 module.exports = grammar
 	name: "swift"
@@ -120,7 +121,7 @@ module.exports = grammar
 
 		# enum_case_pattern: -> seq(optional(@_type_identifier), '.', @_enum_case_name, optional(@tuple_pattern))
 
-		optional_pattern: -> seq(@identifier_pattern, '?')
+		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
 		_type_casting_pattern: -> choice(
 			@is_pattern,
