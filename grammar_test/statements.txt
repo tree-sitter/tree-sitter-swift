@@ -16,7 +16,10 @@ for in statement
 ======
 
 for x in y {}
+for x: Int in y {}
 
 ---
 
-(program (for_in_statement))
+(program
+	(for_in_statement (identifier) (identifier))
+	(for_in_statement (identifier) (type (identifier)) (identifier)))
