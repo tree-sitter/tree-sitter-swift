@@ -61,6 +61,23 @@ module.exports = grammar
 		_declaration: ->
 			'import'
 
+		variable_declaration: -> seq(@_variable_declaration_head, choice(
+			@_pattern_initializer_list,
+			seq(@_variable_name, @_type_annotation, @_code_block),
+			seq(@_variable_name, @_type_annotation, @_getter_setter_block),
+			seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
+			seq(@_variable_name, @_initializer, @_willSet_didSet_block),
+			seq(@_variable_name, @_type_annotation, optional(@_initializer), @_willSet_didSet_block),
+		))
+
+		_variable_declaration_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'var'
+		)
+
+		_variable_name: -> @identifier
+
 
 		# Expressions
 
