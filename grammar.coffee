@@ -70,6 +70,30 @@ module.exports = grammar
 		_expression_list: -> commaSep1(@_expression)
 
 
+		# Lexical Structure
+
+		identifier: -> token(choice(
+			seq(
+				@_identifier_head,
+				optional(@_identifier_characters)
+			),
+			seq(
+				'`',
+				@_identifier_head,
+				optional(@_identifier_characters),
+				'`'
+			)
+		))
+
+		_identifier_head: ->
+			/[A-Za-z_]/
+
+		_identifier_characters: -> repeat(choice(
+			@_identifier_head,
+			/[0-9]/
+		))
+
+
 	ubiquitous: -> [
 		/\s+/
 	]
