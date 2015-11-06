@@ -39,6 +39,7 @@ module.exports = grammar
 			@break_statement,
 			@continue_statement,
 			@fallthrough_statement,
+			@return_statement,
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
@@ -204,6 +205,8 @@ module.exports = grammar
 		continue_statement: -> prec(PREC.CONTINUE_STATEMENT, seq('continue', optional(@identifier)))
 
 		fallthrough_statement: -> 'fallthrough'
+
+		return_statement: -> seq('return', optional(@_expression))
 
 
 		# Declarations
