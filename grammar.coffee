@@ -129,7 +129,7 @@ module.exports = grammar
 
 		_type_identifier: -> seq(
 			@_type_name,
-			optional(@_generic_argument_clause),
+			# optional(@_generic_argument_clause),
 			optional(seq(
 				'.',
 				@_type_identifier
