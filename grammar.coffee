@@ -96,6 +96,42 @@ module.exports = grammar
 		_variable_name: -> @identifier
 
 
+		# Patterns
+
+		_pattern: -> choice(
+			seq(@wildcard_pattern, optional(@_type_annotation)),
+			seq(@identifier_pattern, optional(@_type_annotation)),
+			@value_binding_pattern,
+			seq(@tuple_pattern, optional(@_type_annotation)),
+			# @enum_case_pattern,
+			@optional_pattern,
+			@_type_casting_pattern,
+			@expression_pattern
+		)
+
+		wildcard_pattern: -> '_'
+
+		identifier_pattern: -> @identifier
+
+		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
+
+		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
+		_tuple_pattern_element_list: -> commaSep1(@_pattern)
+
+		# enum_case_pattern: -> seq(optional(@_type_identifier), '.', @_enum_case_name, optional(@tuple_pattern))
+
+		optional_pattern: -> seq(@identifier_pattern, '?')
+
+		_type_casting_pattern: -> choice(
+			@is_pattern,
+			@as_pattern
+		)
+		is_pattern: -> seq('is', @type)
+		as_pattern: -> seq(@_pattern, 'as', @type)
+
+		expression_pattern: -> @_expression
+
+
 		# Expressions
 
 		_expression: ->
