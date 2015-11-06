@@ -116,6 +116,19 @@ label: if x {}
 	(labeled_statement (identifier) (if_statement (identifier))))
 
 ======
+break statement
+======
+
+break
+break label
+
+---
+
+(program
+	(break_statement)
+	(break_statement (identifier)))
+
+======
 multiple statements on a line
 ======
 
