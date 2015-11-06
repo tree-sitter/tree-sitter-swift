@@ -31,6 +31,11 @@ switch statement
 
 switch x {
 case _:
+case let x:
+case var y:
+case ():
+case is Int:
+case _ as Int:
 default:
 }
 
@@ -39,4 +44,9 @@ default:
 (program
 	(switch_statement (identifier)
 		(case_statement (wildcard_pattern))
+		(case_statement (value_binding_pattern (identifier)))
+		(case_statement (value_binding_pattern (identifier)))
+		(case_statement (tuple_pattern))
+		(case_statement (is_pattern (type (identifier))))
+		(case_statement (as_pattern (wildcard_pattern) (type (identifier))))
 		(case_statement)))
