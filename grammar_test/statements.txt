@@ -3,7 +3,11 @@ for statement
 ======
 
 for (;;) {}
+for ;; {}
 
 ---
 
-(program (for_statement))
+(program
+	(for_statement)
+	(for_statement))
+
