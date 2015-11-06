@@ -29,10 +29,7 @@ module.exports = grammar
 		_statement: -> seq(choice(
 			@_expression,
 			@_declaration,
-			@for_statement,
-			@for_in_statement,
-			@while_statement,
-			@repeat_while_statement,
+			@_loop_statement,
 			@if_statement,
 			@guard_statement,
 			@switch_statement
@@ -42,6 +39,13 @@ module.exports = grammar
 			# @do_statement,
 			# @compiler_control_statement
 		), optional(';'))
+
+		_loop_statement: -> choice(
+			@for_statement,
+			@for_in_statement,
+			@while_statement,
+			@repeat_while_statement
+		)
 
 		for_statement: -> seq(
 			'for',
