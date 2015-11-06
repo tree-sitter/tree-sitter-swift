@@ -23,6 +23,10 @@ module.exports = grammar
 			[ @_condition, @_condition_clause ]
 		]
 
+	ubiquitous: -> [
+		/\s+/
+	]
+
 	rules:
 		program: -> repeat(@_statement)
 
@@ -312,8 +316,3 @@ module.exports = grammar
 		))
 
 		_type_name: -> @identifier
-
-
-	ubiquitous: -> [
-		/\s+/
-	]
