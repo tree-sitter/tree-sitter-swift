@@ -5,3 +5,5 @@ before_script:
   - "npm install"
 node_js:
   - "0.12"
+notifications:
+  email: false
