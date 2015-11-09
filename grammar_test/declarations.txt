@@ -4,9 +4,11 @@ import declaration
 
 import Foo
 import Foo.Bar
+import typealias Foo.Bar.Quux
 
 ---
 
 (program
 	(import_declaration (identifier))
-	(import_declaration (identifier) (identifier)))
+	(import_declaration (identifier) (identifier))
+	(import_declaration (identifier) (identifier) (identifier)))
