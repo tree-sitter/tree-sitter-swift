@@ -203,13 +203,34 @@ do {} catch let e {}
 build configuration statement
 ======
 
+#if os(iOS)
+#endif
+#if arch(x86_64)
+#endif
+#if x
+#endif
 #if true
+#endif
+#if (true)
+#endif
+#if !true
+#endif
+#if true && true
+#endif
+#if true || true
 #endif
 
 ---
 
 (program
-	(build_configuration_statement (boolean_literal)))
+	(build_configuration_statement)
+	(build_configuration_statement)
+	(build_configuration_statement (identifier))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal) (boolean_literal))
+	(build_configuration_statement (boolean_literal) (boolean_literal)))
 
 ======
 multiple statements on a line
