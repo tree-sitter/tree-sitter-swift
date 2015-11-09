@@ -288,11 +288,13 @@ module.exports = grammar
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
 			commaSep1(@_pattern_initializer),
-			seq(@_variable_name, @_type_annotation, @_code_block)
-			# seq(@_variable_name, @_type_annotation, @_getter_setter_block),
-			seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
+			seq(@_variable_name, @_type_annotation, choice(
+				@_code_block,
+				# @_getter_setter_block,
+				@_getter_setter_keyword_block,
+				# seq(optional(@_initializer), @_willSet_didSet_block)
+			))
 			# seq(@_variable_name, @_initializer, @_willSet_didSet_block),
-			# seq(@_variable_name, @_type_annotation, optional(@_initializer), @_willSet_didSet_block)
 		))
 
 		_variable_declaration_head: -> seq(
