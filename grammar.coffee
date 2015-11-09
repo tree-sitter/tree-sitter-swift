@@ -482,6 +482,12 @@ module.exports = grammar
 			@_parameter_clause
 		)
 
+		_subscript_result: -> seq(
+			'->',
+			# optional(@_attributes),
+			@type
+		)
+
 
 		# Patterns
 
