@@ -122,6 +122,8 @@ struct
 
 struct A {}
 
+---
+
 (program
 	(struct_declaration (identifier)))
 
@@ -130,6 +132,8 @@ class
 ======
 
 class A {}
+
+---
 
 (program
 	(class_declaration (identifier)))
