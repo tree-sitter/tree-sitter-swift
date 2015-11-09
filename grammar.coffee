@@ -454,6 +454,7 @@ module.exports = grammar
 			@_initializer_head
 			# optional(@_generic_parameter_clause),
 			@_parameter_clause,
+			optional(choice('throws', 'rethrows')),
 		)
 
 		_initializer_head: -> seq(
