@@ -407,8 +407,7 @@ module.exports = grammar
 
 		# Types
 
-		type: ->
-			@_type_identifier
+		type: -> choice(@_type_identifier)
 
 		_type_annotation: -> seq(
 			':',
