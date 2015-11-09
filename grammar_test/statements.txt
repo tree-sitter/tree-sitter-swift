@@ -244,10 +244,12 @@ line control statement
 
 #line
 #line 1 ""
+#line 100 "file.swift"
 
 ---
 
 (program
+	(line_control_statement)
 	(line_control_statement)
 	(line_control_statement))
 
