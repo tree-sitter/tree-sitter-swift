@@ -303,6 +303,31 @@ module.exports = grammar
 
 		_variable_name: -> @identifier
 
+		_getter_setter_keyword_block: -> seq(
+			'{',
+			choice(
+				seq(
+					@_getter_keyword_clause,
+					optional(@_setter_keyword_clause)
+				),
+				seq(
+					@_setter_keyword_clause,
+					@_getter_keyword_clause
+				)
+			)
+			'}'
+		)
+
+		_getter_keyword_clause: -> seq(
+			# optional(@_attributes),
+			'get'
+		)
+
+		_setter_keyword_clause: -> seq(
+			# optional(@_attributes),
+			'set'
+		)
+
 		typealias_declaration: -> seq(
 			# optional(@_attributes),
 			# optional(@access_level_modifier),
