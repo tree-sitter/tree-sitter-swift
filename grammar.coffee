@@ -608,6 +608,7 @@ module.exports = grammar
 		)
 
 		boolean_literal: -> choice('true', 'false')
+		nil_literal: -> 'nil'
 
 
 		# Lexical Structure
