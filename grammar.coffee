@@ -339,6 +339,9 @@ module.exports = grammar
 				)
 			))
 
+		operator: ->
+			_operator_head = /[/=+!*%<>&|^~?-]/
+			token(repeat1(_operator_head))
 
 		# Types
 
