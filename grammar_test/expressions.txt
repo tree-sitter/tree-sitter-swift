@@ -7,3 +7,14 @@ a
 ---
 
 (program (identifier))
+
+======
+prefix operator
+======
+
++a
+
+---
+
+(program
+	(operator) (identifier))
