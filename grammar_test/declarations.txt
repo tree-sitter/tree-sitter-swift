@@ -95,12 +95,16 @@ enum A {}
 enum A {
 	case A
 }
+enum A {
+	case A(Int)
+}
 
 ---
 
 (program
 	(enum_declaration (identifier))
-	(enum_declaration (identifier) (case_declaration (identifier))))
+	(enum_declaration (identifier) (case_declaration (identifier)))
+	(enum_declaration (identifier) (case_declaration (identifier) (tuple_type (type (identifier))))))
 
 ======
 struct
