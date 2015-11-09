@@ -146,10 +146,13 @@ protocol
 protocol A {}
 protocol A {
 	var a: Int { get }
+	func f()
 }
 
 ---
 
 (program
 	(protocol_declaration (identifier))
-	(protocol_declaration (identifier) (protocol_variable_declaration (identifier) (type (identifier)))))
+	(protocol_declaration (identifier)
+		(protocol_variable_declaration (identifier) (type (identifier)))
+		(protocol_method_declaration (identifier))))
