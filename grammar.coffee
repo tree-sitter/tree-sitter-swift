@@ -639,7 +639,7 @@ module.exports = grammar
 		column_literal: -> '__COLUMN__'
 		function_literal: -> '__FUNCTION__'
 
-		self_expression: -> seq(@_keyword_self, optional(choice(
+		self_expression: -> seq(@_self, optional(choice(
 			seq('.', choice('init', @identifier)),
 			# seq('[', repeat(@_expression), ']'),
 		)))
@@ -647,7 +647,7 @@ module.exports = grammar
 
 		# Lexical Structure
 
-		_keyword_self: -> keyword('self')
+		_self: -> keyword('self')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
