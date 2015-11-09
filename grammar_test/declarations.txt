@@ -92,8 +92,12 @@ enum
 ======
 
 enum A {}
+enum A {
+	case A
+}
 
 ---
 
 (program
-	(enum_declaration (identifier)))
+	(enum_declaration (identifier))
+	(enum_declaration (identifier) (case_declaration (identifier))))
