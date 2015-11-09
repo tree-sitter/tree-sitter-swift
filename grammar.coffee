@@ -252,8 +252,12 @@ module.exports = grammar
 
 		# Declarations
 
-		_declaration: ->
-			'import'
+		_declaration: -> choice(
+			seq(
+				# optional(@_attributes),
+				'import',
+			)
+		)
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
 			# @_pattern_initializer_list,
