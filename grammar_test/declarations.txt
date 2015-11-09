@@ -196,3 +196,17 @@ class C {
 (program
 	(class_declaration (identifier)
 		(deinitializer_declaration)))
+
+======
+extension
+======
+
+extension A {
+	func f() {}
+}
+
+---
+
+(program
+	(extension_declaration (identifier)
+		(function_declaration (identifier))))
