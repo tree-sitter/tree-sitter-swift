@@ -200,6 +200,18 @@ do {} catch let e {}
 	(do_statement (catch_clause (value_binding_pattern (identifier)))))
 
 ======
+build configuration statement
+======
+
+#if true
+#endif
+
+---
+
+(program
+	(build_configuration_statement (boolean_literal)))
+
+======
 multiple statements on a line
 ======
 
