@@ -116,14 +116,7 @@ module.exports = grammar
 				choice(
 					'*',
 					seq(
-						choice(
-							'iOS',
-							'iOSApplicationExtension'
-							'OSX',
-							'OSXApplicationExtension',
-							'watchOS',
-							'tvOS'
-						),
+						choice('iOS', 'iOSApplicationExtension' 'OSX', 'OSXApplicationExtension', 'watchOS', 'tvOS'),
 						token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/))))))
 					)
 				)
