@@ -147,6 +147,9 @@ protocol A {}
 protocol A {
 	var a: Int { get }
 	func f()
+	init()
+	init?()
+	init!()
 }
 
 ---
@@ -155,4 +158,7 @@ protocol A {
 	(protocol_declaration (identifier))
 	(protocol_declaration (identifier)
 		(protocol_variable_declaration (identifier) (type (identifier)))
-		(protocol_method_declaration (identifier))))
+		(protocol_method_declaration (identifier))
+		(protocol_initializer_declaration)
+		(protocol_initializer_declaration)
+		(protocol_initializer_declaration)))
