@@ -340,7 +340,7 @@ module.exports = grammar
 			))
 
 		operator: ->
-			_operator_head = /[/=+!*%<>&|^~?-]/
+			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
 
 		# Types
