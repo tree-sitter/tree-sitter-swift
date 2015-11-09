@@ -597,6 +597,7 @@ module.exports = grammar
 			seq(@operator, @_prefix_expression),
 			prec.right(PREC.ASSIGNMENT, seq('=', optional(@try_operator), @_prefix_expression)),
 			prec.right(PREC.TERNARY_CONDITIONAL, seq('?', optional(@try_operator), @_expression, ':', optional(@try_operator), @_prefix_expression)),
+			prec.right(PREC.CAST, seq(choice('is', 'as', 'as?', 'as!'), @type)),
 		)
 
 		_postfix_expression: -> choice(
