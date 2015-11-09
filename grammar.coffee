@@ -143,7 +143,7 @@ module.exports = grammar
 		)
 
 		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
-			choice('let', 'var'),
+			choice(@_let, @_var),
 			@optional_binding,
 			optional(seq(',', commaSep1(@optional_binding)))
 			# optional(@_where_clause)
@@ -280,14 +280,14 @@ module.exports = grammar
 		import_declaration: -> seq(
 			# optional(@_attributes),
 			'import',
-			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
+			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', @_var, 'func')),
 			seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
 		)
 
 		constant_declaration: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			'let',
+			@_let,
 			commaSep1(@_pattern_initializer)
 		)
 
@@ -307,7 +307,7 @@ module.exports = grammar
 		_variable_declaration_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			'var'
+			@_var
 		)
 
 		_variable_name: -> @identifier
@@ -377,7 +377,7 @@ module.exports = grammar
 		_parameter_clause: -> seq(
 			'(',
 			commaSep(seq(
-				optional(choice('let', 'var', 'inout')),
+				optional(choice(@_let, @_var, 'inout')),
 				optional(choice(@identifier, '_')),
 				choice(@identifier, '_'),
 				@_type_annotation,
@@ -566,7 +566,7 @@ module.exports = grammar
 
 		wildcard_pattern: -> '_'
 
-		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
+		value_binding_pattern: -> seq(choice(@_var, @_let), @_pattern)
 
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
 		_tuple_pattern_element_list: -> commaSep1(@_pattern)
@@ -649,6 +649,8 @@ module.exports = grammar
 
 		_self: -> keyword('self')
 		_init: -> keyword('init')
+		_var: -> keyword('var')
+		_let: -> keyword('let')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
