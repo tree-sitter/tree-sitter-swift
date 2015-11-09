@@ -331,12 +331,16 @@ module.exports = grammar
 		)
 
 		typealias_declaration: -> seq(
+			@_typealias_head,
+			'=',
+			@type
+		)
+
+		_typealias_head: -> seq(
 			# optional(@_attributes),
 			# optional(@access_level_modifier),
 			'typealias',
-			@identifier,
-			'=',
-			@type
+			@identifier
 		)
 
 		function_declaration: -> seq(
