@@ -585,9 +585,13 @@ module.exports = grammar
 		_prefix_expression: -> choice(
 			seq(
 				optional(@_prefix_operator),
-				@identifier
+				@_postfix_expression
 			),
 			seq('&', @identifier)
+		)
+
+		_postfix_expression: -> choice(
+			@identifier
 		)
 
 		boolean_literal: -> choice('true', 'false')
