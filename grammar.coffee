@@ -610,9 +610,17 @@ module.exports = grammar
 			@boolean_literal,
 			@nil_literal
 			@array_literal,
+			@dictionary_literal,
 		)
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
+
+		dictionary_literal: -> seq('[', choice(
+			':',
+			seq(@dictionary_literal_item, optional(',')),
+			commaSep1(@dictionary_literal_item),
+		), ']')
+		dictionary_literal_item: -> seq(@_expression, ':', @_expression)
 
 		boolean_literal: -> choice('true', 'false')
 		nil_literal: -> 'nil'
