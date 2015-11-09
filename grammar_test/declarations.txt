@@ -257,6 +257,10 @@ infix operator <> {
 	precedence 0
 	associativity right
 }
+infix operator <> {
+	associativity none
+	precedence 9
+}
 
 ---
 
@@ -264,11 +268,12 @@ infix operator <> {
 	(operator_declaration (operator))
 	(operator_declaration (operator))
 	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator))
-	(operator_declaration (operator)))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (precedence_clause))
+	(operator_declaration (operator) (associativity_clause))
+	(operator_declaration (operator) (precedence_clause) (associativity_clause))
+	(operator_declaration (operator) (associativity_clause) (precedence_clause)))
