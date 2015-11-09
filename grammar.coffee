@@ -16,6 +16,7 @@ PREC =
 	BREAK_STATEMENT: 10
 	CONTINUE_STATEMENT: 10
 	RETURN_STATEMENT: 10
+	KEYWORD: 10
 
 module.exports = grammar
 	name: "swift"
