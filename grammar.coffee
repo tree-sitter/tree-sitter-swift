@@ -241,7 +241,20 @@ module.exports = grammar
 			prec.left(PREC.DISJUNCTIVE, seq(@_build_configuration, '||', @_build_configuration)),
 		)
 
-		line_control_statement: -> seq('#line')
+		line_control_statement: -> seq(
+			'#line',
+			optional(seq(
+				/\d+/,
+				token(
+					'"',
+					repeat(choice(
+						seq('\\', /[\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}/),
+						/[^"\\]/
+					)),
+					'"'
+				)
+			))
+		)
 
 
 		# Declarations
