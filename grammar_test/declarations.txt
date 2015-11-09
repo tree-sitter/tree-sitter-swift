@@ -137,3 +137,19 @@ class A {}
 
 (program
 	(class_declaration (identifier)))
+
+
+======
+protocol
+======
+
+protocol A {}
+protocol A {
+	var a: Int { get }
+}
+
+---
+
+(program
+	(protocol_declaration (identifier))
+	(protocol_declaration (identifier) (protocol_member_declaration (identifier) (type (identifier)))))
