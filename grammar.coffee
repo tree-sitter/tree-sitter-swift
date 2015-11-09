@@ -22,7 +22,8 @@ module.exports = grammar
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_pattern, @_expression_list ],
-			[ @_condition, @_condition_clause ]
+			[ @_condition, @_condition_clause ],
+			[ @_variable_name, @_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 		]
 
 	ubiquitous: -> [
@@ -245,23 +246,55 @@ module.exports = grammar
 			'#line',
 			optional(seq(
 				/[0-9]+/,
-				/\"((\\\\([\\0tnr'\"]|u\\{[a-fA-F0-9]{1,8}\\}))|[^\"\\\\])*\"/
+				@static_string_literal
 			))
 		)
 
 
 		# Declarations
 
-		_declaration: ->
-			'import'
+		_declaration: -> choice(
+			@import_declaration,
+			@constant_declaration,
+			@variable_declaration,
+			@typealias_declaration,
+			@function_declaration,
+			@enum_declaration,
+			@struct_declaration,
+			@class_declaration,
+			@protocol_declaration,
+			@initializer_declaration,
+			@deinitializer_declaration,
+			@extension_declaration,
+			@subscript_declaration,
+			@operator_declaration,
+		)
+
+		import_declaration: -> seq(
+			# optional(@_attributes),
+			'import',
+			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
+			seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
+		)
+
+		constant_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'let',
+			commaSep1(@_pattern_initializer)
+		)
+
+		_pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
-			# @_pattern_initializer_list,
-			seq(@_variable_name, @_type_annotation, @_code_block)
-			# seq(@_variable_name, @_type_annotation, @_getter_setter_block),
-			# seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
+			commaSep1(@_pattern_initializer),
+			seq(@_variable_name, @_type_annotation, choice(
+				@_code_block,
+				# @_getter_setter_block,
+				@_getter_setter_keyword_block,
+				# seq(optional(@_initializer), @_willSet_didSet_block)
+			))
 			# seq(@_variable_name, @_initializer, @_willSet_didSet_block),
-			# seq(@_variable_name, @_type_annotation, optional(@_initializer), @_willSet_didSet_block)
 		))
 
 		_variable_declaration_head: -> seq(
@@ -271,6 +304,244 @@ module.exports = grammar
 		)
 
 		_variable_name: -> @identifier
+
+		_getter_setter_keyword_block: -> seq(
+			'{',
+			choice(
+				seq(
+					@_getter_keyword_clause,
+					optional(@_setter_keyword_clause)
+				),
+				seq(
+					@_setter_keyword_clause,
+					@_getter_keyword_clause
+				)
+			)
+			'}'
+		)
+
+		_getter_keyword_clause: -> seq(
+			# optional(@_attributes),
+			'get'
+		)
+
+		_setter_keyword_clause: -> seq(
+			# optional(@_attributes),
+			'set'
+		)
+
+		typealias_declaration: -> seq(
+			@_typealias_head,
+			'=',
+			@type
+		)
+
+		_typealias_head: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'typealias',
+			@identifier
+		)
+
+		function_declaration: -> seq(
+			@_function_head,
+			# optional(@_generic_parameter_clause),
+			@_function_signature,
+			optional(@_code_block)
+		)
+
+		_function_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'func',
+			choice(@identifier, @operator),
+		)
+
+		_function_signature: -> seq(
+			repeat1(@_parameter_clause),
+			optional(choice('throws', 'rethrows')),
+			optional(seq(
+				'->',
+				# optional(@_attributes),
+				@type
+			))
+		)
+
+		_parameter_clause: -> seq(
+			'(',
+			commaSep(seq(
+				optional(choice('let', 'var', 'inout')),
+				optional(choice(@identifier, '_')),
+				choice(@identifier, '_'),
+				@_type_annotation,
+				optional(seq('=', @_expression))
+			)),
+			')'
+		)
+
+		enum_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			optional('indirect'),
+			'enum',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(choice(
+				@_declaration,
+				@case_declaration
+			))
+			'}'
+		)
+
+		case_declaration: -> seq(
+			# optional(@_attributes),
+			optional('indirect'),
+			'case',
+			@identifier,
+			optional(choice(
+				@tuple_type,
+				seq('=', choice(
+					# @numeric_literal,
+					@static_string_literal,
+					@boolean_literal,
+				))
+			))
+		)
+
+		struct_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'struct',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
+		)
+
+		class_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'class',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
+		)
+
+		protocol_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'protocol',
+			@identifier,
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(choice(
+				@protocol_variable_declaration,
+				@protocol_method_declaration,
+				@protocol_initializer_declaration,
+				@protocol_subscript_declaration,
+				@protocol_associated_type_declaration,
+			)),
+			'}'
+		)
+
+		protocol_variable_declaration: -> seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
+		protocol_method_declaration: -> seq(
+			@_function_head,
+			# optional(@_generic_parameter_clause),
+			@_function_signature
+		)
+		protocol_initializer_declaration: -> seq(
+			@_initializer_head,
+			# optional(@_generic_parameter_clause),
+			@_parameter_clause,
+			optional(choice('throws', 'rethrows'))
+		)
+		protocol_subscript_declaration: -> seq(
+			@_subscript_head,
+			@_subscript_result,
+			@_getter_setter_keyword_block
+		)
+		protocol_associated_type_declaration: -> seq(
+			@_typealias_head,
+			# optional(@_type_inheritance_clause),
+			optional(seq('=', @type))
+		)
+
+		initializer_declaration: -> seq(
+			@_initializer_head
+			# optional(@_generic_parameter_clause),
+			@_parameter_clause,
+			optional(choice('throws', 'rethrows')),
+			@_code_block
+		)
+
+		_initializer_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'init',
+			optional(choice('!', '?')),
+		)
+
+		deinitializer_declaration: -> seq(
+			# optional(@_attributes),
+			'deinit',
+			@_code_block
+		)
+
+		extension_declaration: -> seq(
+			# optional(@access_level_modifier),
+			'extension',
+			@_type_identifier,
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
+		)
+
+		subscript_declaration: -> seq(
+			@_subscript_head,
+			@_subscript_result,
+			choice(
+				@_code_block,
+				# @_getter_setter_block,
+				@_getter_setter_keyword_block
+			)
+		)
+
+		_subscript_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'subscript',
+			@_parameter_clause
+		)
+
+		_subscript_result: -> seq(
+			'->',
+			# optional(@_attributes),
+			@type
+		)
+
+		operator_declaration: -> choice(
+			seq('prefix', 'operator', @operator, '{', '}'),
+			seq('postfix', 'operator', @operator, '{', '}'),
+			seq('infix', 'operator', @operator, '{',
+				choice(
+					seq(optional(@precedence_clause), optional(@associativity_clause)),
+					seq(@associativity_clause, optional(@precedence_clause))
+				)
+			'}'),
+		)
+
+		precedence_clause: -> seq('precedence', /[0-9]|[1-9][0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5])/)
+
+		associativity_clause: -> seq('associativity', choice('left', 'right', 'none'))
 
 
 		# Patterns
@@ -332,11 +603,19 @@ module.exports = grammar
 				)
 			))
 
+		operator: ->
+			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
+			token(repeat1(_operator_head))
+
+		static_string_literal: -> /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/
+
 
 		# Types
 
-		type: ->
-			@_type_identifier
+		type: -> choice(
+			@_type_identifier,
+			@tuple_type,
+		)
 
 		_type_annotation: -> seq(
 			':',
@@ -354,3 +633,14 @@ module.exports = grammar
 		))
 
 		_type_name: -> @identifier
+
+		tuple_type: -> seq(
+			'(',
+			commaSep(seq(
+				# optional(@_attributes),
+				optional('inout'),
+				choice(@type, seq(@identifier, @_type_annotation))
+			)),
+			optional('...')
+			')'
+		)

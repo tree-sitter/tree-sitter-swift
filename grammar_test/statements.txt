@@ -250,8 +250,8 @@ line control statement
 
 (program
 	(line_control_statement)
-	(line_control_statement)
-	(line_control_statement))
+	(line_control_statement (static_string_literal))
+	(line_control_statement (static_string_literal)))
 
 ======
 multiple statements on a line
