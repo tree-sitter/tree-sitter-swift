@@ -236,6 +236,7 @@ module.exports = grammar
 			@boolean_literal,
 			seq('(', @_build_configuration, ')'),
 			seq('!', @_build_configuration),
+			prec.left(PREC.CONJUNCTIVE, seq(@_build_configuration, '&&', @_build_configuration)),
 		)
 
 		line_control_statement: -> seq('#line')
