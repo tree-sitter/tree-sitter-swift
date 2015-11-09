@@ -258,7 +258,7 @@ module.exports = grammar
 			@constant_declaration,
 			@variable_declaration,
 			@typealias_declaration,
-			# @function_declaration,
+			@function_declaration,
 			# @enum_declaration,
 			# @struct_declaration,
 			# @class_declaration,
@@ -310,6 +310,32 @@ module.exports = grammar
 			@identifier,
 			'=',
 			@type
+		)
+
+		function_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'func',
+			choice(@identifier, @operator),
+			# optional(@_generic_parameter_clause),
+			repeat1(seq(
+				'(',
+				commaSep1(seq(
+					optional(choice('let', 'var', 'inout')),
+					optional(choice(@identifier, '_')),
+					choice(@identifier, '_'),
+					@_type_annotation,
+					optional(seq('=', @_expression))
+				)),
+				')'
+			)),
+			optional(choice('throws', 'rethrows')),
+			optional(seq(
+				'->',
+				# optional(@_attributes),
+				@type
+			)),
+			optional(@_code_block)
 		)
 
 
