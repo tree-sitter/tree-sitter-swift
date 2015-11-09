@@ -259,7 +259,7 @@ module.exports = grammar
 			@variable_declaration,
 			@typealias_declaration,
 			@function_declaration,
-			# @enum_declaration,
+			@enum_declaration,
 			# @struct_declaration,
 			# @class_declaration,
 			# @protocol_declaration,
@@ -336,6 +336,31 @@ module.exports = grammar
 				@type
 			)),
 			optional(@_code_block)
+		)
+
+		enum_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			optional('indirect'),
+			'enum',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(choice(
+				@_declaration,
+				seq(
+					# optional(@_attributes),
+					optional('indirect'),
+					'case',
+					@identifier,
+					optional(choice(
+						@tuple_type,
+						seq('=', choice(@static_string_literal))
+					))
+				)
+			))
+			'}'
 		)
 
 
