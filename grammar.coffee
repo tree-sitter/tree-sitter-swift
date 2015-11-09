@@ -246,7 +246,7 @@ module.exports = grammar
 			'#line',
 			optional(seq(
 				/[0-9]+/,
-				/"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/
+				@static_string_literal
 			))
 		)
 
@@ -401,6 +401,9 @@ module.exports = grammar
 		operator: ->
 			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
+
+		static_string_literal: -> /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/
+
 
 		# Types
 
