@@ -57,3 +57,14 @@ typealias Foo = Int
 
 (program
 	(typealias_declaration (identifier) (type (identifier))))
+
+======
+function
+======
+
+func foo() {}
+
+---
+
+(program
+	(function_declaration (identifier)))
