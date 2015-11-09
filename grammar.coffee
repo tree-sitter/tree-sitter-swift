@@ -350,23 +350,25 @@ module.exports = grammar
 		)
 
 		_function_signature: -> seq(
-			repeat1(seq(
-				'(',
-				commaSep(seq(
-					optional(choice('let', 'var', 'inout')),
-					optional(choice(@identifier, '_')),
-					choice(@identifier, '_'),
-					@_type_annotation,
-					optional(seq('=', @_expression))
-				)),
-				')'
-			)),
+			repeat1(@_parameter_clause),
 			optional(choice('throws', 'rethrows')),
 			optional(seq(
 				'->',
 				# optional(@_attributes),
 				@type
 			))
+		)
+
+		_parameter_clause: -> seq(
+			'(',
+			commaSep(seq(
+				optional(choice('let', 'var', 'inout')),
+				optional(choice(@identifier, '_')),
+				choice(@identifier, '_'),
+				@_type_annotation,
+				optional(seq('=', @_expression))
+			)),
+			')'
 		)
 
 		enum_declaration: -> seq(
