@@ -255,6 +255,7 @@ module.exports = grammar
 		_declaration: -> choice(
 			@import_declaration,
 			@constant_declaration,
+			@variable_declaration,
 		)
 
 		import_declaration: -> seq(
