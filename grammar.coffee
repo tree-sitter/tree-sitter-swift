@@ -532,10 +532,16 @@ module.exports = grammar
 			seq('prefix', 'operator', @operator, '{', '}'),
 			seq('postfix', 'operator', @operator, '{', '}'),
 			seq('infix', 'operator', @operator, '{',
-				optional(seq('precedence', /[0-9]|[1-9][0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5])/)),
-				optional(seq('associativity', choice('left', 'right', 'none')))
+				choice(
+					seq(optional(@precedence_clause), optional(@associativity_clause)),
+					seq(@associativity_clause, optional(@precedence_clause))
+				)
 			'}'),
 		)
+
+		precedence_clause: -> seq('precedence', /[0-9]|[1-9][0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5])/)
+
+		associativity_clause: -> seq('associativity', choice('left', 'right', 'none'))
 
 
 		# Patterns
