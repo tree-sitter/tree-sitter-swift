@@ -267,7 +267,7 @@ module.exports = grammar
 			@deinitializer_declaration,
 			@extension_declaration,
 			@subscript_declaration,
-			# @operator_declaration,
+			@operator_declaration,
 		)
 
 		import_declaration: -> seq(
@@ -526,6 +526,15 @@ module.exports = grammar
 			'->',
 			# optional(@_attributes),
 			@type
+		)
+
+		operator_declaration: -> choice(
+			seq('prefix', 'operator', @operator, '{', '}'),
+			seq('postfix', 'operator', @operator, '{', '}'),
+			seq('infix', 'operator', @operator, '{',
+				optional(seq('precedence', /1?[0-9]{1,2}|2([0-4][0-9]|5[0-5])/)),
+				optional(seq('associativity', choice('left', 'right', 'none')))
+			'}'),
 		)
 
 
