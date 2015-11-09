@@ -152,4 +152,4 @@ protocol A {
 
 (program
 	(protocol_declaration (identifier))
-	(protocol_declaration (identifier) (protocol_member_declaration (identifier) (type (identifier)))))
+	(protocol_declaration (identifier) (protocol_variable_declaration (identifier) (type (identifier)))))

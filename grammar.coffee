@@ -427,13 +427,13 @@ module.exports = grammar
 			@identifier,
 			# optional(@_type_inheritance_clause),
 			'{',
-			repeat(@protocol_member_declaration),
+			repeat(choice(
+				@protocol_variable_declaration,
+			)),
 			'}'
 		)
 
-		protocol_member_declaration: -> choice(
-			seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block),
-		)
+		protocol_variable_declaration: -> seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
 
 
 		# Patterns
