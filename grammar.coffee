@@ -606,6 +606,8 @@ module.exports = grammar
 			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
 
+		_prefix_operator: -> @operator
+
 		static_string_literal: -> /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/
 
 
