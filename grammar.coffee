@@ -257,6 +257,17 @@ module.exports = grammar
 			@import_declaration,
 			@constant_declaration,
 			@variable_declaration,
+			# @typealias_declaration,
+			# @function_declaration,
+			# @enum_declaration,
+			# @struct_declaration,
+			# @class_declaration,
+			# @protocol_declaration,
+			# @initializer_declaration,
+			# @deinitializer_declaration,
+			# @extension_declaration,
+			# @subscript_declaration,
+			# @operator_declaration,
 		)
 
 		import_declaration: -> seq(
