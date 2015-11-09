@@ -591,6 +591,10 @@ module.exports = grammar
 			seq('&', @identifier)
 		)
 
+		_binary_expression: -> choice(
+			seq(@operator, @_prefix_expression),
+		)
+
 		_postfix_expression: -> choice(
 			@identifier
 		)
