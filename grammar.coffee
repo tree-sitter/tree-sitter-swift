@@ -611,6 +611,10 @@ module.exports = grammar
 			@nil_literal
 			@array_literal,
 			@dictionary_literal,
+			@file_literal,
+			@line_literal,
+			@column_literal,
+			@function_literal,
 		)
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
@@ -624,6 +628,11 @@ module.exports = grammar
 
 		boolean_literal: -> choice('true', 'false')
 		nil_literal: -> 'nil'
+
+		file_literal: -> '__FILE__'
+		line_literal: -> '__LINE__'
+		column_literal: -> '__COLUMN__'
+		function_literal: -> '__FUNCTION__'
 
 
 		# Lexical Structure
