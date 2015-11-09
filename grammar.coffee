@@ -23,7 +23,7 @@ module.exports = grammar
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_pattern, @_expression_list ],
 			[ @_condition, @_condition_clause ],
-			[ @_variable_name, @_expression ],
+			[ @_variable_name, @_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 		]
 
 	ubiquitous: -> [
