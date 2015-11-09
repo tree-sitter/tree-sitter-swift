@@ -182,3 +182,17 @@ struct S {
 (program
 	(struct_declaration (identifier)
 		(initializer_declaration)))
+
+======
+deinitializer
+======
+
+class C {
+	deinit {}
+}
+
+---
+
+(program
+	(class_declaration (identifier)
+		(deinitializer_declaration)))
