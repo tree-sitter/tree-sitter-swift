@@ -245,14 +245,14 @@ module.exports = grammar
 			'#line',
 			optional(seq(
 				/\d+/,
-				token(
+				token(seq(
 					'"',
 					repeat(choice(
 						seq('\\', /[\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}/),
 						/[^"\\]/
 					)),
 					'"'
-				)
+				))
 			))
 		)
 
