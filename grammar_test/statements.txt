@@ -221,6 +221,7 @@ build configuration statement
 #endif
 #if true
 #elseif false
+#elseif x
 #else
 #endif
 
@@ -235,7 +236,7 @@ build configuration statement
 	(build_configuration_statement (boolean_literal))
 	(build_configuration_statement (boolean_literal) (boolean_literal))
 	(build_configuration_statement (boolean_literal) (boolean_literal))
-	(build_configuration_statement (boolean_literal) (boolean_literal)))
+	(build_configuration_statement (boolean_literal) (boolean_literal) (identifier)))
 
 ======
 multiple statements on a line
