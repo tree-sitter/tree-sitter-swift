@@ -4,6 +4,9 @@ commaSep1 = (rule) ->
 commaSep = (rule) ->
 	optional(commaSep1(rule))
 
+keyword = (word) ->
+	prec(PREC.KEYWORD, word)
+
 PREC =
 	CAST: 132
 	CONJUNCTIVE: 120
