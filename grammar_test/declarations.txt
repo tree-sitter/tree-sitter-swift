@@ -18,8 +18,10 @@ constant
 ======
 
 let foo
+let foo = bar
 
 ---
 
 (program
-	(constant_declaration (identifier)))
+	(constant_declaration (identifier))
+	(constant_declaration (identifier) (identifier)))
