@@ -606,6 +606,7 @@ module.exports = grammar
 				# optional(@_generic_argument_clause)
 			),
 			@_literal,
+			seq('[', optional(choice(seq(@_expression, optional(',')), commaSep(@_expression))), ']'),
 		)
 
 		_literal: -> choice(
