@@ -1,5 +1,5 @@
 ======
-import declaration
+import
 ======
 
 import Foo
