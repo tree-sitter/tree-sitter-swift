@@ -234,6 +234,7 @@ module.exports = grammar
 			@identifier,
 			@boolean_literal,
 			seq('(', @_build_configuration, ')'),
+			seq('!', @_build_configuration),
 		)
 
 		line_control_statement: -> seq('#line')
