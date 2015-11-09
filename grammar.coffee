@@ -441,7 +441,7 @@ module.exports = grammar
 				@protocol_variable_declaration,
 				@protocol_method_declaration,
 				@protocol_initializer_declaration,
-				# @protocol_subscript_declaration,
+				@protocol_subscript_declaration,
 				# @protocol_associated_type_declaration,
 			)),
 			'}'
@@ -458,6 +458,11 @@ module.exports = grammar
 			# optional(@_generic_parameter_clause),
 			@_parameter_clause,
 			optional(choice('throws', 'rethrows'))
+		)
+		protocol_subscript_declaration: -> seq(
+			@_subscript_head,
+			@_subscript_result,
+			@_getter_setter_keyword_block
 		)
 
 		initializer_declaration: -> seq(
