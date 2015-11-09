@@ -257,7 +257,7 @@ module.exports = grammar
 			@import_declaration,
 			@constant_declaration,
 			@variable_declaration,
-			# @typealias_declaration,
+			@typealias_declaration,
 			# @function_declaration,
 			# @enum_declaration,
 			# @struct_declaration,
@@ -302,6 +302,15 @@ module.exports = grammar
 		)
 
 		_variable_name: -> @identifier
+
+		typealias_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'typealias',
+			@identifier,
+			'=',
+			@type
+		)
 
 
 		# Patterns
