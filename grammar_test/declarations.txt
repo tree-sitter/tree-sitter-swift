@@ -101,3 +101,12 @@ enum A {
 (program
 	(enum_declaration (identifier))
 	(enum_declaration (identifier) (case_declaration (identifier))))
+
+======
+struct
+======
+
+struct A {}
+
+(program
+	(struct_declaration (identifier)))
