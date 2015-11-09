@@ -12,3 +12,14 @@ import typealias Foo.Bar.Quux
 	(import_declaration (identifier))
 	(import_declaration (identifier) (identifier))
 	(import_declaration (identifier) (identifier) (identifier)))
+
+======
+constant
+======
+
+let foo
+
+---
+
+(program
+	(constant_declaration (identifier)))
