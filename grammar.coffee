@@ -601,7 +601,10 @@ module.exports = grammar
 		)
 
 		_postfix_expression: -> choice(
-			@identifier
+			seq(
+				@identifier,
+				# optional(@_generic_argument_clause)
+			)
 		)
 
 		boolean_literal: -> choice('true', 'false')
