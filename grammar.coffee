@@ -263,7 +263,7 @@ module.exports = grammar
 			@struct_declaration,
 			@class_declaration,
 			@protocol_declaration,
-			# @initializer_declaration,
+			@initializer_declaration,
 			# @deinitializer_declaration,
 			# @extension_declaration,
 			# @subscript_declaration,
@@ -448,6 +448,12 @@ module.exports = grammar
 			choice(@identifier, @operator),
 			# optional(@_generic_parameter_clause),
 			@_function_signature
+		)
+
+		initializer_declaration: -> seq(
+			@_initializer_head
+			# optional(@_generic_parameter_clause),
+			@_parameter_clause,
 		)
 
 		_initializer_head: -> seq(
