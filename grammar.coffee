@@ -264,7 +264,7 @@ module.exports = grammar
 			@class_declaration,
 			@protocol_declaration,
 			@initializer_declaration,
-			# @deinitializer_declaration,
+			@deinitializer_declaration,
 			# @extension_declaration,
 			# @subscript_declaration,
 			# @operator_declaration,
@@ -487,6 +487,12 @@ module.exports = grammar
 			# optional(@_declaration_modifiers),
 			'init',
 			optional(choice('!', '?')),
+		)
+
+		deinitializer_declaration: -> seq(
+			# optional(@_attributes),
+			'deinit',
+			@_code_block
 		)
 
 		_subscript_head: -> seq(
