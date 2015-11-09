@@ -579,7 +579,7 @@ module.exports = grammar
 		_expression: -> seq(
 			optional(@try_operator),
 			@_prefix_expression,
-			# optional(@_binary_expressions)
+			repeat(@_binary_expression)
 		)
 
 		try_operator: -> choice('try', 'try?', 'try!')
