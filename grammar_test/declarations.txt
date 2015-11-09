@@ -45,4 +45,4 @@ var foo, bar = foo, quux: Int = baz
 	(variable_declaration (identifier))
 	(variable_declaration (identifier) (identifier))
 	(variable_declaration (identifier) (identifier) (identifier))
-	(variable_declaration (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)))
+	(variable_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
