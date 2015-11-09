@@ -239,6 +239,19 @@ build configuration statement
 	(build_configuration_statement (boolean_literal) (boolean_literal) (identifier)))
 
 ======
+line control statement
+======
+
+#line
+#line 1 ""
+
+---
+
+(program
+	(line_control_statement)
+	(line_control_statement))
+
+======
 multiple statements on a line
 ======
 
