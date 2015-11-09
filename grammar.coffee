@@ -266,7 +266,7 @@ module.exports = grammar
 			@initializer_declaration,
 			@deinitializer_declaration,
 			@extension_declaration,
-			# @subscript_declaration,
+			@subscript_declaration,
 			# @operator_declaration,
 		)
 
@@ -503,6 +503,16 @@ module.exports = grammar
 			'{',
 			repeat(@_declaration),
 			'}'
+		)
+
+		subscript_declaration: -> seq(
+			@_subscript_head,
+			@_subscript_result,
+			choice(
+				@_code_block,
+				# @_getter_setter_block,
+				@_getter_setter_keyword_block
+			)
 		)
 
 		_subscript_head: -> seq(
