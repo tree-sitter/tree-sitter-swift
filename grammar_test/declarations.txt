@@ -210,3 +210,17 @@ extension A {
 (program
 	(extension_declaration (identifier)
 		(function_declaration (identifier))))
+
+======
+subscript
+======
+
+struct A {
+	subscript(_: B) -> C {}
+}
+
+---
+
+(program
+	(struct_declaration (identifier)
+		(subscript_declaration (type (identifier)) (type (identifier)))))
