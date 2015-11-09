@@ -47,7 +47,7 @@ module.exports = grammar
 			@return_statement,
 			@throw_statement,
 			@defer_statement,
-			# @do_statement,
+			@do_statement,
 			# @compiler_control_statement
 		), choice(';', /\n/))
 
@@ -217,6 +217,8 @@ module.exports = grammar
 		throw_statement: -> seq('throw', optional(@_expression))
 
 		defer_statement: -> seq('defer', @_code_block)
+
+		do_statement: -> seq('do', @_code_block)
 
 
 		# Declarations
