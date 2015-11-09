@@ -605,18 +605,15 @@ module.exports = grammar
 				@identifier,
 				# optional(@_generic_argument_clause)
 			),
-			@_literal,
+			# @numeric_literal,
+			# @string_literal,
+			@boolean_literal,
+			@nil_literal
 			@array_literal,
 		)
 
 		array_literal: -> seq('[', optional(choice(seq(@_expression, optional(',')), commaSep(@_expression))), ']')
 
-		_literal: -> choice(
-			# @numeric_literal,
-			# @string_literal,
-			@boolean_literal,
-			@nil_literal
-		)
 		boolean_literal: -> choice('true', 'false')
 		nil_literal: -> 'nil'
 
