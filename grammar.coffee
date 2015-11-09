@@ -244,7 +244,7 @@ module.exports = grammar
 		line_control_statement: -> seq(
 			'#line',
 			optional(seq(
-				/\d+/,
+				/[0-9]+/,
 				token(seq(
 					'"',
 					repeat(choice(
