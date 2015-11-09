@@ -275,7 +275,7 @@ module.exports = grammar
 		_pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
-			# @_pattern_initializer_list,
+			commaSep1(@_pattern_initializer),
 			seq(@_variable_name, @_type_annotation, @_code_block)
 			# seq(@_variable_name, @_type_annotation, @_getter_setter_block),
 			# seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
