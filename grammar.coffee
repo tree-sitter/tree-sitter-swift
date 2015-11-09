@@ -607,6 +607,12 @@ module.exports = grammar
 			)
 		)
 
+		_literal: -> choice(
+			# @numeric_literal,
+			# @string_literal,
+			@boolean_literal,
+			@nil_literal
+		)
 		boolean_literal: -> choice('true', 'false')
 		nil_literal: -> 'nil'
 
