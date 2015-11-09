@@ -150,7 +150,7 @@ protocol A {
 	init()
 	init?()
 	init!()
-	subscript(_: ()) -> Int
+	subscript(_: ()) -> Int { get }
 }
 
 ---
@@ -163,4 +163,4 @@ protocol A {
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
-		(protocol_subscript_declaration (tuple_type) (type (identifier)))))
+		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))))
