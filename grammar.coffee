@@ -441,6 +441,8 @@ module.exports = grammar
 				@protocol_variable_declaration,
 				@protocol_method_declaration,
 				@protocol_initializer_declaration,
+				# @protocol_subscript_declaration,
+				# @protocol_associated_type_declaration,
 			)),
 			'}'
 		)
