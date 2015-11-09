@@ -594,6 +594,7 @@ module.exports = grammar
 
 		_binary_expression: -> choice(
 			seq(@operator, @_prefix_expression),
+			prec.right(PREC.ASSIGNMENT, seq('=', optional(@try_operator), @_prefix_expression)),
 		)
 
 		_postfix_expression: -> choice(
