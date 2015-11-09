@@ -574,8 +574,9 @@ module.exports = grammar
 
 		# Expressions
 
-		_expression: ->
-			@identifier
+		_expression: -> seq(optional(@try_operator), @identifier)
+
+		try_operator: -> choice('try', 'try?', 'try!')
 
 		boolean_literal: -> choice('true', 'false')
 
