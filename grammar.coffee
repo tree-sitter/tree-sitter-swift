@@ -229,7 +229,7 @@ module.exports = grammar
 		)
 
 		_build_configuration: -> choice(
-			seq('os', '(', choice('iOS' 'OSX', 'watchOS', 'tvOS'), ')'),
+			seq('os', '(', choice('iOS', 'OSX', 'watchOS', 'tvOS'), ')'),
 			@identifier
 		)
 
