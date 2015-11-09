@@ -584,7 +584,7 @@ module.exports = grammar
 
 		_prefix_expression: -> choice(
 			seq(
-				optional(@_prefix_operator),
+				optional(@operator),
 				@_postfix_expression
 			),
 			seq('&', @identifier)
@@ -613,8 +613,6 @@ module.exports = grammar
 		operator: ->
 			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
-
-		_prefix_operator: -> @operator
 
 		static_string_literal: -> /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/
 
