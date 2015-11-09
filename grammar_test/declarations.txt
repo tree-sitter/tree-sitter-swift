@@ -1,0 +1,10 @@
+======
+import declaration
+======
+
+import Foo
+
+---
+
+(program
+	(import_declaration (identifier)))
