@@ -254,6 +254,7 @@ module.exports = grammar
 
 		_declaration: -> choice(
 			@import_declaration,
+			@constant_declaration,
 		)
 
 		import_declaration: -> seq(
@@ -261,6 +262,13 @@ module.exports = grammar
 			'import',
 			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
 			seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
+		)
+
+		constant_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'let',
+			commaSep1(seq(@_pattern, '=', @_expression))
 		)
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
