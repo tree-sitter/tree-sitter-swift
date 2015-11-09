@@ -450,6 +450,13 @@ module.exports = grammar
 			@_function_signature
 		)
 
+		_initializer_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'init',
+			optional(choice('!', '?')),
+		)
+
 
 		# Patterns
 
