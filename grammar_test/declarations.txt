@@ -64,9 +64,11 @@ function
 
 func foo() {}
 func > () {}
+func foo() -> Int {}
 
 ---
 
 (program
 	(function_declaration (identifier))
-	(function_declaration (operator)))
+	(function_declaration (operator))
+	(function_declaration (identifier) (type (identifier))))
