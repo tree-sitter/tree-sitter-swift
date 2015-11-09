@@ -228,7 +228,17 @@ module.exports = grammar
 		)
 
 		compiler_control_statement: -> choice(
+			seq(
+				'#if', @_build_configuration, repeat(@_statement),
+				repeat(seq('#elseif', @_build_configuration, repeat(@_statement))),
+				optional(seq('#else', repeat(@_statement))),
+				'#endif'
+			),
 			seq('#line')
+		)
+
+		_build_configuration: -> choice(
+			@identifier
 		)
 
 
