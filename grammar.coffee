@@ -265,7 +265,7 @@ module.exports = grammar
 			@protocol_declaration,
 			@initializer_declaration,
 			@deinitializer_declaration,
-			# @extension_declaration,
+			@extension_declaration,
 			# @subscript_declaration,
 			# @operator_declaration,
 		)
@@ -493,6 +493,16 @@ module.exports = grammar
 			# optional(@_attributes),
 			'deinit',
 			@_code_block
+		)
+
+		extension_declaration: -> seq(
+			# optional(@access_level_modifier),
+			'extension',
+			@_type_identifier,
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
 		)
 
 		_subscript_head: -> seq(
