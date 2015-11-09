@@ -185,6 +185,21 @@ defer {}
 (program (defer_statement))
 
 ======
+do statement
+======
+
+do {}
+do {} catch {}
+do {} catch let e {}
+
+---
+
+(program
+	(do_statement)
+	(do_statement (catch_clause))
+	(do_statement (catch_clause (value_binding_pattern (identifier)))))
+
+======
 multiple statements on a line
 ======
 
