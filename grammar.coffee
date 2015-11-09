@@ -260,7 +260,7 @@ module.exports = grammar
 			@typealias_declaration,
 			@function_declaration,
 			@enum_declaration,
-			# @struct_declaration,
+			@struct_declaration,
 			# @class_declaration,
 			# @protocol_declaration,
 			# @initializer_declaration,
@@ -367,6 +367,18 @@ module.exports = grammar
 					@boolean_literal,
 				))
 			))
+		)
+
+		struct_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'struct',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
 		)
 
 
