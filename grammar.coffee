@@ -249,7 +249,7 @@ module.exports = grammar
 					'"',
 					repeat(choice(
 						seq('\\', /[\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}/),
-						/[^"\\]/
+						/[^"\\\u000a\u000d]/
 					)),
 					'"'
 				))
