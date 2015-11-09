@@ -261,7 +261,7 @@ module.exports = grammar
 			@function_declaration,
 			@enum_declaration,
 			@struct_declaration,
-			# @class_declaration,
+			@class_declaration,
 			# @protocol_declaration,
 			# @initializer_declaration,
 			# @deinitializer_declaration,
@@ -373,6 +373,18 @@ module.exports = grammar
 			# optional(@_attributes),
 			# optional(@access_level_modifier),
 			'struct',
+			@identifier,
+			# optional(@_generic_parameter_clause),
+			# optional(@_type_inheritance_clause),
+			'{',
+			repeat(@_declaration),
+			'}'
+		)
+
+		class_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'class',
 			@identifier,
 			# optional(@_generic_parameter_clause),
 			# optional(@_type_inheritance_clause),
