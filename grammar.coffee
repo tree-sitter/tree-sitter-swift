@@ -615,6 +615,7 @@ module.exports = grammar
 			@line_literal,
 			@column_literal,
 			@function_literal,
+			@self_expression,
 		)
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
@@ -633,6 +634,11 @@ module.exports = grammar
 		line_literal: -> '__LINE__'
 		column_literal: -> '__COLUMN__'
 		function_literal: -> '__FUNCTION__'
+
+		self_expression: -> seq('self', optional(choice(
+			seq('.', choice('init', @identifier)),
+			# seq('[', repeat(@_expression), ']'),
+		)))
 
 
 		# Lexical Structure
