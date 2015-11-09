@@ -48,7 +48,8 @@ module.exports = grammar
 			@throw_statement,
 			@defer_statement,
 			@do_statement,
-			@compiler_control_statement
+			@build_configuration_statement,
+			@line_control_statement
 		), choice(';', /\n/))
 
 		_loop_statement: -> choice(
@@ -227,19 +228,18 @@ module.exports = grammar
 			@_code_block
 		)
 
-		compiler_control_statement: -> choice(
-			seq(
-				'#if', @_build_configuration, repeat(@_statement),
-				repeat(seq('#elseif', @_build_configuration, repeat(@_statement))),
-				optional(seq('#else', repeat(@_statement))),
-				'#endif'
-			),
-			seq('#line')
+		build_configuration_statement: -> seq(
+			'#if', @_build_configuration, repeat(@_statement),
+			repeat(seq('#elseif', @_build_configuration, repeat(@_statement))),
+			optional(seq('#else', repeat(@_statement))),
+			'#endif'
 		)
 
 		_build_configuration: -> choice(
 			@identifier
 		)
+
+		line_control_statement: -> seq('#line')
 
 
 		# Declarations
