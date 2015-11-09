@@ -21,7 +21,7 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_pattern, @_expression_list ],
+			[ @_pattern, @_for_init ], # ambiguity between for x; … and for x in …
 			[ @_condition, @_condition_clause ],
 			[ @_variable_name, @_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 		]
@@ -73,7 +73,7 @@ module.exports = grammar
 
 		_for_init: -> choice(
 			@variable_declaration,
-			@_expression_list
+			commaSep1(@_expression)
 		)
 
 		_for_condition: -> seq(
@@ -576,8 +576,6 @@ module.exports = grammar
 
 		_expression: ->
 			@identifier
-
-		_expression_list: -> commaSep1(@_expression)
 
 		boolean_literal: -> choice('true', 'false')
 
