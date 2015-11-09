@@ -357,6 +357,7 @@ module.exports = grammar
 					optional(choice(
 						@tuple_type,
 						seq('=', choice(
+							# @numeric_literal,
 							@static_string_literal,
 							@boolean_literal,
 						))
