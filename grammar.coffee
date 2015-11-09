@@ -647,7 +647,7 @@ module.exports = grammar
 
 		# Lexical Structure
 
-		_keyword_self: -> prec(10, 'self')
+		_keyword_self: -> keyword('self')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
