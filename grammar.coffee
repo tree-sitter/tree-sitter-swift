@@ -295,6 +295,8 @@ module.exports = grammar
 
 		_expression_list: -> commaSep1(@_expression)
 
+		boolean_literal: -> choice('true', 'false')
+
 
 		# Lexical Structure
 
