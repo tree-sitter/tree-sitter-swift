@@ -641,7 +641,7 @@ module.exports = grammar
 
 		self_expression: -> seq(@_self, optional(choice(
 			seq('.', choice(@_init, @identifier)),
-			# seq('[', repeat(@_expression), ']'),
+			seq('[', commaSep(@_expression), ']'),
 		)))
 
 
