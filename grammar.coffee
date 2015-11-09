@@ -440,6 +440,7 @@ module.exports = grammar
 			repeat(choice(
 				@protocol_variable_declaration,
 				@protocol_method_declaration,
+				@protocol_initializer_declaration,
 			)),
 			'}'
 		)
@@ -449,6 +450,12 @@ module.exports = grammar
 			@_function_head,
 			# optional(@_generic_parameter_clause),
 			@_function_signature
+		)
+		protocol_initializer_declaration: -> seq(
+			@_initializer_head,
+			# optional(@_generic_parameter_clause),
+			@_parameter_clause,
+			optional(choice('throws', 'rethrows'))
 		)
 
 		initializer_declaration: -> seq(
