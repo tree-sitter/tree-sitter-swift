@@ -1,8 +1,8 @@
 commaSep1 = (rule) ->
-  seq(rule, repeat(seq(",", rule)))
+	seq(rule, repeat(seq(",", rule)))
 
 commaSep = (rule) ->
-  optional(commaSep1(rule))
+	optional(commaSep1(rule))
 
 PREC =
 	CAST: 132
