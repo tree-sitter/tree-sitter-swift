@@ -48,7 +48,7 @@ module.exports = grammar
 			@throw_statement,
 			@defer_statement,
 			@do_statement,
-			# @compiler_control_statement
+			@compiler_control_statement
 		), choice(';', /\n/))
 
 		_loop_statement: -> choice(
@@ -225,6 +225,10 @@ module.exports = grammar
 			optional(@_pattern),
 			# optional(@_where_clause),
 			@_code_block
+		)
+
+		compiler_control_statement: -> choice(
+			seq('#line')
 		)
 
 
