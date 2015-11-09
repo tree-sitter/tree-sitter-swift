@@ -590,16 +590,8 @@ module.exports = grammar
 				/[0-9]/
 			))
 			token(choice(
-				seq(
-					_identifier_head,
-					optional(_identifier_characters)
-				),
-				seq(
-					'`',
-					_identifier_head,
-					optional(_identifier_characters),
-					'`'
-				)
+				seq(_identifier_head, optional(_identifier_characters) ),
+				seq('`', _identifier_head, optional(_identifier_characters), '`')
 			))
 
 		operator: ->
