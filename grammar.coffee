@@ -604,7 +604,8 @@ module.exports = grammar
 			seq(
 				@identifier,
 				# optional(@_generic_argument_clause)
-			)
+			),
+			@_literal,
 		)
 
 		_literal: -> choice(
