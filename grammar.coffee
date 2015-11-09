@@ -578,6 +578,14 @@ module.exports = grammar
 
 		try_operator: -> choice('try', 'try?', 'try!')
 
+		_prefix_expression: -> choice(
+			seq(
+				optional(@_prefix_operator),
+				@identifier
+			),
+			seq('&', @identifier)
+		)
+
 		boolean_literal: -> choice('true', 'false')
 
 
