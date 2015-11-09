@@ -218,7 +218,14 @@ module.exports = grammar
 
 		defer_statement: -> seq('defer', @_code_block)
 
-		do_statement: -> seq('do', @_code_block)
+		do_statement: -> seq('do', @_code_block, repeat(@catch_clause))
+
+		catch_clause: -> seq(
+			'catch',
+			optional(@_pattern),
+			# optional(@_where_clause),
+			@_code_block
+		)
 
 
 		# Declarations
