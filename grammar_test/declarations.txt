@@ -19,9 +19,11 @@ constant
 
 let foo
 let foo = bar
+let foo, bar = foo
 
 ---
 
 (program
 	(constant_declaration (identifier))
-	(constant_declaration (identifier) (identifier)))
+	(constant_declaration (identifier) (identifier))
+	(constant_declaration (identifier) (identifier) (identifier)))
