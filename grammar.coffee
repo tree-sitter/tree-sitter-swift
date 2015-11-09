@@ -262,8 +262,10 @@ module.exports = grammar
 			# optional(@_attributes),
 			'import',
 			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
-			seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
+			@_pattern_initializer_list)
 		)
+
+		_pattern_initializer_list: -> seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator)))
 
 		constant_declaration: -> seq(
 			# optional(@_attributes),
