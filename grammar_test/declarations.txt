@@ -28,7 +28,7 @@ let foo, bar = foo, quux: Int = baz
 	(constant_declaration (identifier))
 	(constant_declaration (identifier) (identifier))
 	(constant_declaration (identifier) (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)))
+	(constant_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
 
 ======
 variable
