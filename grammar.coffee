@@ -1,14 +1,19 @@
 commaSep1 = (rule) ->
-  seq(rule, repeat(seq(",", rule)))
+	seq(rule, repeat(seq(",", rule)))
 
 commaSep = (rule) ->
-  optional(commaSep1(rule))
+	optional(commaSep1(rule))
 
 PREC =
 	CAST: 132
+	CONJUNCTIVE: 120
+	DISJUNCTIVE: 110
 	OPTIONAL_PATTERN: 10
 	TYPE_IDENTIFIER: 10
 	OPTIONAL_BINDING_CONDITION: 10
+	BREAK_STATEMENT: 10
+	CONTINUE_STATEMENT: 10
+	RETURN_STATEMENT: 10
 
 module.exports = grammar
 	name: "swift"
@@ -19,6 +24,10 @@ module.exports = grammar
 			[ @_pattern, @_expression_list ],
 			[ @_condition, @_condition_clause ]
 		]
+
+	ubiquitous: -> [
+		/\s+/
+	]
 
 	rules:
 		program: -> repeat(@_statement)
@@ -34,11 +43,16 @@ module.exports = grammar
 			@guard_statement,
 			@switch_statement
 			@labeled_statement,
-			# @_control_transfer_statement,
-			# @defer_statement,
-			# @do_statement,
-			# @compiler_control_statement
-		), optional(';'))
+			@break_statement,
+			@continue_statement,
+			@fallthrough_statement,
+			@return_statement,
+			@throw_statement,
+			@defer_statement,
+			@do_statement,
+			@build_configuration_statement,
+			@line_control_statement
+		), choice(';', /\n/))
 
 		_loop_statement: -> choice(
 			@for_statement,
@@ -104,14 +118,7 @@ module.exports = grammar
 				choice(
 					'*',
 					seq(
-						choice(
-							'iOS',
-							'iOSApplicationExtension'
-							'OSX',
-							'OSXApplicationExtension',
-							'watchOS',
-							'tvOS'
-						),
+						choice('iOS', 'iOSApplicationExtension', 'OSX', 'OSXApplicationExtension', 'watchOS', 'tvOS'),
 						token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/))))))
 					)
 				)
@@ -195,6 +202,53 @@ module.exports = grammar
 			choice(@_loop_statement, @if_statement)
 		)
 
+		break_statement: -> prec(PREC.BREAK_STATEMENT, seq('break', optional(@identifier)))
+
+		continue_statement: -> prec(PREC.CONTINUE_STATEMENT, seq('continue', optional(@identifier)))
+
+		fallthrough_statement: -> 'fallthrough'
+
+		return_statement: -> prec(PREC.RETURN_STATEMENT, seq('return', optional(@_expression)))
+
+		throw_statement: -> seq('throw', optional(@_expression))
+
+		defer_statement: -> seq('defer', @_code_block)
+
+		do_statement: -> seq('do', @_code_block, repeat(@catch_clause))
+
+		catch_clause: -> seq(
+			'catch',
+			optional(@_pattern),
+			# optional(@_where_clause),
+			@_code_block
+		)
+
+		build_configuration_statement: -> seq(
+			'#if', @_build_configuration, repeat(@_statement),
+			repeat(seq('#elseif', @_build_configuration, repeat(@_statement))),
+			optional(seq('#else', repeat(@_statement))),
+			'#endif'
+		)
+
+		_build_configuration: -> choice(
+			seq('os', '(', choice('iOS', 'OSX', 'watchOS', 'tvOS'), ')'),
+			seq('arch', '(', choice('i386', 'x86_64', 'arm', 'arm64'), ')'),
+			@identifier,
+			@boolean_literal,
+			seq('(', @_build_configuration, ')'),
+			seq('!', @_build_configuration),
+			prec.left(PREC.CONJUNCTIVE, seq(@_build_configuration, '&&', @_build_configuration)),
+			prec.left(PREC.DISJUNCTIVE, seq(@_build_configuration, '||', @_build_configuration)),
+		)
+
+		line_control_statement: -> seq(
+			'#line',
+			optional(seq(
+				/[0-9]+/,
+				/\"((\\\\([\\0tnr'\"]|u\\{[a-fA-F0-9]{1,8}\\}))|[^\"\\\\])*\"/
+			))
+		)
+
 
 		# Declarations
 
@@ -254,6 +308,8 @@ module.exports = grammar
 
 		_expression_list: -> commaSep1(@_expression)
 
+		boolean_literal: -> choice('true', 'false')
+
 
 		# Lexical Structure
 
@@ -298,8 +354,3 @@ module.exports = grammar
 		))
 
 		_type_name: -> @identifier
-
-
-	ubiquitous: -> [
-		/\s+/
-	]

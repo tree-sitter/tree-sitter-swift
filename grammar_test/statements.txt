@@ -116,6 +116,144 @@ label: if x {}
 	(labeled_statement (identifier) (if_statement (identifier))))
 
 ======
+break statement
+======
+
+break
+break label
+
+---
+
+(program
+	(break_statement)
+	(break_statement (identifier)))
+
+======
+continue statement
+======
+
+continue
+continue label
+
+---
+
+(program
+	(continue_statement)
+	(continue_statement (identifier)))
+
+======
+fallthrough statement
+======
+
+fallthrough
+
+---
+
+(program (fallthrough_statement))
+
+======
+return statement
+======
+
+return
+return x
+
+---
+
+(program
+	(return_statement)
+	(return_statement (identifier)))
+
+======
+throw statement
+======
+
+throw x
+
+---
+
+(program (throw_statement (identifier)))
+
+======
+defer statement
+======
+
+defer {}
+
+---
+
+(program (defer_statement))
+
+======
+do statement
+======
+
+do {}
+do {} catch {}
+do {} catch let e {}
+
+---
+
+(program
+	(do_statement)
+	(do_statement (catch_clause))
+	(do_statement (catch_clause (value_binding_pattern (identifier)))))
+
+======
+build configuration statement
+======
+
+#if os(iOS)
+#endif
+#if arch(x86_64)
+#endif
+#if x
+#endif
+#if true
+#endif
+#if (true)
+#endif
+#if !true
+#endif
+#if true && true
+#endif
+#if true || true
+#endif
+#if true
+#elseif false
+#elseif x
+#else
+#endif
+
+---
+
+(program
+	(build_configuration_statement)
+	(build_configuration_statement)
+	(build_configuration_statement (identifier))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal))
+	(build_configuration_statement (boolean_literal) (boolean_literal))
+	(build_configuration_statement (boolean_literal) (boolean_literal))
+	(build_configuration_statement (boolean_literal) (boolean_literal) (identifier)))
+
+======
+line control statement
+======
+
+#line
+#line 1 ""
+#line 100 "a file.swift"
+
+---
+
+(program
+	(line_control_statement)
+	(line_control_statement)
+	(line_control_statement))
+
+======
 multiple statements on a line
 ======
 
