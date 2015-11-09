@@ -446,7 +446,7 @@ module.exports = grammar
 				@protocol_method_declaration,
 				@protocol_initializer_declaration,
 				@protocol_subscript_declaration,
-				# @protocol_associated_type_declaration,
+				@protocol_associated_type_declaration,
 			)),
 			'}'
 		)
@@ -467,6 +467,11 @@ module.exports = grammar
 			@_subscript_head,
 			@_subscript_result,
 			@_getter_setter_keyword_block
+		)
+		protocol_associated_type_declaration: -> seq(
+			@_typealias_head,
+			# optional(@_type_inheritance_clause),
+			optional(seq('=', @type))
 		)
 
 		initializer_declaration: -> seq(
