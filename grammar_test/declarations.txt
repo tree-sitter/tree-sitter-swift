@@ -3,8 +3,10 @@ import declaration
 ======
 
 import Foo
+import Foo.Bar
 
 ---
 
 (program
-	(import_declaration (identifier)))
+	(import_declaration (identifier))
+	(import_declaration (identifier) (identifier)))
