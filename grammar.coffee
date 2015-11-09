@@ -23,7 +23,7 @@ module.exports = grammar
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_pattern, @_for_init ], # ambiguity between for x; … and for x in …
 			[ @_condition, @_condition_clause ],
-			[ @_variable_name, @_expression ], # conflict between var foo: Int { … } and var foo: Int = …
+			[ @_variable_name, @_prefix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 		]
 
 	ubiquitous: -> [
@@ -574,7 +574,11 @@ module.exports = grammar
 
 		# Expressions
 
-		_expression: -> seq(optional(@try_operator), @identifier)
+		_expression: -> seq(
+			optional(@try_operator),
+			@_prefix_expression,
+			# optional(@_binary_expressions)
+		)
 
 		try_operator: -> choice('try', 'try?', 'try!')
 
