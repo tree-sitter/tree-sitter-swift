@@ -532,7 +532,7 @@ module.exports = grammar
 			seq('prefix', 'operator', @operator, '{', '}'),
 			seq('postfix', 'operator', @operator, '{', '}'),
 			seq('infix', 'operator', @operator, '{',
-				optional(seq('precedence', /1?[0-9]{1,2}|2([0-4][0-9]|5[0-5])/)),
+				optional(seq('precedence', /[0-9]|[1-9][0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5])/)),
 				optional(seq('associativity', choice('left', 'right', 'none')))
 			'}'),
 		)
