@@ -224,3 +224,46 @@ struct A {
 (program
 	(struct_declaration (identifier)
 		(subscript_declaration (type (identifier)) (type (identifier)))))
+
+======
+operator
+======
+
+prefix operator < {}
+postfix operator > {}
+infix operator <> {}
+infix operator <> {
+	precedence 0
+}
+infix operator <> {
+	precedence 10
+}
+infix operator <> {
+	precedence 99
+}
+infix operator <> {
+	precedence 199
+}
+infix operator <> {
+	precedence 249
+}
+infix operator <> {
+	precedence 255
+}
+infix operator <> {
+	associativity left
+}
+infix operator <> {
+	precedence 0
+	associativity right
+}
+
+---
+
+(program
+	(operator_declaration (operator))
+	(operator_declaration (operator))
+	(operator_declaration (operator))
+	(operator_declaration (operator))
+	(operator_declaration (operator))
+	(operator_declaration (operator)))
