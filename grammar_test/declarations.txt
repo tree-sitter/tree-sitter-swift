@@ -71,6 +71,7 @@ func foo(_ x: Int) {}
 func foo(x x: Int) {}
 func foo(x: Int, y: Int) {}
 func foo(x: Int, y: Int)() {}
+func foo(x: Int, y: Int)(x: Int, y: Int) {}
 
 ---
 
@@ -83,4 +84,5 @@ func foo(x: Int, y: Int)() {}
 	(function_declaration (identifier) (identifier) (type (identifier)))
 	(function_declaration (identifier) (identifier) (identifier) (type (identifier)))
 	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier))))
+	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)))
+	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier))))
