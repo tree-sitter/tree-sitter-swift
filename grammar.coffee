@@ -26,6 +26,7 @@ module.exports = grammar
 			[ @_pattern, @_for_init ], # ambiguity between for x; … and for x in …
 			[ @_condition, @_condition_clause ],
 			[ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
+			[ @_expression, @_expression ],
 		]
 
 	ubiquitous: -> [
