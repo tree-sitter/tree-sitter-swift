@@ -345,6 +345,11 @@ module.exports = grammar
 			'func',
 			choice(@identifier, @operator),
 			# optional(@_generic_parameter_clause),
+			@_function_signature,
+			optional(@_code_block)
+		)
+
+		_function_signature: -> seq(
 			repeat1(seq(
 				'(',
 				commaSep(seq(
@@ -361,8 +366,7 @@ module.exports = grammar
 				'->',
 				# optional(@_attributes),
 				@type
-			)),
-			optional(@_code_block)
+			))
 		)
 
 		enum_declaration: -> seq(
