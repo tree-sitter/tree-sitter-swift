@@ -29,3 +29,20 @@ let foo, bar = foo, quux: Int = baz
 	(constant_declaration (identifier) (identifier))
 	(constant_declaration (identifier) (identifier) (identifier))
 	(constant_declaration (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)))
+
+======
+variable
+======
+
+var foo
+var foo = bar
+var foo, bar = foo
+var foo, bar = foo, quux: Int = baz
+
+---
+
+(program
+	(variable_declaration (identifier))
+	(variable_declaration (identifier) (identifier))
+	(variable_declaration (identifier) (identifier) (identifier))
+	(variable_declaration (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)))
