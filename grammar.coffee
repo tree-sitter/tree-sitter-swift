@@ -475,6 +475,13 @@ module.exports = grammar
 			optional(choice('!', '?')),
 		)
 
+		_subscript_head: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'subscript',
+			@_parameter_clause
+		)
+
 
 		# Patterns
 
