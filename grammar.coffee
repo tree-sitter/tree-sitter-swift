@@ -612,7 +612,7 @@ module.exports = grammar
 			@array_literal,
 		)
 
-		array_literal: -> seq('[', optional(choice(seq(@_expression, optional(',')), commaSep(@_expression))), ']')
+		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
 
 		boolean_literal: -> choice('true', 'false')
 		nil_literal: -> 'nil'
