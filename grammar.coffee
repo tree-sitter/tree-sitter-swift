@@ -231,6 +231,7 @@ module.exports = grammar
 		_build_configuration: -> choice(
 			seq('os', '(', choice('iOS', 'OSX', 'watchOS', 'tvOS'), ')'),
 			seq('arch', '(', choice('i386', 'x86_64', 'arm', 'arm64'), ')'),
+			@boolean_literal,
 			@identifier
 		)
 
