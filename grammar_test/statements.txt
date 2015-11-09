@@ -165,6 +165,16 @@ return x
 	(return_statement (identifier)))
 
 ======
+throw statement
+======
+
+throw x
+
+---
+
+(program (throw_statement (identifier)))
+
+======
 multiple statements on a line
 ======
 
