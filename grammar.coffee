@@ -349,22 +349,24 @@ module.exports = grammar
 			'{',
 			repeat(choice(
 				@_declaration,
-				seq(
-					# optional(@_attributes),
-					optional('indirect'),
-					'case',
-					@identifier,
-					optional(choice(
-						@tuple_type,
-						seq('=', choice(
-							# @numeric_literal,
-							@static_string_literal,
-							@boolean_literal,
-						))
-					))
-				)
+				@case_declaration
 			))
 			'}'
+		)
+
+		case_declaration: -> seq(
+			# optional(@_attributes),
+			optional('indirect'),
+			'case',
+			@identifier,
+			optional(choice(
+				@tuple_type,
+				seq('=', choice(
+					# @numeric_literal,
+					@static_string_literal,
+					@boolean_literal,
+				))
+			))
 		)
 
 
