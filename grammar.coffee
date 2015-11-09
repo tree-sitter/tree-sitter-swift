@@ -45,6 +45,7 @@ module.exports = grammar
 			@continue_statement,
 			@fallthrough_statement,
 			@return_statement,
+			@throw_statement,
 			# @defer_statement,
 			# @do_statement,
 			# @compiler_control_statement
@@ -212,6 +213,8 @@ module.exports = grammar
 		fallthrough_statement: -> 'fallthrough'
 
 		return_statement: -> prec(PREC.RETURN_STATEMENT, seq('return', optional(@_expression)))
+
+		throw_statement: -> seq('throw', optional(@_expression))
 
 
 		# Declarations
