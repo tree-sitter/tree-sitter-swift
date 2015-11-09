@@ -67,6 +67,7 @@ func > () {}
 func foo() -> Int {}
 func foo(_: Int) {}
 func foo(x: Int) {}
+func foo(_ x: Int) {}
 
 ---
 
@@ -75,4 +76,5 @@ func foo(x: Int) {}
 	(function_declaration (operator))
 	(function_declaration (identifier) (type (identifier)))
 	(function_declaration (identifier) (type (identifier)))
+	(function_declaration (identifier) (identifier) (type (identifier)))
 	(function_declaration (identifier) (identifier) (type (identifier))))
