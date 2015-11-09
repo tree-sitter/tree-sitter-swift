@@ -262,7 +262,7 @@ module.exports = grammar
 			@enum_declaration,
 			@struct_declaration,
 			@class_declaration,
-			# @protocol_declaration,
+			@protocol_declaration,
 			# @initializer_declaration,
 			# @deinitializer_declaration,
 			# @extension_declaration,
@@ -417,6 +417,19 @@ module.exports = grammar
 			# optional(@_type_inheritance_clause),
 			'{',
 			repeat(@_declaration),
+			'}'
+		)
+
+		protocol_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@access_level_modifier),
+			'protocol',
+			@identifier,
+			# optional(@_type_inheritance_clause),
+			'{',
+			choice(
+				seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
+			),
 			'}'
 		)
 
