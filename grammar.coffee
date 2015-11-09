@@ -259,7 +259,8 @@ module.exports = grammar
 		import_declaration: -> seq(
 			# optional(@_attributes),
 			'import',
-			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func'))
+			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
+			seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
 		)
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
