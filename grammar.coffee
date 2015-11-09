@@ -492,7 +492,7 @@ module.exports = grammar
 		_initializer_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			'init',
+			@_init,
 			optional(choice('!', '?')),
 		)
 
@@ -640,7 +640,7 @@ module.exports = grammar
 		function_literal: -> '__FUNCTION__'
 
 		self_expression: -> seq(@_self, optional(choice(
-			seq('.', choice('init', @identifier)),
+			seq('.', choice(@_init, @identifier)),
 			# seq('[', repeat(@_expression), ']'),
 		)))
 
@@ -648,6 +648,7 @@ module.exports = grammar
 		# Lexical Structure
 
 		_self: -> keyword('self')
+		_init: -> keyword('init')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
