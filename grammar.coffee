@@ -262,10 +262,8 @@ module.exports = grammar
 			# optional(@_attributes),
 			'import',
 			optional(choice('typealias', 'struct', 'class', 'enum', 'protocol', 'var', 'func')),
-			@_pattern_initializer_list
+			@seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
 		)
-
-		_pattern_initializer_list: -> seq(choice(@identifier, @operator), repeat(seq(".", choice(@identifier, @operator))))
 
 		constant_declaration: -> seq(
 			# optional(@_attributes),
@@ -275,7 +273,7 @@ module.exports = grammar
 		)
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
-			@_pattern_initializer_list,
+			# @_pattern_initializer_list,
 			seq(@_variable_name, @_type_annotation, @_code_block)
 			# seq(@_variable_name, @_type_annotation, @_getter_setter_block),
 			# seq(@_variable_name, @_type_annotation, @_getter_setter_keyword_block),
