@@ -433,11 +433,20 @@ module.exports = grammar
 			'{',
 			repeat(choice(
 				@protocol_variable_declaration,
+				@protocol_method_declaration,
 			)),
 			'}'
 		)
 
 		protocol_variable_declaration: -> seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
+		protocol_method_declaration: -> seq(
+			# optional(@_attributes),
+			# optional(@_declaration_modifiers),
+			'func',
+			choice(@identifier, @operator),
+			# optional(@_generic_parameter_clause),
+			@_function_signature
+		)
 
 
 		# Patterns
