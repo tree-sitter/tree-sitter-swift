@@ -20,10 +20,12 @@ constant
 let foo
 let foo = bar
 let foo, bar = foo
+let foo, bar = foo, quux: Int = baz
 
 ---
 
 (program
 	(constant_declaration (identifier))
 	(constant_declaration (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier)))
+	(constant_declaration (identifier) (identifier) (identifier))
+	(constant_declaration (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)))
