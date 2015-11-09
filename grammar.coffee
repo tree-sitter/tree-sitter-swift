@@ -340,13 +340,17 @@ module.exports = grammar
 		)
 
 		function_declaration: -> seq(
+			@_function_head,
+			# optional(@_generic_parameter_clause),
+			@_function_signature,
+			optional(@_code_block)
+		)
+
+		_function_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
 			'func',
 			choice(@identifier, @operator),
-			# optional(@_generic_parameter_clause),
-			@_function_signature,
-			optional(@_code_block)
 		)
 
 		_function_signature: -> seq(
@@ -442,10 +446,7 @@ module.exports = grammar
 
 		protocol_variable_declaration: -> seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
 		protocol_method_declaration: -> seq(
-			# optional(@_attributes),
-			# optional(@_declaration_modifiers),
-			'func',
-			choice(@identifier, @operator),
+			@_function_head,
 			# optional(@_generic_parameter_clause),
 			@_function_signature
 		)
