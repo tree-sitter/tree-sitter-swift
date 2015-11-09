@@ -427,9 +427,9 @@ module.exports = grammar
 			@identifier,
 			# optional(@_type_inheritance_clause),
 			'{',
-			choice(
+			repeat(choice(
 				seq(@_variable_declaration_head, @identifier, @_type_annotation, @_getter_setter_keyword_block)
-			),
+			)),
 			'}'
 		)
 
