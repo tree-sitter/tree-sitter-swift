@@ -356,7 +356,10 @@ module.exports = grammar
 					@identifier,
 					optional(choice(
 						@tuple_type,
-						seq('=', choice(@static_string_literal))
+						seq('=', choice(
+							@static_string_literal,
+							@boolean_literal,
+						))
 					))
 				)
 			))
