@@ -407,7 +407,10 @@ module.exports = grammar
 
 		# Types
 
-		type: -> choice(@_type_identifier)
+		type: -> choice(
+			@_type_identifier,
+			@tuple_type,
+		)
 
 		_type_annotation: -> seq(
 			':',
@@ -425,3 +428,14 @@ module.exports = grammar
 		))
 
 		_type_name: -> @identifier
+
+		tuple_type: -> seq(
+			'(',
+			commaSep(seq(
+				# optional(@_attributes),
+				optional('inout'),
+				choice(@type, seq(@identifier, @_type_annotation))
+			)),
+			optional('...')
+			')'
+		)
