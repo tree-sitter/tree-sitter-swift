@@ -168,3 +168,17 @@ protocol A {
 		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))
 		(protocol_associated_type_declaration (identifier))
 		(protocol_associated_type_declaration (identifier) (type (identifier)))))
+
+======
+initializer
+======
+
+struct S {
+	init() {}
+}
+
+---
+
+(program
+	(struct_declaration (identifier)
+		(initializer_declaration)))
