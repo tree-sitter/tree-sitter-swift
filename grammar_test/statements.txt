@@ -175,6 +175,16 @@ throw x
 (program (throw_statement (identifier)))
 
 ======
+defer statement
+======
+
+defer {}
+
+---
+
+(program (defer_statement))
+
+======
 multiple statements on a line
 ======
 
