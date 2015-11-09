@@ -320,7 +320,7 @@ module.exports = grammar
 			# optional(@_generic_parameter_clause),
 			repeat1(seq(
 				'(',
-				commaSep1(seq(
+				commaSep(seq(
 					optional(choice('let', 'var', 'inout')),
 					optional(choice(@identifier, '_')),
 					choice(@identifier, '_'),
