@@ -624,6 +624,7 @@ module.exports = grammar
 			@self_expression,
 			@super_expression,
 			@closure_expression,
+			@parenthesized_expression,
 		)
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
@@ -681,6 +682,17 @@ module.exports = grammar
 				@_expression
 			)),
 			']'
+		)
+
+		parenthesized_expression: -> seq(
+			'(',
+			commaSep(@expression_element),
+			')'
+		)
+
+		expression_element: -> choice(
+			seq(@identifier, ':', @_expression),
+			@_expression
 		)
 
 
