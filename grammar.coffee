@@ -679,16 +679,19 @@ module.exports = grammar
 
 		capture_list: -> seq(
 			'[',
-			commaSep1(seq(
-				optional(choice(
-					'weak',
-					'unowned',
-					'unowned(safe)',
-					'unowned(unsafe)'
-				)),
-				@_expression
-			)),
+			@_capture_list_elements,
 			']'
+		)
+
+		_capture_list_elements: -> seq(
+			optional(choice(
+				'weak',
+				'unowned',
+				'unowned(safe)',
+				'unowned(unsafe)'
+			)),
+			@_expression,
+			optional(seq(',', @_capture_list_elements))
 		)
 
 		parenthesized_expression: -> seq(
