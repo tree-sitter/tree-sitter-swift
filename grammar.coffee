@@ -26,7 +26,6 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_condition, @_condition_clause ],
 			# [ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 			[ @_expression, @_expression ],
 			[ @_postfix_expression, @_postfix_expression ],
@@ -108,20 +107,14 @@ module.exports = grammar
 
 		while_statement: -> seq(
 			'while',
-			@_condition_clause,
+			commaSep1(@_condition),
 			@_code_block
-		)
-
-		_condition_clause: -> choice(
-			seq(@_expression, optional(seq(',', commaSep1(@_condition)))),
-			seq(commaSep1(@_condition)),
-			seq(@availability_condition, ',', @_expression)
 		)
 
 		_condition: -> choice(
 			@availability_condition,
 			@case_condition,
-			@optional_binding_condition
+			optional(choice('let', 'var')), @_expression
 		)
 
 		availability_condition: -> seq(
@@ -147,19 +140,6 @@ module.exports = grammar
 			# optional(@_where_clause)
 		)
 
-		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
-			choice('let', 'var'),
-			@optional_binding,
-			optional(seq(',', commaSep1(@optional_binding)))
-			# optional(@_where_clause)
-		))
-
-		optional_binding: -> seq(
-			@_pattern,
-			'=',
-			@_expression
-		)
-
 		repeat_while_statement: -> seq(
 			'repeat',
 			@_code_block,
@@ -169,14 +149,14 @@ module.exports = grammar
 
 		if_statement: -> seq(
 			'if',
-			@_condition_clause,
+			commaSep1(@_condition),
 			@_code_block,
 			optional(seq('else', choice(@_code_block, @if_statement)))
 		)
 
 		guard_statement: -> seq(
 			'guard',
-			@_condition_clause,
+			commaSep1(@_condition),
 			'else',
 			@_code_block
 		)
