@@ -27,7 +27,6 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_expression, @_expression ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
 			[ @_array_literal_items, @_capture_list_elements ],
 		]
@@ -556,7 +555,6 @@ module.exports = grammar
 		# Expressions
 
 		_expression: -> seq(
-			optional(@try_operator),
 			@_prefix_expression,
 			repeat(@_binary_expression)
 		)
@@ -565,6 +563,7 @@ module.exports = grammar
 
 		_prefix_expression: -> choice(
 			seq(
+				optional(@try_operator),
 				optional(@operator),
 				@_postfix_expression
 			),
@@ -573,8 +572,8 @@ module.exports = grammar
 
 		_binary_expression: -> choice(
 			seq(@operator, @_prefix_expression),
-			prec.right(PREC.ASSIGNMENT, seq('=', optional(@try_operator), @_prefix_expression)),
-			prec.right(PREC.TERNARY_CONDITIONAL, seq('?', optional(@try_operator), @_expression, ':', optional(@try_operator), @_prefix_expression)),
+			prec.right(PREC.ASSIGNMENT, seq('=', @_prefix_expression)),
+			prec.right(PREC.TERNARY_CONDITIONAL, seq('?', @_expression, ':', @_prefix_expression)),
 			prec.right(PREC.CAST, seq(choice('is', 'as', 'as?', 'as!'), @type)),
 		)
 
