@@ -536,12 +536,15 @@ module.exports = grammar
 		_pattern: -> choice(
 			@value_binding_pattern,
 			@optional_pattern,
+			@is_pattern,
 			@_expression
 		)
 
 		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
+
+		is_pattern: -> seq('is', @type)
 
 
 		# Expressions
