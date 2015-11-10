@@ -662,8 +662,10 @@ module.exports = grammar
 
 		closure_signature: -> seq(
 			optional(@capture_list),
-			choice(@_parameter_clause, commaSep1(@identifier)),
-			optional(@_function_result),
+			optional(seq(
+				choice(@_parameter_clause, commaSep1(@identifier)),
+				optional(@_function_result),
+			)),
 			'in'
 		)
 
