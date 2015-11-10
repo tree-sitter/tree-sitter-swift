@@ -26,7 +26,6 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			# [ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 			[ @_expression, @_expression ],
 			[ @_postfix_expression, @_postfix_expression ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
