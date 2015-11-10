@@ -32,6 +32,7 @@ module.exports = grammar
 			[ @_expression, @_expression ],
 			[ @_postfix_expression, @_postfix_expression ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
+			[ @_array_literal_items, @_capture_list_elements ],
 		]
 
 	ubiquitous: -> [
