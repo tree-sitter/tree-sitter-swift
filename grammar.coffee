@@ -596,6 +596,7 @@ module.exports = grammar
 			@member_expression,
 			@wildcard_expression,
 			@function_call_expression,
+			@subscript_expression,
 		), optional(@operator)))
 
 		array_literal: -> seq('[', optional(@_array_literal_items), ']')
@@ -683,6 +684,13 @@ module.exports = grammar
 			@parenthesized_expression,
 			# seq(optional(@parenthesized_expression), @closure_expression)
 		)))
+
+		subscript_expression: -> seq(
+			@_postfix_expression,
+			'[',
+			@_expression_list,
+			']'
+		)
 
 
 		# Lexical Structure
