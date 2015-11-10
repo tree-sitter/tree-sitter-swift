@@ -70,25 +70,25 @@ module.exports = grammar
 			@repeat_while_statement
 		)
 
-		for_statement: -> seq(
-			@_for,
-			choice(
-				@_for_condition,
-				seq('(', @_for_condition, ')')
-			),
-			@_code_block
-		)
-
-		_for_condition: -> seq(
-			optional(choice(
-				@variable_declaration,
-				commaSep1(@_expression)
-			)),
-			';',
-			optional(@_expression),
-			';',
-			optional(@_expression)
-		)
+		for_statement: ->
+			_for_condition = seq(
+				optional(choice(
+					@variable_declaration,
+					commaSep1(@_expression)
+				)),
+				';',
+				optional(@_expression),
+				';',
+				optional(@_expression)
+			)
+			seq(
+				@_for,
+				choice(
+					_for_condition,
+					seq('(', _for_condition, ')')
+				),
+				@_code_block
+			)
 
 		for_in_statement: -> seq(
 			@_for,
