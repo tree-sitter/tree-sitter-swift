@@ -612,10 +612,6 @@ module.exports = grammar
 		)
 
 		_postfix_expression: -> seq(choice(
-			seq(
-				@identifier,
-				# optional(@_generic_argument_clause)
-			),
 			# @numeric_literal,
 			# @string_literal,
 			@boolean_literal,
@@ -630,7 +626,7 @@ module.exports = grammar
 			@super_expression,
 			@closure_expression,
 			@parenthesized_expression,
-			@implicit_member_expression,
+			@member_expression,
 			@wildcard_expression,
 			@function_call_expression,
 		), optional(@operator))
@@ -705,7 +701,11 @@ module.exports = grammar
 			@_expression
 		)
 
-		implicit_member_expression: -> seq('.', @identifier)
+		member_expression: -> seq(
+			optional('.'),
+			@identifier_chain,
+			# optional(@_generic_argument_clause)
+		)
 
 		wildcard_expression: -> '_'
 
