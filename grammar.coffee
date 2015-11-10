@@ -73,7 +73,7 @@ module.exports = grammar
 		)
 
 		for_statement: -> seq(
-			'for',
+			@_for,
 			choice(
 				@_for_condition,
 				seq('(', @_for_condition, ')')
@@ -95,7 +95,7 @@ module.exports = grammar
 		)
 
 		for_in_statement: -> seq(
-			'for',
+			@_for,
 			optional('case'),
 			seq(@_pattern, optional(@_type_annotation)),
 			'in',
@@ -718,6 +718,7 @@ module.exports = grammar
 		_init: -> keyword('init')
 		_var: -> keyword('var')
 		_let: -> keyword('let')
+		_for: -> keyword('for')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
