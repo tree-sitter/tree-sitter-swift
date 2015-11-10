@@ -550,10 +550,8 @@ module.exports = grammar
 			@assignment_expression,
 			@ternary_conditional_expression,
 			@cast_expression,
-			seq(
-				@_prefix_expression,
-				repeat(@_binary_expression)
-			)
+			@binary_expression,
+			@_prefix_expression
 		)
 
 		try_operator: -> choice('try', 'try?', 'try!')
@@ -567,9 +565,7 @@ module.exports = grammar
 			seq('&', @identifier)
 		)
 
-		_binary_expression: -> choice(
-			seq(@operator, @_prefix_expression),
-		)
+		binary_expression: -> prec.right(seq(@_expression, @operator, @_prefix_expression))
 
 		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
 			@_expression,
