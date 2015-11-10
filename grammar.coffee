@@ -559,13 +559,13 @@ module.exports = grammar
 		# Patterns
 
 		_pattern: -> choice(
-			@wildcard_pattern,
-			@value_binding_pattern,
-			@tuple_pattern,
-			@enum_case_pattern,
-			@optional_pattern,
-			@is_pattern,
-			@as_pattern,
+			# @wildcard_pattern,
+			# @value_binding_pattern,
+			# @tuple_pattern,
+			# @enum_case_pattern,
+			# @optional_pattern,
+			# @is_pattern,
+			# @as_pattern,
 			@_expression
 		)
 
