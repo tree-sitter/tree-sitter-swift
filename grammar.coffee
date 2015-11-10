@@ -635,7 +635,12 @@ module.exports = grammar
 			@function_call_expression,
 		), optional(@operator))
 
-		array_literal: -> seq('[', optional(seq(commaSep1(@_expression), optional(','))), ']')
+		array_literal: -> seq('[', optional(@_array_literal_items), ']')
+
+		_array_literal_items: -> choice(
+			seq(@_expression, optional(',')),
+			seq(@_expression, ',', @_array_literal_items)
+		)
 
 		dictionary_literal: -> seq('[', choice(
 			':',
