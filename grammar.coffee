@@ -622,7 +622,7 @@ module.exports = grammar
 			@function_literal,
 			@self_expression,
 			@super_expression,
-			@closure_expression,
+			# @closure_expression,
 			@parenthesized_expression,
 			@member_expression,
 			@wildcard_expression,
@@ -709,7 +709,7 @@ module.exports = grammar
 
 		function_call_expression: -> prec.left(seq(@_postfix_expression, choice(
 			@parenthesized_expression,
-			seq(optional(@parenthesized_expression), @closure_expression)
+			# seq(optional(@parenthesized_expression), @closure_expression)
 		)))
 
 
