@@ -553,6 +553,7 @@ module.exports = grammar
 
 		_expression: -> choice(
 			@assignment_expression,
+			@ternary_conditional_expression,
 			seq(
 				@_prefix_expression,
 				repeat(@_binary_expression)
@@ -572,13 +573,20 @@ module.exports = grammar
 
 		_binary_expression: -> choice(
 			seq(@operator, @_prefix_expression),
-			prec.right(PREC.TERNARY_CONDITIONAL, seq('?', @_expression, ':', @_prefix_expression)),
 			prec.right(PREC.CAST, seq(choice('is', 'as', 'as?', 'as!'), @type)),
 		)
 
 		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
 			@_prefix_expression,
 			'=',
+			@_prefix_expression
+		))
+
+		ternary_conditional_expression: -> prec.right(PREC.TERNARY_CONDITIONAL, seq(
+			@_prefix_expression,
+			'?',
+			@_expression,
+			':',
 			@_prefix_expression
 		))
 
