@@ -40,3 +40,18 @@ x.y
 
 (program
 	(member_expression (identifier) (identifier)))
+
+======
+subscript
+======
+
+x[]
+x[y]
+x[y, z]
+
+---
+
+(program
+	(subscript_expression (identifier))
+	(subscript_expression (identifier) (identifier))
+	(subscript_expression (identifier) (identifier) (identifier)))
