@@ -367,11 +367,13 @@ module.exports = grammar
 		_function_signature: -> seq(
 			repeat1(@_parameter_clause),
 			optional(choice('throws', 'rethrows')),
-			optional(seq(
-				'->',
-				# optional(@_attributes),
-				@type
-			))
+			optional(@_function_result)
+		)
+
+		_function_result: -> seq(
+			'->',
+			# optional(@_attributes),
+			@type
 		)
 
 		_parameter_clause: -> seq(
