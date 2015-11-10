@@ -627,6 +627,7 @@ module.exports = grammar
 			@parenthesized_expression,
 			@implicit_member_expression,
 			@wildcard_expression,
+			@function_call_expression,
 		), optional(@operator))
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
@@ -700,6 +701,11 @@ module.exports = grammar
 		implicit_member_expression: -> seq('.', @identifier)
 
 		wildcard_expression: -> '_'
+
+		function_call_expression: -> prec.left(seq(@_postfix_expression, choice(
+			@parenthesized_expression,
+			seq(optional(@parenthesized_expression), @closure_expression)
+		)))
 
 
 		# Lexical Structure
