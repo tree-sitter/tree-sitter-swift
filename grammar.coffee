@@ -655,8 +655,10 @@ module.exports = grammar
 
 		closure_expression: -> seq(
 			'{',
-			optional(choice(
-				seq(@_parameter_clause, optional(@_function_result), 'in'),
+			optional(seq(
+				choice(@_parameter_clause, commaSep1(@identifier)),
+				optional(@_function_result),
+				'in'
 			)),
 			repeat(@_statement),
 			'}'
