@@ -606,7 +606,7 @@ module.exports = grammar
 			prec.right(PREC.CAST, seq(choice('is', 'as', 'as?', 'as!'), @type)),
 		)
 
-		_postfix_expression: -> choice(
+		_postfix_expression: -> seq(choice(
 			seq(
 				@identifier,
 				# optional(@_generic_argument_clause)
@@ -627,7 +627,7 @@ module.exports = grammar
 			@parenthesized_expression,
 			@implicit_member_expression,
 			@wildcard_expression,
-		)
+		), optional(@operator))
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
 
