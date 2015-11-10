@@ -18,3 +18,14 @@ prefix operator
 
 (program
 	(operator) (identifier))
+
+======
+implicit member expression
+======
+
+.x
+
+---
+
+(program
+	(member_expression (identifier)))
