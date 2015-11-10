@@ -19,6 +19,7 @@ PREC =
 	CONTINUE_STATEMENT: 10
 	RETURN_STATEMENT: 10
 	KEYWORD: 10
+	POSTFIX: 1000
 
 module.exports = grammar
 	name: "swift"
@@ -27,7 +28,6 @@ module.exports = grammar
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_expression, @_expression ],
-			[ @_postfix_expression, @_postfix_expression ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
 			[ @_array_literal_items, @_capture_list_elements ],
 		]
@@ -578,7 +578,7 @@ module.exports = grammar
 			prec.right(PREC.CAST, seq(choice('is', 'as', 'as?', 'as!'), @type)),
 		)
 
-		_postfix_expression: -> seq(choice(
+		_postfix_expression: -> prec(PREC.POSTFIX, seq(choice(
 			# @numeric_literal,
 			# @string_literal,
 			@boolean_literal,
@@ -596,7 +596,7 @@ module.exports = grammar
 			@member_expression,
 			@wildcard_expression,
 			@function_call_expression,
-		), optional(@operator))
+		), optional(@operator)))
 
 		array_literal: -> seq('[', optional(@_array_literal_items), ']')
 
