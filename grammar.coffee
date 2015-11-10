@@ -646,15 +646,9 @@ module.exports = grammar
 		column_literal: -> '__COLUMN__'
 		function_literal: -> '__FUNCTION__'
 
-		self_expression: -> seq(@_self, optional(choice(
-			seq('.', choice(@_init, @identifier)),
-			seq('[', commaSep(@_expression), ']'),
-		)))
+		self_expression: -> @_self
 
-		super_expression: -> seq(@_super, choice(
-			seq('.', choice(@_init, @identifier))
-			seq('[', commaSep(@_expression), ']'),
-		))
+		super_expression: -> @_super
 
 		closure_expression: -> seq(
 			'{',
