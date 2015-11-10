@@ -4,9 +4,6 @@ commaSep1 = (rule) ->
 commaSep = (rule) ->
 	optional(commaSep1(rule))
 
-keyword = (word) ->
-	prec(PREC.KEYWORD, word)
-
 PREC =
 	CAST: 132
 	CONJUNCTIVE: 120
@@ -85,7 +82,7 @@ module.exports = grammar
 				optional(@_expression)
 			)
 			seq(
-				@_for,
+				'for',
 				choice(
 					_for_condition,
 					seq('(', _for_condition, ')')
@@ -94,7 +91,7 @@ module.exports = grammar
 			)
 
 		for_in_statement: -> seq(
-			@_for,
+			'for',
 			optional('case'),
 			seq(@_pattern, optional(@_type_annotation)),
 			'in',
@@ -270,7 +267,7 @@ module.exports = grammar
 		constant_declaration: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			@_let,
+			'let',
 			commaSep1(@_pattern_initializer)
 		)
 
@@ -475,7 +472,7 @@ module.exports = grammar
 		_initializer_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			@_init,
+			'init',
 			optional(choice('!', '?')),
 		)
 
@@ -694,12 +691,6 @@ module.exports = grammar
 
 
 		# Lexical Structure
-
-		_self: -> keyword('self')
-		_super: -> keyword('super')
-		_init: -> keyword('init')
-		_let: -> keyword('let')
-		_for: -> keyword('for')
 
 		identifier: ->
 			_identifier_head = /[A-Za-z_]/
