@@ -488,7 +488,7 @@ module.exports = grammar
 		extension_declaration: -> seq(
 			# optional(@access_level_modifier),
 			'extension',
-			@_identifier_chain,
+			choice(@identifier, @member_expression),
 			# optional(@_type_inheritance_clause),
 			'{',
 			repeat(@_declaration),
@@ -578,6 +578,7 @@ module.exports = grammar
 		)
 
 		_postfix_expression: -> prec(PREC.POSTFIX, seq(choice(
+			@identifier,
 			# @numeric_literal,
 			# @string_literal,
 			@boolean_literal,
@@ -668,9 +669,12 @@ module.exports = grammar
 		pair: -> seq(@identifier, ':', @_expression)
 
 		member_expression: -> seq(
-			optional('.'),
-			@_identifier_chain,
-			# optional(@_generic_argument_clause)
+			optional(@identifier),
+			'.',
+			choice(
+				@identifier,
+				@member_expression
+			)
 		)
 
 		wildcard_expression: -> '_'
@@ -700,14 +704,6 @@ module.exports = grammar
 				seq('`', _identifier_head, optional(_identifier_characters), '`')
 			))
 
-		_identifier_chain: -> seq(
-			@identifier,
-			optional(seq(
-				'.',
-				@_identifier_chain
-			))
-		)
-
 		operator: ->
 			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
@@ -718,7 +714,8 @@ module.exports = grammar
 		# Types
 
 		type: -> choice(
-			@_identifier_chain,
+			@identifier,
+			@member_expression,
 			@tuple_type,
 		)
 
