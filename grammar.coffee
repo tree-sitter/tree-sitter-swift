@@ -80,7 +80,7 @@ module.exports = grammar
 			_for_condition = seq(
 				optional(choice(
 					@variable_declaration,
-					commaSep1(@_expression)
+					@_expression_list
 				)),
 				';',
 				optional(@_expression),
