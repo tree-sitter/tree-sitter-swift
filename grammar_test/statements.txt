@@ -99,7 +99,7 @@ default:
 		(case_statement (member_expression (identifier)))
 		(case_statement (function_call_expression (member_expression (identifier)) (parenthesized_expression (wildcard_expression) (wildcard_expression))))
 		(case_statement (is_pattern (type (identifier))))
-		(case_statement (wildcard_expression) (type (identifier)))
+		(case_statement (cast_expression (wildcard_expression) (type (identifier))))
 		(case_statement)))
 
 ======
