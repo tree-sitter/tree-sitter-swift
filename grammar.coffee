@@ -27,7 +27,7 @@ module.exports = grammar
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_condition, @_condition_clause ],
-			[ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
+			# [ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 			[ @_expression, @_expression ],
 			[ @_postfix_expression, @_postfix_expression ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
@@ -298,24 +298,22 @@ module.exports = grammar
 
 		_pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))
 
-		variable_declaration: -> seq(@_variable_declaration_head, choice(
+		variable_declaration: -> seq(@_variable_declaration_head,
 			commaSep1(@_pattern_initializer),
-			seq(@_variable_name, @_type_annotation, choice(
+			optional(choice(
 				@_code_block,
 				# @_getter_setter_block,
 				@_getter_setter_keyword_block,
 				# seq(optional(@_initializer), @_willSet_didSet_block)
-			))
-			# seq(@_variable_name, @_initializer, @_willSet_didSet_block),
-		))
+			)),
+			# seq(@identifier, @_initializer, @_willSet_didSet_block),
+		)
 
 		_variable_declaration_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
 			'var'
 		)
-
-		_variable_name: -> @identifier
 
 		_getter_setter_keyword_block: -> seq(
 			'{',
