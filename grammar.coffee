@@ -688,7 +688,7 @@ module.exports = grammar
 		subscript_expression: -> seq(
 			@_postfix_expression,
 			'[',
-			@_expression_list,
+			optional(@_expression_list),
 			']'
 		)
 
