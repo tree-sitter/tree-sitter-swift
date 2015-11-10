@@ -27,12 +27,10 @@ module.exports = grammar
 	expectedConflicts: ->
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
-			[ @_pattern, @_for_init ], # ambiguity between for x; … and for x in …
 			[ @_condition, @_condition_clause ],
 			[ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 			[ @_expression, @_expression ],
 			[ @_postfix_expression, @_postfix_expression ],
-			[ @_for_init, @expression_element ],
 			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
 		]
 
@@ -81,13 +79,11 @@ module.exports = grammar
 			@_code_block
 		)
 
-		_for_init: -> choice(
-			@variable_declaration,
-			commaSep1(@_expression)
-		)
-
 		_for_condition: -> seq(
-			optional(@_for_init),
+			optional(choice(
+				@variable_declaration,
+				commaSep1(@_expression)
+			)),
 			';',
 			optional(@_expression),
 			';',
