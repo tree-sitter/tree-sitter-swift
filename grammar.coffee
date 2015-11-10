@@ -657,9 +657,9 @@ module.exports = grammar
 		column_literal: -> '__COLUMN__'
 		function_literal: -> '__FUNCTION__'
 
-		self_expression: -> @_self
+		self_expression: -> 'self'
 
-		super_expression: -> @_super
+		super_expression: -> 'super'
 
 		closure_expression: -> seq(
 			'{',
