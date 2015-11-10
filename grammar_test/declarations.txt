@@ -26,9 +26,9 @@ let foo, bar = foo, quux: Int = baz
 
 (program
 	(constant_declaration (identifier))
-	(constant_declaration (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
+	(constant_declaration (assignment_expression (identifier) (identifier)))
+	(constant_declaration (identifier) (assignment_expression (identifier) (identifier)))
+	(constant_declaration (identifier) (assignment_expression (identifier) (identifier)) (identifier) (type (identifier)) (identifier)))
 
 ======
 variable
@@ -46,12 +46,12 @@ var foo, bar = foo, quux: Int = baz
 
 (program
 	(variable_declaration (identifier))
-	(variable_declaration (identifier) (identifier))
+	(variable_declaration (assignment_expression (identifier) (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
-	(variable_declaration (identifier) (identifier) (identifier))
-	(variable_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
+	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)))
+	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)) (identifier) (type (identifier)) (identifier)))
 
 ======
 typealias

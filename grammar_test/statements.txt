@@ -35,7 +35,7 @@ while let x = y, z = y {}
 
 (program
 	(while_statement (availability_condition))
-	(while_statement (identifier) (identifier) (identifier) (identifier)))
+	(while_statement (assignment_expression (identifier) (identifier)) (assignment_expression (identifier) (identifier))))
 
 ======
 repeat while statement
