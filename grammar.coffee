@@ -31,6 +31,7 @@ module.exports = grammar
 			[ @_condition, @_condition_clause ],
 			[ @_variable_name, @_postfix_expression ], # conflict between var foo: Int { … } and var foo: Int = …
 			[ @_expression, @_expression ],
+			[ @array_literal, @capture_list ], # { […] in … } vs. { […] }
 		]
 
 	ubiquitous: -> [
