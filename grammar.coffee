@@ -666,6 +666,20 @@ module.exports = grammar
 			'in'
 		)
 
+		capture_list: -> seq(
+			'[',
+			commaSep1(seq(
+				optional(choice(
+					'weak',
+					'unowned',
+					'unowned(safe)',
+					'unowned(unsafe)'
+				)),
+				@_expression
+			)),
+			']'
+		)
+
 
 		# Lexical Structure
 
