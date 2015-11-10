@@ -70,6 +70,12 @@ module.exports = grammar
 			@repeat_while_statement
 		)
 
+		_expression_list: -> seq(
+			@_expression,
+			optional(seq(',', @_expression_list))
+		)
+
+
 		for_statement: ->
 			_for_condition = seq(
 				optional(choice(
