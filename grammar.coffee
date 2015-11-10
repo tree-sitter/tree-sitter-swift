@@ -625,6 +625,7 @@ module.exports = grammar
 			@super_expression,
 			@closure_expression,
 			@parenthesized_expression,
+			@implicit_member_expression,
 		)
 
 		array_literal: -> seq('[', choice(seq(@_expression, optional(',')), commaSep(@_expression)), ']')
@@ -694,6 +695,8 @@ module.exports = grammar
 			seq(@identifier, ':', @_expression),
 			@_expression
 		)
+
+		implicit_member_expression: -> seq('.', @identifier)
 
 
 		# Lexical Structure
