@@ -20,7 +20,7 @@ prefix operator
 	(operator) (identifier))
 
 ======
-implicit member expression
+implicit member
 ======
 
 .x
@@ -31,7 +31,7 @@ implicit member expression
 	(member_expression (identifier)))
 
 ======
-explicit member expression
+explicit member
 ======
 
 x.y
