@@ -572,20 +572,20 @@ module.exports = grammar
 		)
 
 		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
-			@_prefix_expression,
+			@_expression,
 			'=',
 			@_prefix_expression
 		))
 
 		ternary_conditional_expression: -> prec.right(PREC.TERNARY_CONDITIONAL, seq(
-			@_prefix_expression,
+			@_expression,
 			'?',
 			@_expression,
 			':',
 			@_prefix_expression
 		))
 
-		cast_expression: -> prec.right(PREC.CAST, seq(@_prefix_expression, choice('is', 'as', 'as?', 'as!'), @type))
+		cast_expression: -> prec.right(PREC.CAST, seq(@_expression, choice('is', 'as', 'as?', 'as!'), @type))
 
 		_postfix_expression: -> prec(PREC.POSTFIX, seq(choice(
 			@identifier,
