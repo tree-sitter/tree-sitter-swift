@@ -148,7 +148,7 @@ module.exports = grammar
 		)
 
 		optional_binding_condition: -> prec.right(PREC.OPTIONAL_BINDING_CONDITION, seq(
-			choice(@_let, @_var),
+			choice('let', 'var'),
 			@optional_binding,
 			optional(seq(',', commaSep1(@optional_binding)))
 			# optional(@_where_clause)
@@ -382,7 +382,7 @@ module.exports = grammar
 		_parameter_clause: -> seq(
 			'(',
 			commaSep(seq(
-				optional(choice(@_let, @_var, 'inout')),
+				optional(choice('let', 'var', 'inout')),
 				optional(choice(@identifier, '_')),
 				choice(@identifier, '_'),
 				@_type_annotation,
@@ -559,24 +559,14 @@ module.exports = grammar
 		# Patterns
 
 		_pattern: -> choice(
-			# @wildcard_pattern,
-			# @value_binding_pattern,
-			# @tuple_pattern,
-			# @enum_case_pattern,
-			# @optional_pattern,
-			# @is_pattern,
-			# @as_pattern,
+			@value_binding_pattern,
+			@optional_pattern,
+			@is_pattern,
+			@as_pattern,
 			@_expression
 		)
 
-		wildcard_pattern: -> '_'
-
-		value_binding_pattern: -> seq(choice(@_var, @_let), @_pattern)
-
-		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
-		_tuple_pattern_element_list: -> commaSep1(@_pattern)
-
-		enum_case_pattern: -> seq(optional('.'), @_identifier_chain, optional(@tuple_pattern))
+		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
@@ -718,7 +708,6 @@ module.exports = grammar
 		_self: -> keyword('self')
 		_super: -> keyword('super')
 		_init: -> keyword('init')
-		_var: -> keyword('var')
 		_let: -> keyword('let')
 		_for: -> keyword('for')
 
