@@ -736,6 +736,14 @@ module.exports = grammar
 				seq('`', _identifier_head, optional(_identifier_characters), '`')
 			))
 
+		identifier_chain: -> seq(
+			@identifier,
+			optional(seq(
+				'.',
+				@identifier_chain
+			))
+		)
+
 		operator: ->
 			_operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?')
 			token(repeat1(_operator_head))
