@@ -92,14 +92,14 @@ default:
 
 (program
 	(switch_statement (identifier)
-		(case_statement (wildcard_pattern))
+		(case_statement (wildcard_expression))
 		(case_statement (value_binding_pattern (identifier)))
 		(case_statement (value_binding_pattern (identifier)))
 		(case_statement (tuple_pattern))
 		(case_statement (enum_case_pattern (identifier)))
-		(case_statement (enum_case_pattern (identifier) (tuple_pattern (wildcard_pattern) (wildcard_pattern))))
+		(case_statement (enum_case_pattern (identifier) (tuple_pattern (wildcard_expression) (wildcard_expression))))
 		(case_statement (is_pattern (type (identifier))))
-		(case_statement (as_pattern (wildcard_pattern) (type (identifier))))
+		(case_statement (as_pattern (wildcard_expression) (type (identifier))))
 		(case_statement)))
 
 ======
