@@ -14,7 +14,6 @@ PREC =
 	TERNARY_CONDITIONAL: 100
 	ASSIGNMENT: 90
 	OPTIONAL_PATTERN: 10
-	TYPE_IDENTIFIER: 10
 	OPTIONAL_BINDING_CONDITION: 110
 	BREAK_STATEMENT: 10
 	CONTINUE_STATEMENT: 10
@@ -513,7 +512,7 @@ module.exports = grammar
 		extension_declaration: -> seq(
 			# optional(@access_level_modifier),
 			'extension',
-			@_type_identifier,
+			@identifier_chain,
 			# optional(@_type_inheritance_clause),
 			'{',
 			repeat(@_declaration),
@@ -579,7 +578,7 @@ module.exports = grammar
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
 		_tuple_pattern_element_list: -> commaSep1(@_pattern)
 
-		enum_case_pattern: -> seq(optional(@_type_identifier), '.', @identifier, optional(@tuple_pattern))
+		enum_case_pattern: -> seq(optional('.'), @identifier_chain, optional(@tuple_pattern))
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
@@ -754,7 +753,7 @@ module.exports = grammar
 		# Types
 
 		type: -> choice(
-			@_type_identifier,
+			@identifier_chain,
 			@tuple_type,
 		)
 
@@ -763,17 +762,6 @@ module.exports = grammar
 			# optional(@_attributes),
 			@type
 		)
-
-		_type_identifier: -> prec.left(PREC.TYPE_IDENTIFIER, seq(
-			@_type_name,
-			# optional(@_generic_argument_clause),
-			optional(seq(
-				'.',
-				@_type_identifier
-			))
-		))
-
-		_type_name: -> @identifier
 
 		tuple_type: -> seq(
 			'(',
