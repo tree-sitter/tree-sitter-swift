@@ -312,7 +312,7 @@ module.exports = grammar
 		_variable_declaration_head: -> seq(
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
-			@_var
+			'var'
 		)
 
 		_variable_name: -> @identifier
