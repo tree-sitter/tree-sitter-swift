@@ -29,3 +29,14 @@ implicit member expression
 
 (program
 	(member_expression (identifier)))
+
+======
+explicit member expression
+======
+
+x.y
+
+---
+
+(program
+	(member_expression (identifier) (identifier)))
