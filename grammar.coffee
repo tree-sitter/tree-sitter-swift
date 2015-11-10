@@ -114,7 +114,7 @@ module.exports = grammar
 		_condition: -> choice(
 			@availability_condition,
 			@case_condition,
-			optional(choice('let', 'var')), @_expression
+			seq(optional(choice('let', 'var')), @_expression)
 		)
 
 		availability_condition: -> seq(
