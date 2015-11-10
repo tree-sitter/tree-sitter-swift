@@ -510,7 +510,7 @@ module.exports = grammar
 		extension_declaration: -> seq(
 			# optional(@access_level_modifier),
 			'extension',
-			@identifier_chain,
+			@_identifier_chain,
 			# optional(@_type_inheritance_clause),
 			'{',
 			repeat(@_declaration),
@@ -576,7 +576,7 @@ module.exports = grammar
 		tuple_pattern: -> seq('(', optional(@_tuple_pattern_element_list), ')')
 		_tuple_pattern_element_list: -> commaSep1(@_pattern)
 
-		enum_case_pattern: -> seq(optional('.'), @identifier_chain, optional(@tuple_pattern))
+		enum_case_pattern: -> seq(optional('.'), @_identifier_chain, optional(@tuple_pattern))
 
 		optional_pattern: -> prec(PREC.OPTIONAL_PATTERN, seq(@_pattern, '?'))
 
@@ -701,7 +701,7 @@ module.exports = grammar
 
 		member_expression: -> seq(
 			optional('.'),
-			@identifier_chain,
+			@_identifier_chain,
 			# optional(@_generic_argument_clause)
 		)
 
@@ -733,11 +733,11 @@ module.exports = grammar
 				seq('`', _identifier_head, optional(_identifier_characters), '`')
 			))
 
-		identifier_chain: -> seq(
+		_identifier_chain: -> seq(
 			@identifier,
 			optional(seq(
 				'.',
-				@identifier_chain
+				@_identifier_chain
 			))
 		)
 
@@ -751,7 +751,7 @@ module.exports = grammar
 		# Types
 
 		type: -> choice(
-			@identifier_chain,
+			@_identifier_chain,
 			@tuple_type,
 		)
 
