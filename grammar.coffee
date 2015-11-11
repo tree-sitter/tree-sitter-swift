@@ -551,14 +551,17 @@ module.exports = grammar
 			@ternary_conditional_expression,
 			@cast_expression,
 			@binary_expression,
+			@try_expression,
 			@_prefix_expression
 		)
 
-		try_operator: -> choice('try', 'try?', 'try!')
+		try_expression: -> prec.right(seq(
+			choice('try', 'try?', 'try!'),
+			@_expression
+		))
 
 		_prefix_expression: -> choice(
 			seq(
-				optional(@try_operator),
 				optional(@operator),
 				@_postfix_expression
 			),
