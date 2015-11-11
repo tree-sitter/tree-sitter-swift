@@ -665,7 +665,7 @@ module.exports = grammar
 
 		parenthesized_expression: -> seq(
 			'(',
-			@_parenthesized_expression_items,
+			optional(@_parenthesized_expression_items),
 			')'
 		)
 
