@@ -8,8 +8,8 @@ for ;; {}
 ---
 
 (program
-	(for_statement)
-	(for_statement))
+	(for_statement (statement_block))
+	(for_statement (statement_block)))
 
 ======
 for in statement
@@ -21,8 +21,8 @@ for x: Int in y {}
 ---
 
 (program
-	(for_in_statement (identifier) (identifier))
-	(for_in_statement (identifier) (type (identifier)) (identifier)))
+	(for_in_statement (identifier) (identifier) (statement_block))
+	(for_in_statement (identifier) (type (identifier)) (identifier) (statement_block)))
 
 ======
 while statement
@@ -34,8 +34,8 @@ while let x = y, z = y {}
 ---
 
 (program
-	(while_statement (availability_condition))
-	(while_statement (assignment_expression (identifier) (identifier)) (assignment_expression (identifier) (identifier))))
+	(while_statement (availability_condition) (statement_block))
+	(while_statement (assignment_expression (identifier) (identifier)) (assignment_expression (identifier) (identifier)) (statement_block)))
 
 ======
 repeat while statement
@@ -45,7 +45,7 @@ repeat {} while a
 
 ---
 
-(program (repeat_while_statement (identifier)))
+(program (repeat_while_statement (statement_block) (identifier)))
 
 ======
 if statement
@@ -58,9 +58,9 @@ if x {} else if y {}
 ---
 
 (program
-	(if_statement (identifier))
-	(if_statement (identifier))
-	(if_statement (identifier) (if_statement (identifier))))
+	(if_statement (identifier) (statement_block))
+	(if_statement (identifier) (statement_block) (statement_block))
+	(if_statement (identifier) (statement_block) (if_statement (identifier) (statement_block))))
 
 ======
 guard Statements
@@ -70,7 +70,7 @@ guard x else {}
 
 ---
 
-(program (guard_statement (identifier)))
+(program (guard_statement (identifier) (statement_block)))
 
 ======
 switch statement
@@ -112,8 +112,8 @@ label: if x {}
 ---
 
 (program
-	(labeled_statement (identifier) (for_statement))
-	(labeled_statement (identifier) (if_statement (identifier))))
+	(labeled_statement (identifier) (for_statement (statement_block)))
+	(labeled_statement (identifier) (if_statement (identifier) (statement_block))))
 
 ======
 break statement
@@ -182,7 +182,7 @@ defer {}
 
 ---
 
-(program (defer_statement))
+(program (defer_statement (statement_block)))
 
 ======
 do statement
@@ -195,9 +195,9 @@ do {} catch let e {}
 ---
 
 (program
-	(do_statement)
-	(do_statement (catch_clause))
-	(do_statement (catch_clause (value_binding_pattern (identifier)))))
+	(do_statement (statement_block))
+	(do_statement (statement_block) (catch_clause (statement_block)))
+	(do_statement (statement_block) (catch_clause (value_binding_pattern (identifier)) (statement_block))))
 
 ======
 build configuration statement
