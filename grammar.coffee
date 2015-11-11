@@ -708,16 +708,17 @@ module.exports = grammar
 		wildcard_expression: -> '_'
 
 		function_call_expression: -> prec.right(seq(
-			choice(
-				@identifier,
-				@member_expression,
-				@postfix_expression,
-				@parenthesized_expression,
+			seq(
+				choice(
+					@identifier,
+					@member_expression,
+					@postfix_expression,
+					@parenthesized_expression,
+				),
+				optional(@parenthesized_expression),
+				@closure_expression
 			),
-			choice(
-				@parenthesized_expression,
-				seq(optional(@parenthesized_expression), @closure_expression)
-			)
+			seq(@_expression, @parenthesized_expression),
 		))
 
 		subscript_expression: -> seq(
