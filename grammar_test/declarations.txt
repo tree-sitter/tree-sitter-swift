@@ -111,10 +111,10 @@ enum A {
 ---
 
 (program
-	(enum_declaration (identifier))
-	(enum_declaration (identifier) (case_declaration (identifier)))
-	(enum_declaration (identifier) (case_declaration (identifier) (tuple_type (type (identifier)))))
-	(enum_declaration (identifier) (case_declaration (identifier) (static_string_literal))))
+	(enum_declaration (identifier) (declaration_block))
+	(enum_declaration (identifier) (declaration_block (case_declaration (identifier))))
+	(enum_declaration (identifier) (declaration_block (case_declaration (identifier) (tuple_type (type (identifier))))))
+	(enum_declaration (identifier) (declaration_block (case_declaration (identifier) (static_string_literal)))))
 
 ======
 struct
@@ -125,7 +125,7 @@ struct A {}
 ---
 
 (program
-	(struct_declaration (identifier)))
+	(struct_declaration (identifier) (declaration_block)))
 
 ======
 class
@@ -136,7 +136,7 @@ class A {}
 ---
 
 (program
-	(class_declaration (identifier)))
+	(class_declaration (identifier) (declaration_block)))
 
 
 ======
@@ -180,8 +180,8 @@ struct S {
 ---
 
 (program
-	(struct_declaration (identifier)
-		(initializer_declaration (statement_block))))
+	(struct_declaration (identifier) (declaration_block
+		(initializer_declaration (statement_block)))))
 
 ======
 deinitializer
@@ -194,8 +194,8 @@ class C {
 ---
 
 (program
-	(class_declaration (identifier)
-		(deinitializer_declaration (statement_block))))
+	(class_declaration (identifier) (declaration_block
+		(deinitializer_declaration (statement_block)))))
 
 ======
 extension
@@ -208,8 +208,8 @@ extension A {
 ---
 
 (program
-	(extension_declaration (identifier)
-		(function_declaration (identifier) (statement_block))))
+	(extension_declaration (identifier) (declaration_block
+		(function_declaration (identifier) (statement_block)))))
 
 ======
 subscript
@@ -222,8 +222,8 @@ struct A {
 ---
 
 (program
-	(struct_declaration (identifier)
-		(subscript_declaration (type (identifier)) (type (identifier)) (statement_block))))
+	(struct_declaration (identifier) (declaration_block
+		(subscript_declaration (type (identifier)) (type (identifier)) (statement_block)))))
 
 ======
 operator
