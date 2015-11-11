@@ -707,7 +707,7 @@ module.exports = grammar
 
 		wildcard_expression: -> '_'
 
-		function_call_expression: -> seq(
+		function_call_expression: -> choice(
 			seq(
 				choice(
 					@identifier,
