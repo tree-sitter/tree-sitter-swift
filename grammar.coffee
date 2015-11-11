@@ -29,7 +29,6 @@ module.exports = grammar
 			[ @_expression, @type ], # { (…) in … } vs. { (…) }
 			[ @parenthesized_expression, @tuple_type ], # { () in } vs. { () }
 			[ @function_call_expression, @_pattern ],
-			[ @function_call_expression, @_pattern_initializer ],
 			[ @function_call_expression, @_condition ],
 		]
 
@@ -282,10 +281,8 @@ module.exports = grammar
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
 			'let',
-			commaSep1(@_pattern_initializer)
+			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression))))
 		)
-
-		_pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))
 
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
 			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))),
