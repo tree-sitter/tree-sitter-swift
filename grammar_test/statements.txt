@@ -63,6 +63,19 @@ if x {} else if y {}
 	(if_statement (identifier) (statement_block) (if_statement (identifier) (statement_block))))
 
 ======
+trailing closure in condition
+======
+
+// Swift rejects this, but we don’t.
+if foo() {} {
+
+}
+
+---
+
+(program (comment) (if_statement (function_call_expression (identifier) (parenthesized_expression) (closure_expression)) (statement_block)))
+
+======
 guard Statements
 ======
 
