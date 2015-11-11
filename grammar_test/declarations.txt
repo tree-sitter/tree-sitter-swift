@@ -28,7 +28,7 @@ let foo, bar = foo, quux: Int = baz
 	(constant_declaration (identifier))
 	(constant_declaration (assignment_expression (identifier) (identifier)))
 	(constant_declaration (identifier) (assignment_expression (identifier) (identifier)))
-	(constant_declaration (identifier) (assignment_expression (identifier) (identifier)) (identifier) (type (identifier)) (identifier)))
+	(constant_declaration (identifier) (assignment_expression (identifier) (identifier)) (pattern_initializer (identifier) (type (identifier)) (identifier))))
 
 ======
 variable
@@ -51,7 +51,7 @@ var foo, bar = foo, quux: Int = baz
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)))
-	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)) (identifier) (type (identifier)) (identifier)))
+	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)) (pattern_initializer (identifier) (type (identifier)) (identifier))))
 
 ======
 variable assignment with trailing closure
@@ -62,7 +62,7 @@ var a: Int = b {}
 ---
 
 (program
-	(variable_declaration (identifier) (type (identifier)) (function_call_expression (identifier) (closure_expression))))
+	(variable_declaration (pattern_initializer (identifier) (type (identifier)) (function_call_expression (identifier) (closure_expression)))))
 
 ======
 typealias
