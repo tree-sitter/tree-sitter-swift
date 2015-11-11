@@ -264,6 +264,20 @@ x;y;z
 (program (identifier) (identifier) (identifier))
 
 ======
+multiple statements on a line without final terminator
+======
+
+if true {x;y;z}
+
+---
+
+(program
+	(if_statement (boolean_literal) (statement_block
+		(identifier)
+		(identifier)
+		(identifier))))
+
+======
 multiple statements on multiple lines
 ======
 
