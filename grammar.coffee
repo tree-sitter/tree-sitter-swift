@@ -736,11 +736,16 @@ module.exports = grammar
 
 		tuple_type: -> seq(
 			'(',
-			commaSep(seq(
-				# optional(@_attributes),
-				optional('inout'),
-				choice(@type, seq(@identifier, @_type_annotation))
-			)),
+			optional(@_tuple_type_items),
 			optional('...')
 			')'
+		)
+
+		type_pair: -> seq(@identifier, @_type_annotation)
+
+		_tuple_type_items: -> seq(
+			# optional(@_attributes),
+			optional('inout'),
+			choice(@type, @type_pair),
+			optional(seq(',', @_tuple_type_items))
 		)
