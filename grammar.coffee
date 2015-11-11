@@ -27,7 +27,7 @@ module.exports = grammar
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			# [ @array_literal, @capture_list ], # { […] in … } vs. { […] }
-			# [ @_array_literal_items, @_capture_list_elements ],
+			[ @_array_literal_items, @_capture_list_elements ],
 		]
 
 	ubiquitous: -> [
