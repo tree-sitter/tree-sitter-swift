@@ -79,8 +79,12 @@ trailing closure
 
 foo {}
 foo() {}
-foo { return }
-foo() { return }
+foo {
+	return
+}
+foo() {
+	return
+}
 
 ---
 
