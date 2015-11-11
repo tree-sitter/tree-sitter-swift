@@ -38,12 +38,12 @@ module.exports = grammar
 	]
 
 	rules:
-		program: -> repeat(@_statement)
+		program: -> optional(@_statements)
 
 
 		# Statements
 
-		_statement: -> seq(choice(
+		_statement: -> choice(
 			@_expression,
 			@_declaration,
 			@_loop_statement,
@@ -60,7 +60,15 @@ module.exports = grammar
 			@do_statement,
 			@build_configuration_statement,
 			@line_control_statement
-		), choice(';', /\n/))
+		)
+
+		_statements: -> choice(
+			seq(@_statement, optional(choice(';', /\n/))),
+			seq(
+				@_statement,
+				seq(choice(';', /\n/), @_statements)
+			)
+		)
 
 		_loop_statement: -> choice(
 			@for_statement,
@@ -181,11 +189,11 @@ module.exports = grammar
 				),
 				seq('default', ':')
 			),
-			repeat(@_statement))
+			optional(@_statements))
 
 		statement_block: -> prec(PREC.STATEMENT_BLOCK, seq(
 			'{',
-			repeat(@_statement),
+			optional(@_statements),
 			'}'
 		))
 
@@ -217,9 +225,9 @@ module.exports = grammar
 		)
 
 		build_configuration_statement: -> seq(
-			'#if', @_build_configuration, repeat(@_statement),
-			repeat(seq('#elseif', @_build_configuration, repeat(@_statement))),
-			optional(seq('#else', repeat(@_statement))),
+			'#if', @_build_configuration, optional(@_statements),
+			repeat(seq('#elseif', @_build_configuration, optional(@_statements))),
+			optional(seq('#else', optional(@_statements))),
 			'#endif'
 		)
 
@@ -635,7 +643,7 @@ module.exports = grammar
 		closure_expression: -> seq(
 			'{',
 			optional(@closure_signature),
-			repeat(@_statement),
+			optional(@_statements),
 			'}'
 		)
 
