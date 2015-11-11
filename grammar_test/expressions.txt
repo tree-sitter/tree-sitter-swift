@@ -77,23 +77,9 @@ foo(x, y: z)()
 trailing closure
 ======
 
-foo {}
-foo() {}
-foo {
-	return
-}
-foo() {
-	return
-}
-foo { return }
-foo() { return }
+foo(x) {}
 
 ---
 
 (program
-	(function_call_expression (identifier) (closure_expression))
-	(function_call_expression (identifier) (parenthesized_expression) (closure_expression))
-	(function_call_expression (identifier) (closure_expression (return_statement)))
-	(function_call_expression (identifier) (parenthesized_expression) (closure_expression (return_statement)))
-	(function_call_expression (identifier) (closure_expression (return_statement)))
-	(function_call_expression (identifier) (parenthesized_expression) (closure_expression (return_statement))))
+	(function_call_expression (identifier) (parenthesized_expression (identifier)) (closure_expression)))
