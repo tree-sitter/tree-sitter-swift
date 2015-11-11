@@ -17,6 +17,7 @@ PREC =
 	INFIX: 1500
 	POSTFIX: 1000
 	PREFIX: 500
+	CONDITION: 2000
 
 module.exports = grammar
 	name: "swift"
@@ -31,7 +32,6 @@ module.exports = grammar
 			[ @function_call_expression, @_pattern ],
 			[ @function_call_expression, @_pattern_initializer ],
 			[ @function_call_expression, @_condition ],
-			[ @function_call_expression, @case_condition ],
 		]
 
 	ubiquitous: -> [
@@ -133,13 +133,13 @@ module.exports = grammar
 			')'
 		)
 
-		case_condition: -> seq(
+		case_condition: -> prec(PREC.CONDITION, seq(
 			'case',
 			@_pattern,
 			'=',
 			@_expression
 			# optional(@_where_clause)
-		)
+		))
 
 		repeat_while_statement: -> seq(
 			'repeat',
@@ -184,11 +184,11 @@ module.exports = grammar
 			),
 			repeat(@_statement))
 
-		statement_block: -> seq(
+		statement_block: -> prec(PREC.STATEMENT_BLOCK, seq(
 			'{',
 			repeat(@_statement),
 			'}'
-		)
+		))
 
 		labeled_statement: -> seq(
 			@identifier,
