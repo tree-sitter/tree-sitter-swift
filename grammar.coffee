@@ -552,6 +552,7 @@ module.exports = grammar
 			@cast_expression,
 			@binary_expression,
 			@try_expression,
+			seq('&', @identifier),
 			@_prefix_expression
 		)
 
@@ -560,12 +561,9 @@ module.exports = grammar
 			@_expression
 		))
 
-		_prefix_expression: -> choice(
-			seq(
-				optional(@operator),
-				@_postfix_expression
-			),
-			seq('&', @identifier)
+		_prefix_expression: -> seq(
+			optional(@operator),
+			@_postfix_expression
 		)
 
 		binary_expression: -> prec.right(seq(@_expression, @operator, @_prefix_expression))
