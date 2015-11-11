@@ -542,7 +542,7 @@ module.exports = grammar
 			@_expression
 		)
 
-		value_binding_pattern: -> seq(choice('var', 'let'), @_pattern)
+		value_binding_pattern: -> seq(choice('var', 'let'), @_expression)
 
 		is_pattern: -> seq('is', @type)
 
