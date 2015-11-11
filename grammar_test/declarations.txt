@@ -82,16 +82,16 @@ func foo(x: Int, y: Int)(x: Int, y: Int) {}
 ---
 
 (program
-	(function_declaration (identifier))
-	(function_declaration (operator))
-	(function_declaration (identifier) (type (identifier)))
-	(function_declaration (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)))
-	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier))))
+	(function_declaration (identifier) (statement_block))
+	(function_declaration (operator) (statement_block))
+	(function_declaration (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)) (statement_block))
+	(function_declaration (identifier) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier)) (identifier) (type (identifier)) (statement_block)))
 
 ======
 enum
@@ -181,7 +181,7 @@ struct S {
 
 (program
 	(struct_declaration (identifier)
-		(initializer_declaration)))
+		(initializer_declaration (statement_block))))
 
 ======
 deinitializer
@@ -195,7 +195,7 @@ class C {
 
 (program
 	(class_declaration (identifier)
-		(deinitializer_declaration)))
+		(deinitializer_declaration (statement_block))))
 
 ======
 extension
@@ -209,7 +209,7 @@ extension A {
 
 (program
 	(extension_declaration (identifier)
-		(function_declaration (identifier))))
+		(function_declaration (identifier) (statement_block))))
 
 ======
 subscript
@@ -223,7 +223,7 @@ struct A {
 
 (program
 	(struct_declaration (identifier)
-		(subscript_declaration (type (identifier)) (type (identifier)))))
+		(subscript_declaration (type (identifier)) (type (identifier)) (statement_block))))
 
 ======
 operator
