@@ -29,6 +29,7 @@ module.exports = grammar
 			[ @_expression, @type ], # { (…) in … } vs. { (…) }
 			[ @parenthesized_expression, @tuple_type ], # { () in } vs. { () }
 			[ @function_call_expression, @_pattern ],
+			[ @function_call_expression, @pattern_initializer ],
 			[ @function_call_expression, @_condition ],
 		]
 
@@ -284,16 +285,25 @@ module.exports = grammar
 			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression))))
 		)
 
+		pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), '=', @_expression)
+
 		variable_declaration: -> seq(@_variable_declaration_head, choice(
-			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))),
-			seq(@_pattern, optional(@_type_annotation), choice(
-				seq(optional(seq('=', @_expression)), optional(choice(
+			commaSep1(choice(
+				seq(@_pattern, optional(@_type_annotation)),
+				@pattern_initializer
+			)),
+			seq(
+				choice(
+					seq(@_pattern, optional(@_type_annotation)),
+					@pattern_initializer
+				),
+				choice(
 					# @_getter_setter_block,
 					@_getter_setter_keyword_block,
 					# seq(optional(@_initializer), @_willSet_didSet_block)
-				))),
-				@statement_block
-			)),
+				)
+			),
+			seq(@_pattern, optional(@_type_annotation), @statement_block)
 			# seq(@identifier, @_initializer, @_willSet_didSet_block),
 		))
 
