@@ -287,16 +287,18 @@ module.exports = grammar
 
 		_pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))
 
-		variable_declaration: -> seq(@_variable_declaration_head,
-			commaSep1(@_pattern_initializer),
-			optional(choice(
-				@statement_block,
-				# @_getter_setter_block,
-				@_getter_setter_keyword_block,
-				# seq(optional(@_initializer), @_willSet_didSet_block)
+		variable_declaration: -> seq(@_variable_declaration_head, choice(
+			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression)))),
+			seq(@_pattern, optional(@_type_annotation), choice(
+				seq(optional(seq('=', @_expression)), optional(choice(
+					# @_getter_setter_block,
+					@_getter_setter_keyword_block,
+					# seq(optional(@_initializer), @_willSet_didSet_block)
+				))),
+				@statement_block
 			)),
 			# seq(@identifier, @_initializer, @_willSet_didSet_block),
-		)
+		))
 
 		_variable_declaration_head: -> seq(
 			# optional(@_attributes),
