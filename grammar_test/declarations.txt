@@ -58,10 +58,14 @@ variable assignment with trailing closure
 ======
 
 var a: Int = b {}
+var a: Int = b {} {
+	get
+}
 
 ---
 
 (program
+	(variable_declaration (pattern_initializer (identifier) (type (identifier)) (function_call_expression (identifier) (closure_expression))))
 	(variable_declaration (pattern_initializer (identifier) (type (identifier)) (function_call_expression (identifier) (closure_expression)))))
 
 ======
