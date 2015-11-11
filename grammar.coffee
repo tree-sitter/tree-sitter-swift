@@ -27,6 +27,8 @@ module.exports = grammar
 		[
 			[ @_variable_declaration_head, @value_binding_pattern ],
 			[ @_array_literal_items, @_capture_list_elements ], # { […] in … } vs. { […] }
+			[ @_expression, @type ], # { (…) in … } vs. { (…) }
+			[ @parenthesized_expression, @tuple_type ], # { () in } vs. { () }
 		]
 
 	ubiquitous: -> [
@@ -569,7 +571,7 @@ module.exports = grammar
 			@function_literal,
 			@self_expression,
 			@super_expression,
-			# @closure_expression,
+			@closure_expression,
 			@parenthesized_expression,
 			@member_expression,
 			@wildcard_expression,
