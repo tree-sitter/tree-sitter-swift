@@ -88,7 +88,7 @@ module.exports = grammar
 					_for_condition,
 					seq('(', _for_condition, ')')
 				),
-				@_code_block
+				@statement_block
 			)
 
 		for_in_statement: -> seq(
@@ -98,13 +98,13 @@ module.exports = grammar
 			'in',
 			@_expression,
 			# optional(@_where_clause),
-			@_code_block
+			@statement_block
 		)
 
 		while_statement: -> seq(
 			'while',
 			commaSep1(@_condition),
-			@_code_block
+			@statement_block
 		)
 
 		_condition: -> choice(
@@ -138,7 +138,7 @@ module.exports = grammar
 
 		repeat_while_statement: -> seq(
 			'repeat',
-			@_code_block,
+			@statement_block,
 			'while',
 			@_expression
 		)
@@ -146,15 +146,15 @@ module.exports = grammar
 		if_statement: -> seq(
 			'if',
 			commaSep1(@_condition),
-			@_code_block,
-			optional(seq('else', choice(@_code_block, @if_statement)))
+			@statement_block,
+			optional(seq('else', choice(@statement_block, @if_statement)))
 		)
 
 		guard_statement: -> seq(
 			'guard',
 			commaSep1(@_condition),
 			'else',
-			@_code_block
+			@statement_block
 		)
 
 		switch_statement: -> seq(
@@ -179,7 +179,7 @@ module.exports = grammar
 			),
 			repeat(@_statement))
 
-		_code_block: -> seq(
+		statement_block: -> seq(
 			'{',
 			repeat(@_statement),
 			'}'
@@ -201,15 +201,15 @@ module.exports = grammar
 
 		throw_statement: -> seq('throw', optional(@_expression))
 
-		defer_statement: -> seq('defer', @_code_block)
+		defer_statement: -> seq('defer', @statement_block)
 
-		do_statement: -> seq('do', @_code_block, repeat(@catch_clause))
+		do_statement: -> seq('do', @statement_block, repeat(@catch_clause))
 
 		catch_clause: -> seq(
 			'catch',
 			optional(@_pattern),
 			# optional(@_where_clause),
-			@_code_block
+			@statement_block
 		)
 
 		build_configuration_statement: -> seq(
@@ -277,7 +277,7 @@ module.exports = grammar
 		variable_declaration: -> seq(@_variable_declaration_head,
 			commaSep1(@_pattern_initializer),
 			optional(choice(
-				@_code_block,
+				@statement_block,
 				# @_getter_setter_block,
 				@_getter_setter_keyword_block,
 				# seq(optional(@_initializer), @_willSet_didSet_block)
@@ -333,7 +333,7 @@ module.exports = grammar
 			@_function_head,
 			# optional(@_generic_parameter_clause),
 			@_function_signature,
-			optional(@_code_block)
+			optional(@statement_block)
 		)
 
 		_function_head: -> seq(
@@ -467,7 +467,7 @@ module.exports = grammar
 			# optional(@_generic_parameter_clause),
 			@_parameter_clause,
 			optional(choice('throws', 'rethrows')),
-			@_code_block
+			@statement_block
 		)
 
 		_initializer_head: -> seq(
@@ -480,7 +480,7 @@ module.exports = grammar
 		deinitializer_declaration: -> seq(
 			# optional(@_attributes),
 			'deinit',
-			@_code_block
+			@statement_block
 		)
 
 		extension_declaration: -> seq(
@@ -497,7 +497,7 @@ module.exports = grammar
 			@_subscript_head,
 			@_subscript_result,
 			choice(
-				@_code_block,
+				@statement_block,
 				# @_getter_setter_block,
 				@_getter_setter_keyword_block
 			)
