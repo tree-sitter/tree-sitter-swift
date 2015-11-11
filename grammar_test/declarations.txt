@@ -54,6 +54,17 @@ var foo, bar = foo, quux: Int = baz
 	(variable_declaration (identifier) (assignment_expression (identifier) (identifier)) (identifier) (type (identifier)) (identifier)))
 
 ======
+variable assignment with trailing closure
+======
+
+var a: Int = b {}
+
+---
+
+(program
+	(variable_declaration (identifier) (type (identifier)) (function_call_expression (identifier) (closure_expression))))
+
+======
 typealias
 ======
 
