@@ -384,12 +384,7 @@ module.exports = grammar
 			@identifier,
 			# optional(@_generic_parameter_clause),
 			# optional(@_type_inheritance_clause),
-			'{',
-			repeat(choice(
-				@_declaration,
-				@case_declaration
-			))
-			'}'
+			@declaration_block
 		)
 
 		case_declaration: -> seq(
@@ -414,9 +409,7 @@ module.exports = grammar
 			@identifier,
 			# optional(@_generic_parameter_clause),
 			# optional(@_type_inheritance_clause),
-			'{',
-			repeat(@_declaration),
-			'}'
+			@declaration_block
 		)
 
 		class_declaration: -> seq(
@@ -426,9 +419,7 @@ module.exports = grammar
 			@identifier,
 			# optional(@_generic_parameter_clause),
 			# optional(@_type_inheritance_clause),
-			'{',
-			repeat(@_declaration),
-			'}'
+			@declaration_block
 		)
 
 		protocol_declaration: -> seq(
@@ -497,9 +488,7 @@ module.exports = grammar
 			'extension',
 			choice(@identifier, @member_expression),
 			# optional(@_type_inheritance_clause),
-			'{',
-			repeat(@_declaration),
-			'}'
+			@declaration_block
 		)
 
 		subscript_declaration: -> seq(
