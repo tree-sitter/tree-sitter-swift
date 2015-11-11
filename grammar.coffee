@@ -16,6 +16,7 @@ PREC =
 	CONTINUE_STATEMENT: 10
 	RETURN_STATEMENT: 10
 	KEYWORD: 10
+	INFIX: 1500
 	POSTFIX: 1000
 	PREFIX: 500
 
@@ -555,38 +556,7 @@ module.exports = grammar
 			@try_expression,
 			seq('&', @identifier),
 			@prefix_expression,
-			@_postfix_expression
-		)
-
-		try_expression: -> prec.right(seq(
-			choice('try', 'try?', 'try!'),
-			@_expression
-		))
-
-		prefix_expression: -> prec(PREC.PREFIX, seq(
-			@operator,
-			@_expression
-		))
-
-		binary_expression: -> prec.right(seq(@_expression, @operator, @_expression))
-
-		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
-			@_expression,
-			'=',
-			@_expression
-		))
-
-		ternary_conditional_expression: -> prec.right(PREC.TERNARY_CONDITIONAL, seq(
-			@_expression,
-			'?',
-			@_expression,
-			':',
-			@_expression
-		))
-
-		cast_expression: -> prec.right(PREC.CAST, seq(@_expression, choice('is', 'as', 'as?', 'as!'), @type))
-
-		_postfix_expression: -> prec(PREC.POSTFIX, seq(choice(
+			@postfix_expression,
 			@identifier,
 			# @numeric_literal,
 			# @string_literal,
@@ -606,7 +576,34 @@ module.exports = grammar
 			@wildcard_expression,
 			@function_call_expression,
 			@subscript_expression,
-		), optional(@operator)))
+		)
+
+		try_expression: -> prec.right(seq(
+			choice('try', 'try?', 'try!'),
+			@_expression
+		))
+
+		prefix_expression: -> prec(PREC.PREFIX, seq(@operator, @_expression))
+
+		binary_expression: -> prec.right(PREC.INFIX, seq(@_expression, @operator, @_expression))
+
+		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
+			@_expression,
+			'=',
+			@_expression
+		))
+
+		ternary_conditional_expression: -> prec.right(PREC.TERNARY_CONDITIONAL, seq(
+			@_expression,
+			'?',
+			@_expression,
+			':',
+			@_expression
+		))
+
+		cast_expression: -> prec.right(PREC.CAST, seq(@_expression, choice('is', 'as', 'as?', 'as!'), @type))
+
+		postfix_expression: -> prec(PREC.POSTFIX, seq(@_expression, @operator))
 
 		array_literal: -> seq('[', optional(@_array_literal_items), ']')
 
@@ -689,13 +686,13 @@ module.exports = grammar
 
 		wildcard_expression: -> '_'
 
-		function_call_expression: -> prec.left(seq(@_postfix_expression, choice(
+		function_call_expression: -> prec.left(seq(@_expression, choice(
 			@parenthesized_expression,
 			# seq(optional(@parenthesized_expression), @closure_expression)
 		)))
 
 		subscript_expression: -> seq(
-			@_postfix_expression,
+			@_expression,
 			'[',
 			optional(@_expression_list),
 			']'
