@@ -30,6 +30,7 @@ module.exports = grammar
 			[ @function_call_expression, @_pattern ],
 			[ @function_call_expression, @pattern_initializer ],
 			[ @function_call_expression, @_condition ],
+			[ @function_call_expression, @_expression ],
 		]
 
 	ubiquitous: -> [
@@ -706,10 +707,18 @@ module.exports = grammar
 
 		wildcard_expression: -> '_'
 
-		function_call_expression: -> prec.right(seq(@_expression, choice(
-			@parenthesized_expression,
-			seq(optional(@parenthesized_expression), @closure_expression)
-		)))
+		function_call_expression: -> prec.right(seq(
+			choice(
+				@identifier,
+				@member_expression,
+				@postfix_expression,
+				@parenthesized_expression,
+			),
+			choice(
+				@parenthesized_expression,
+				seq(optional(@parenthesized_expression), @closure_expression)
+			)
+		))
 
 		subscript_expression: -> seq(
 			@_expression,
