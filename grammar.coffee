@@ -707,7 +707,7 @@ module.exports = grammar
 
 		wildcard_expression: -> '_'
 
-		function_call_expression: -> prec.right(seq(
+		function_call_expression: -> seq(
 			seq(
 				choice(
 					@identifier,
@@ -719,7 +719,7 @@ module.exports = grammar
 				@closure_expression
 			),
 			seq(@_expression, @parenthesized_expression),
-		))
+		)
 
 		subscript_expression: -> seq(
 			@_expression,
