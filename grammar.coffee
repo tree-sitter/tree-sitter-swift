@@ -665,11 +665,13 @@ module.exports = grammar
 
 		parenthesized_expression: -> seq(
 			'(',
-			commaSep(choice(
-				@pair,
-				@_expression
-			)),
+			@_parenthesized_expression_items,
 			')'
+		)
+
+		_parenthesized_expression_items: -> seq(
+			choice(@pair, @_expression),
+			optional(seq(',', @_parenthesized_expression_items))
 		)
 
 		pair: -> seq(@identifier, ':', @_expression)
