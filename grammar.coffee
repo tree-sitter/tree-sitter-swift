@@ -367,6 +367,15 @@ module.exports = grammar
 			')'
 		)
 
+		declaration_block: -> seq(
+			'{',
+			repeat(choice(
+				@_declaration,
+				@case_declaration
+			))
+			'}'
+		)
+
 		enum_declaration: -> seq(
 			# optional(@_attributes),
 			# optional(@access_level_modifier),
