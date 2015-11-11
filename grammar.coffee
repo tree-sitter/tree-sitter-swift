@@ -17,6 +17,7 @@ PREC =
 	RETURN_STATEMENT: 10
 	KEYWORD: 10
 	POSTFIX: 1000
+	PREFIX: 500
 
 module.exports = grammar
 	name: "swift"
@@ -553,7 +554,8 @@ module.exports = grammar
 			@binary_expression,
 			@try_expression,
 			seq('&', @identifier),
-			@_prefix_expression
+			@prefix_expression,
+			@_postfix_expression
 		)
 
 		try_expression: -> prec.right(seq(
@@ -561,17 +563,17 @@ module.exports = grammar
 			@_expression
 		))
 
-		_prefix_expression: -> seq(
-			optional(@operator),
-			@_postfix_expression
-		)
+		prefix_expression: -> prec(PREC.PREFIX, seq(
+			@operator,
+			@_expression
+		))
 
-		binary_expression: -> prec.right(seq(@_expression, @operator, @_prefix_expression))
+		binary_expression: -> prec.right(seq(@_expression, @operator, @_expression))
 
 		assignment_expression: -> prec.right(PREC.ASSIGNMENT, seq(
 			@_expression,
 			'=',
-			@_prefix_expression
+			@_expression
 		))
 
 		ternary_conditional_expression: -> prec.right(PREC.TERNARY_CONDITIONAL, seq(
@@ -579,7 +581,7 @@ module.exports = grammar
 			'?',
 			@_expression,
 			':',
-			@_prefix_expression
+			@_expression
 		))
 
 		cast_expression: -> prec.right(PREC.CAST, seq(@_expression, choice('is', 'as', 'as?', 'as!'), @type))
