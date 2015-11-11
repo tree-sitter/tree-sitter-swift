@@ -282,7 +282,7 @@ module.exports = grammar
 			# optional(@_attributes),
 			# optional(@_declaration_modifiers),
 			'let',
-			commaSep1(seq(@_pattern, optional(@_type_annotation), optional(seq('=', @_expression))))
+			commaSep1(choice(seq(@_pattern, optional(@_type_annotation)), @pattern_initializer))
 		)
 
 		pattern_initializer: -> seq(@_pattern, optional(@_type_annotation), '=', @_expression)
