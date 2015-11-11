@@ -17,7 +17,7 @@ prefix operator
 ---
 
 (program
-	(operator) (identifier))
+	(prefix_expression (operator) (identifier)))
 
 ======
 implicit member
