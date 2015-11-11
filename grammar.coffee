@@ -27,6 +27,11 @@ module.exports = grammar
 			[ @_array_literal_items, @_capture_list_elements ], # { […] in … } vs. { […] }
 			[ @_expression, @type ], # { (…) in … } vs. { (…) }
 			[ @parenthesized_expression, @tuple_type ], # { () in } vs. { () }
+			[ @function_call_expression, @value_binding_pattern ],
+			[ @function_call_expression, @_pattern ],
+			[ @function_call_expression, @_pattern_initializer ],
+			[ @function_call_expression, @_condition ],
+			[ @function_call_expression, @case_condition ],
 		]
 
 	ubiquitous: -> [
@@ -687,7 +692,7 @@ module.exports = grammar
 
 		function_call_expression: -> prec.left(seq(@_expression, choice(
 			@parenthesized_expression,
-			# seq(optional(@parenthesized_expression), @closure_expression)
+			seq(optional(@parenthesized_expression), @closure_expression)
 		)))
 
 		subscript_expression: -> seq(
