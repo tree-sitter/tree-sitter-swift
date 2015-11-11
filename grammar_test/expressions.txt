@@ -57,6 +57,23 @@ x[y, z]
 	(subscript_expression (identifier) (identifier) (identifier)))
 
 ======
+function call
+======
+
+foo()
+foo(x)
+foo(x, y: z)
+foo(x, y: z)()
+
+---
+
+(program
+	(function_call_expression (identifier) (parenthesized_expression))
+	(function_call_expression (identifier) (parenthesized_expression (identifier)))
+	(function_call_expression (identifier) (parenthesized_expression (identifier) (pair (identifier) (identifier))))
+	(function_call_expression (function_call_expression (identifier) (parenthesized_expression (identifier) (pair (identifier) (identifier)))) (parenthesized_expression)))
+
+======
 trailing closure
 ======
 
