@@ -4,7 +4,7 @@
       "target_name": "ts_language_swift_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "<!(node -e \"require('tree-sitter-compiler/include_path')\")",
+        "src"
       ],
       "sources": [
         "src/parser.c",

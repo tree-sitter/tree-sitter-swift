@@ -1,28 +1,28 @@
-#include "tree_sitter/runtime.h"
+#include "tree_sitter/parser.h"
 #include <node.h>
 #include "nan.h"
 
 using namespace v8;
 
-extern "C" TSLanguage * ts_language_swift();
+extern "C" TSLanguage * tree_sitter_swift();
 
-namespace tree_sitter_swift {
+namespace {
 
 NAN_METHOD(New) {}
 
-void Init(Handle<Object> exports, Handle<Object> module) {
+void Init(Local<Object> exports, Local<Object> module) {
   Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(New);
   tpl->SetClassName(Nan::New("Language").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  Local<Function> constructor = tpl->GetFunction();
-  Local<Object> instance = constructor->NewInstance(0, NULL);
-  Nan::SetInternalFieldPointer(instance, 0, ts_language_swift());
+  Local<Function> constructor = Nan::GetFunction(tpl).ToLocalChecked();
+  Local<Object> instance = constructor->NewInstance(Nan::GetCurrentContext()).ToLocalChecked();
+  Nan::SetInternalFieldPointer(instance, 0, tree_sitter_swift());
 
-  instance->Set(Nan::New("name").ToLocalChecked(), Nan::New("swift").ToLocalChecked());
-  module->Set(Nan::New("exports").ToLocalChecked(), instance);
+  Nan::Set(instance, Nan::New("name").ToLocalChecked(), Nan::New("swift").ToLocalChecked());
+  Nan::Set(module, Nan::New("exports").ToLocalChecked(), instance);
 }
 
-NODE_MODULE(ts_language_swift_binding, Init)
+NODE_MODULE(tree_sitter_swift_binding, Init)
 
-}  // namespace tree_sitter_swift
+}  // namespace
