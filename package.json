@@ -22,6 +22,7 @@
     "nan": "^2.1.0"
   },
   "devDependencies": {
+    "coffeescript": "^2.4.1",
     "tree-sitter-cli": "^0.15.6"
   }
 }
