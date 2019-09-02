@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 before_script:
-  - "tree-sitter compile"
+  - "tree-sitter generate"
   - "npm install"
 node_js:
   - "0.12"
