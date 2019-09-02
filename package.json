@@ -12,7 +12,7 @@
     "url": "https://github.com/robrix/tree-sitter-swift.git"
   },
   "scripts": {
-    "prepublish": "tree-sitter generate",
+    "build": "coffee --compile grammar.coffee && tree-sitter generate && node-gyp build",
     "test": "tree-sitter test"
   },
   "author": "Rob Rix",
