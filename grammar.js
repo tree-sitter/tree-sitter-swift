@@ -23,9 +23,7 @@ module.exports = grammar({
     ],
   ],
 
-  ubiquitous: $ => [
-    /\s+/
-  ],
+  extras: $ => [/\s+/],
 
   rules: {
     program: $ => repeat($._statement),
