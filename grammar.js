@@ -25,7 +25,10 @@ module.exports = grammar({
 
   word: $ => $.identifier,
 
-  extras: $ => [/\s+/],
+  extras: $ => [
+    /\s+/,
+    $.line_comment,
+  ],
 
   rules: {
     program: $ => repeat($._statement),
@@ -443,6 +446,8 @@ module.exports = grammar({
     },
 
     static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
+
+    line_comment: $ => token(seq('//', /.*/))
   }
 });
 

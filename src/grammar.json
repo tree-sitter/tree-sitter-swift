@@ -1,5 +1,6 @@
 {
   "name": "swift",
+  "word": "identifier",
   "rules": {
     "program": {
       "type": "REPEAT",
@@ -3039,159 +3040,6 @@
         }
       ]
     },
-    "identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[A-Za-z_]"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "PATTERN",
-                          "value": "[A-Za-z_]"
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "[0-9]"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "`"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[A-Za-z_]"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "PATTERN",
-                          "value": "[A-Za-z_]"
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "[0-9]"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "STRING",
-                "value": "`"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "operator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "/"
-            },
-            {
-              "type": "STRING",
-              "value": "="
-            },
-            {
-              "type": "STRING",
-              "value": "-"
-            },
-            {
-              "type": "STRING",
-              "value": "+"
-            },
-            {
-              "type": "STRING",
-              "value": "!"
-            },
-            {
-              "type": "STRING",
-              "value": "*"
-            },
-            {
-              "type": "STRING",
-              "value": "%"
-            },
-            {
-              "type": "STRING",
-              "value": "<"
-            },
-            {
-              "type": "STRING",
-              "value": ">"
-            },
-            {
-              "type": "STRING",
-              "value": "&"
-            },
-            {
-              "type": "STRING",
-              "value": "|"
-            },
-            {
-              "type": "STRING",
-              "value": "^"
-            },
-            {
-              "type": "STRING",
-              "value": "~"
-            },
-            {
-              "type": "STRING",
-              "value": "?"
-            }
-          ]
-        }
-      }
-    },
-    "static_string_literal": {
-      "type": "PATTERN",
-      "value": "\"((\\\\([\\\\0tnr'\"]|u\\{[a-fA-F0-9]{1,8}\\}))|[^\"\\\\\\u000a\\u000d])*\""
-    },
     "type": {
       "type": "CHOICE",
       "members": [
@@ -3383,12 +3231,185 @@
           "value": ")"
         }
       ]
+    },
+    "identifier": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[A-Za-z_]"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "PATTERN",
+                          "value": "[A-Za-z_]"
+                        },
+                        {
+                          "type": "PATTERN",
+                          "value": "[0-9]"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "`"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[A-Za-z_]"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "PATTERN",
+                          "value": "[A-Za-z_]"
+                        },
+                        {
+                          "type": "PATTERN",
+                          "value": "[0-9]"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "operator": {
+      "type": "TOKEN",
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "/"
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "STRING",
+              "value": "+"
+            },
+            {
+              "type": "STRING",
+              "value": "!"
+            },
+            {
+              "type": "STRING",
+              "value": "*"
+            },
+            {
+              "type": "STRING",
+              "value": "%"
+            },
+            {
+              "type": "STRING",
+              "value": "<"
+            },
+            {
+              "type": "STRING",
+              "value": ">"
+            },
+            {
+              "type": "STRING",
+              "value": "&"
+            },
+            {
+              "type": "STRING",
+              "value": "|"
+            },
+            {
+              "type": "STRING",
+              "value": "^"
+            },
+            {
+              "type": "STRING",
+              "value": "~"
+            },
+            {
+              "type": "STRING",
+              "value": "?"
+            }
+          ]
+        }
+      }
+    },
+    "static_string_literal": {
+      "type": "PATTERN",
+      "value": "\"((\\\\([\\\\0tnr'\"]|u\\{[a-fA-F0-9]{1,8}\\}))|[^\"\\\\\\u000a\\u000d])*\""
+    },
+    "line_comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "//"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
     }
   },
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "\\s+"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "line_comment"
     }
   ],
   "conflicts": [

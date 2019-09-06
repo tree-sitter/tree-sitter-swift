@@ -3939,6 +3939,10 @@
     "named": false
   },
   {
+    "type": "...",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -3951,7 +3955,7 @@
     "named": true
   },
   {
-    "type": "...",
-    "named": false
+    "type": "line_comment",
+    "named": true
   }
 ]

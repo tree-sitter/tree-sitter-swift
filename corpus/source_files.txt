@@ -1,0 +1,17 @@
+==========================
+Line comments
+==========================
+
+// this is a comment
+var foo =
+  // another comment
+  bar
+
+---
+
+(program
+  (line_comment)
+  (variable_declaration
+    (identifier)
+    (line_comment)
+    (identifier)))
