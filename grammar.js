@@ -403,6 +403,26 @@ module.exports = grammar({
     boolean_literal: $ => choice('true', 'false'),
 
     //
+    // Types
+    //
+    type: $ => choice($._type_identifier, $.tuple_type),
+
+    _type_annotation: $ => seq(':', $.type),
+
+    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq($._type_name, optional(seq('.', $._type_identifier)))),
+
+    _type_name: $ => $.identifier,
+
+    tuple_type: $ => seq(
+      '(',
+      commaSep(
+        seq(optional('inout'), choice($.type, seq($.identifier, $._type_annotation)))
+      ),
+      optional('...'),
+      ')'
+    ),
+
+    //
     // Lexical Structure
     //
     identifier: $ => {
@@ -423,26 +443,6 @@ module.exports = grammar({
     },
 
     static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
-
-    //
-    // Types
-    //
-    type: $ => choice($._type_identifier, $.tuple_type),
-
-    _type_annotation: $ => seq(':', $.type),
-
-    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq($._type_name, optional(seq('.', $._type_identifier)))),
-
-    _type_name: $ => $.identifier,
-
-    tuple_type: $ => seq(
-      '(',
-      commaSep(
-        seq(optional('inout'), choice($.type, seq($.identifier, $._type_annotation)))
-      ),
-      optional('...'),
-      ')'
-    ),
   }
 });
 
