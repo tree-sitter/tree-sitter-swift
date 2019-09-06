@@ -1,9 +1,10 @@
 language: node_js
-sudo: false
-before_script:
-  - "tree-sitter generate"
-  - "npm install"
-node_js:
-  - "0.12"
+
+node_js: "10"
+
+branches:
+  only:
+    - master
+
 notifications:
   email: false
