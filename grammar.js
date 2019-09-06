@@ -23,6 +23,8 @@ module.exports = grammar({
     ],
   ],
 
+  word: $ => $.identifier,
+
   extras: $ => [/\s+/],
 
   rules: {
