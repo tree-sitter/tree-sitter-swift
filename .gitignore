@@ -3,4 +3,3 @@ build
 *.log
 yarn.lock
 package-lock.json
-grammar.js
