@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "ts_language_swift_binding",
+      "target_name": "tree_sitter_swift_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"
