@@ -10,8 +10,45 @@ var foo =
 ---
 
 (program
-  (line_comment)
+  (comment)
   (variable_declaration
     (identifier)
-    (line_comment)
+    (comment)
     (identifier)))
+
+==========================
+Documentation comments
+==========================
+
+/**
+  this is a documentation comment
+  with two lines.
+*/
+var foo =
+  // another comment
+  bar
+
+/// A single-line documentation comment
+let apple = pie
+
+/// A documentation comment
+/// with three
+/// lines
+func apply() { }
+
+---
+
+(program
+    (comment)
+    (variable_declaration (identifier)
+      (comment)
+      (identifier))
+
+    (comment)
+    (constant_declaration (identifier) (identifier))
+
+    (comment)
+    (comment)
+    (comment)
+    (function_declaration (identifier))
+)
