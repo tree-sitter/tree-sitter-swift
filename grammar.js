@@ -1,4 +1,5 @@
 const PREC = {
+  COMMENT: -1,
   CAST: 132,
   CONJUNCTIVE: 120,
   DISJUNCTIVE: 110,
@@ -7,7 +8,7 @@ const PREC = {
   OPTIONAL_BINDING_CONDITION: 10,
   BREAK_STATEMENT: 10,
   CONTINUE_STATEMENT: 10,
-  RETURN_STATEMENT: 10
+  RETURN_STATEMENT: 10,
 };
 
 module.exports = grammar({
@@ -27,7 +28,7 @@ module.exports = grammar({
 
   extras: $ => [
     /\s+/,
-    $.line_comment,
+    $.comment,
   ],
 
   rules: {
@@ -447,7 +448,14 @@ module.exports = grammar({
 
     static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
 
-    line_comment: $ => token(seq('//', /.*/))
+    comment: $ => token(prec(PREC.COMMENT, choice(
+      // Single-line comments (including documentation comments)
+      seq(/\/{2,3}[^/].*/),
+      // Multiple-line comments (including documentation comments).
+      seq(
+        /\/\*{1,}[^*]*\*+([^/*][^*]*\*+)*\//,
+      ),
+    ))),
   }
 });
 

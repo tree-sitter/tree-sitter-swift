@@ -3955,7 +3955,7 @@
     "named": true
   },
   {
-    "type": "line_comment",
+    "type": "comment",
     "named": true
   }
 ]
