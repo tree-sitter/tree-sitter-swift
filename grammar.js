@@ -1,3 +1,6 @@
+// Swift Lexical Structure
+// https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html
+
 const PREC = {
   COMMENT: -1,
   CAST: 132,
@@ -189,7 +192,7 @@ module.exports = grammar({
       )
     ),
 
-    constant_declaration: $ => seq('let', commaSep1($._pattern_initializer)),
+    constant_declaration: $ => seq(optional($.modifier), 'let', commaSep1($._pattern_initializer)),
 
     _pattern_initializer: $ => seq(
       $._pattern,
@@ -209,7 +212,7 @@ module.exports = grammar({
       )
     ),
 
-    _variable_declaration_head: $ => seq('var'),
+    _variable_declaration_head: $ => seq(optional($.modifier), 'var'),
 
     _variable_name: $ => $.identifier,
 
@@ -226,11 +229,11 @@ module.exports = grammar({
 
     typealias_declaration: $ => seq($._typealias_head, '=', $.type),
 
-    _typealias_head: $ => seq('typealias', $.identifier),
+    _typealias_head: $ => seq(optional($.modifier), 'typealias', $.identifier),
 
     function_declaration: $ => seq($._function_head, $._function_signature, optional($._code_block)),
 
-    _function_head: $ => seq('func', choice($.identifier, $.operator)),
+    _function_head: $ => seq(optional($.modifier), 'func', choice($.identifier, $.operator)),
 
     _function_signature: $ => seq(
       repeat1($._parameter_clause),
@@ -251,6 +254,7 @@ module.exports = grammar({
     ),
 
     enum_declaration: $ => seq(
+      repeat($.modifier),
       optional('indirect'),
       'enum',
       $.identifier,
@@ -268,11 +272,35 @@ module.exports = grammar({
       )
     ),
 
-    struct_declaration: $ => seq('struct', $.identifier, '{', repeat($._declaration), '}'),
+    modifier: $ => choice(
+      'public',
+      'private',
+      'fileprivate',
+      'open',
+      'internal',
+      'final'
+    ),
 
-    class_declaration: $ => seq('class', $.identifier, '{', repeat($._declaration), '}'),
+    struct_declaration: $ => seq(
+      repeat($.modifier),
+      'struct',
+      $.identifier,
+      '{',
+      repeat($._declaration),
+      '}'
+    ),
+
+    class_declaration: $ => seq(
+      repeat($.modifier),
+      'class',
+      $.identifier,
+      '{',
+      repeat($._declaration),
+      '}'
+    ),
 
     protocol_declaration: $ => seq(
+      repeat($.modifier),
       'protocol',
       $.identifier,
       '{',
@@ -321,6 +349,7 @@ module.exports = grammar({
     deinitializer_declaration: $ => seq('deinit', $._code_block),
 
     extension_declaration: $ => seq(
+      repeat($.modifier),
       'extension',
       $._type_identifier,
       '{',

@@ -1,0 +1,66 @@
+======
+Empty class
+======
+
+internal class A {}
+
+---
+
+(program
+	(class_declaration (modifier) (identifier)))
+
+======
+Class with an empty deinitializer
+======
+
+public final class C {
+	deinit {}
+}
+
+---
+
+(program
+	(class_declaration (modifier) (modifier) (identifier)
+		(deinitializer_declaration)))
+
+======
+Final class
+======
+
+public final class C { }
+
+---
+
+(program
+	(class_declaration (modifier) (modifier) (identifier))
+)
+
+======
+Open class
+======
+
+open class C { }
+
+---
+
+(program
+	(class_declaration (modifier) (identifier)))
+
+======
+Class with a private and fileprivate functions
+======
+
+public final class C {
+  var foo: Any = bar
+  let baz: Int
+
+  func biz() {}
+}
+
+---
+
+(program
+	(class_declaration (modifier) (modifier) (identifier)
+		(variable_declaration (identifier) (type (identifier)) (identifier))
+    (constant_declaration (identifier) (type (identifier)))
+    (function_declaration (identifier))))

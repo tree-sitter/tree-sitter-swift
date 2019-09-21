@@ -1,0 +1,40 @@
+======
+Empty protocol declaration
+======
+
+protocol A {}
+
+
+---
+
+(program
+	(protocol_declaration (identifier)))
+
+
+======
+Public protocol declaration
+======
+
+public protocol A {
+	var a: Int { get }
+	func f()
+	init()
+	init?()
+	init!()
+	subscript(_: ()) -> Int { get }
+	typealias A
+	typealias B = C
+}
+
+---
+
+(program
+	(protocol_declaration (modifier) (identifier)
+		(protocol_variable_declaration (identifier) (type (identifier)))
+		(protocol_method_declaration (identifier))
+		(protocol_initializer_declaration)
+		(protocol_initializer_declaration)
+		(protocol_initializer_declaration)
+		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))
+		(protocol_associated_type_declaration (identifier))
+		(protocol_associated_type_declaration (identifier) (type (identifier)))))
