@@ -5,13 +5,15 @@ import
 import Foo
 import Foo.Bar
 import typealias Foo.Bar.Quux
+import foo.bar
 
 ---
 
 (program
 	(import_declaration (identifier))
 	(import_declaration (identifier) (identifier))
-	(import_declaration (identifier) (identifier) (identifier)))
+	(import_declaration (identifier) (identifier) (identifier))
+	(import_declaration (identifier) (identifier)))
 
 ======
 constant
