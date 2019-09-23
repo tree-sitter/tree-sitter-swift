@@ -133,10 +133,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -350,10 +346,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -514,10 +506,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -817,10 +805,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -953,10 +937,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -1096,10 +1076,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -1359,7 +1335,7 @@
     }
   },
   {
-    "type": "for_in_statement",
+    "type": "for_statement",
     "named": true,
     "fields": {},
     "children": {
@@ -1416,10 +1392,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -1530,145 +1502,6 @@
     }
   },
   {
-    "type": "for_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "build_configuration_statement",
-          "named": true
-        },
-        {
-          "type": "class_declaration",
-          "named": true
-        },
-        {
-          "type": "constant_declaration",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "defer_statement",
-          "named": true
-        },
-        {
-          "type": "deinitializer_declaration",
-          "named": true
-        },
-        {
-          "type": "do_statement",
-          "named": true
-        },
-        {
-          "type": "enum_declaration",
-          "named": true
-        },
-        {
-          "type": "extension_declaration",
-          "named": true
-        },
-        {
-          "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "function_declaration",
-          "named": true
-        },
-        {
-          "type": "guard_statement",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "import_declaration",
-          "named": true
-        },
-        {
-          "type": "initializer_declaration",
-          "named": true
-        },
-        {
-          "type": "labeled_statement",
-          "named": true
-        },
-        {
-          "type": "line_control_statement",
-          "named": true
-        },
-        {
-          "type": "operator_declaration",
-          "named": true
-        },
-        {
-          "type": "protocol_declaration",
-          "named": true
-        },
-        {
-          "type": "repeat_while_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "struct_declaration",
-          "named": true
-        },
-        {
-          "type": "subscript_declaration",
-          "named": true
-        },
-        {
-          "type": "switch_statement",
-          "named": true
-        },
-        {
-          "type": "throw_statement",
-          "named": true
-        },
-        {
-          "type": "typealias_declaration",
-          "named": true
-        },
-        {
-          "type": "variable_declaration",
-          "named": true
-        },
-        {
-          "type": "while_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "function_declaration",
     "named": true,
     "fields": {},
@@ -1718,10 +1551,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -1880,10 +1709,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -2028,10 +1853,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -2193,10 +2014,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -2306,10 +2123,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "for_in_statement",
-          "named": true
-        },
         {
           "type": "for_statement",
           "named": true
@@ -2532,10 +2345,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -2824,10 +2633,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -3050,10 +2855,6 @@
         },
         {
           "type": "fallthrough_statement",
-          "named": true
-        },
-        {
-          "type": "for_in_statement",
           "named": true
         },
         {
@@ -3385,10 +3186,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -3560,10 +3357,6 @@
           "named": true
         },
         {
-          "type": "for_in_statement",
-          "named": true
-        },
-        {
           "type": "for_statement",
           "named": true
         },
@@ -3664,14 +3457,6 @@
     "named": false
   },
   {
-    "type": "(",
-    "named": false
-  },
-  {
-    "type": ")",
-    "named": false
-  },
-  {
     "type": "case",
     "named": false
   },
@@ -3689,6 +3474,10 @@
   },
   {
     "type": "#available",
+    "named": false
+  },
+  {
+    "type": "(",
     "named": false
   },
   {
@@ -3717,6 +3506,10 @@
   },
   {
     "type": "tvOS",
+    "named": false
+  },
+  {
+    "type": ")",
     "named": false
   },
   {

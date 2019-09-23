@@ -2,27 +2,14 @@
 for statement
 ======
 
-for (;;) {}
-for ;; {}
-
----
-
-(program
-	(for_statement)
-	(for_statement))
-
-======
-for in statement
-======
-
 for x in y {}
 for x: Int in y {}
 
 ---
 
 (program
-	(for_in_statement (identifier) (identifier))
-	(for_in_statement (identifier) (type (identifier)) (identifier)))
+	(for_statement (identifier) (identifier))
+	(for_statement (identifier) (type (identifier)) (identifier)))
 
 ======
 while statement
@@ -106,13 +93,13 @@ default:
 labeled statement
 ======
 
-label: for ;; {}
+label: for x in y {}
 label: if x {}
 
 ---
 
 (program
-	(labeled_statement (identifier) (for_statement))
+	(labeled_statement (identifier) (for_statement (identifier) (identifier)))
 	(labeled_statement (identifier) (if_statement (identifier))))
 
 ======

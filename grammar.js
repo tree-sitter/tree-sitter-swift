@@ -62,25 +62,10 @@ module.exports = grammar({
     ),
 
     _loop_statement: $ => choice(
-      $.for_statement, $.for_in_statement, $.while_statement, $.repeat_while_statement
+      $.for_statement, $.while_statement, $.repeat_while_statement
     ),
 
     for_statement: $ => seq(
-      'for',
-      choice($._for_condition, seq('(', $._for_condition, ')')), $._code_block
-    ),
-
-    _for_init: $ => choice($.variable_declaration, $._expression_list),
-
-    _for_condition: $ => seq(
-      optional($._for_init),
-      ';',
-      optional($._expression),
-      ';',
-      optional($._expression)
-    ),
-
-    for_in_statement: $ => seq(
       'for',
       optional('case'),
       seq($._pattern, optional($._type_annotation)),
