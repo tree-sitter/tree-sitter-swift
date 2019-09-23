@@ -668,6 +668,10 @@
           "named": true
         },
         {
+          "type": "modifier",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -716,6 +720,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -1245,6 +1253,10 @@
           "named": true
         },
         {
+          "type": "modifier",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -1313,6 +1325,10 @@
         },
         {
           "type": "initializer_declaration",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -1742,6 +1758,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -2329,6 +2349,11 @@
     }
   },
   {
+    "type": "modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "operator_declaration",
     "named": true,
     "fields": {},
@@ -2609,6 +2634,10 @@
           "named": true
         },
         {
+          "type": "modifier",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -2625,6 +2654,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -2682,6 +2715,10 @@
           "named": true
         },
         {
+          "type": "modifier",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
@@ -2721,6 +2758,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -2926,6 +2967,10 @@
         },
         {
           "type": "initializer_declaration",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -3226,6 +3271,10 @@
           "named": true
         },
         {
+          "type": "modifier",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -3377,6 +3426,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -3864,6 +3917,30 @@
   },
   {
     "type": "indirect",
+    "named": false
+  },
+  {
+    "type": "public",
+    "named": false
+  },
+  {
+    "type": "private",
+    "named": false
+  },
+  {
+    "type": "fileprivate",
+    "named": false
+  },
+  {
+    "type": "open",
+    "named": false
+  },
+  {
+    "type": "internal",
+    "named": false
+  },
+  {
+    "type": "final",
     "named": false
   },
   {

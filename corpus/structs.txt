@@ -1,0 +1,21 @@
+======
+Empty struct
+======
+
+struct A {}
+
+---
+
+(program
+	(struct_declaration (identifier)))
+
+======
+Public struct
+======
+
+public struct A {}
+
+---
+
+(program
+	(struct_declaration (modifier) (identifier)))

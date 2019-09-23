@@ -5,28 +5,30 @@ import
 import Foo
 import Foo.Bar
 import typealias Foo.Bar.Quux
+import foo.bar
 
 ---
 
 (program
 	(import_declaration (identifier))
 	(import_declaration (identifier) (identifier))
-	(import_declaration (identifier) (identifier) (identifier)))
+	(import_declaration (identifier) (identifier) (identifier))
+	(import_declaration (identifier) (identifier)))
 
 ======
 constant
 ======
 
-let foo
-let foo = bar
+private let foo
+public let foo = bar
 let foo, bar = foo
 let foo, bar = foo, quux: Int = baz
 
 ---
 
 (program
-	(constant_declaration (identifier))
-	(constant_declaration (identifier) (identifier))
+	(constant_declaration (modifier) (identifier))
+	(constant_declaration (modifier) (identifier) (identifier))
 	(constant_declaration (identifier) (identifier) (identifier))
 	(constant_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
 
@@ -34,41 +36,43 @@ let foo, bar = foo, quux: Int = baz
 variable
 ======
 
-var foo
+internal var foo
 var foo = bar
 var foo: Int { get }
 var foo: Int { get set }
 var foo: Int { set get }
 var foo, bar = foo
-var foo, bar = foo, quux: Int = baz
+public var foo, bar = foo, quux: Int = baz
 
 ---
 
 (program
-	(variable_declaration (identifier))
+	(variable_declaration (modifier) (identifier))
 	(variable_declaration (identifier) (identifier))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (type (identifier)))
 	(variable_declaration (identifier) (identifier) (identifier))
-	(variable_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
+	(variable_declaration (modifier) (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
 
 ======
 typealias
 ======
 
 typealias Foo = Int
+public typealias Bar = String
 
 ---
 
 (program
-	(typealias_declaration (identifier) (type (identifier))))
+	(typealias_declaration (identifier) (type (identifier)))
+  (typealias_declaration (modifier) (identifier) (type (identifier))))
 
 ======
 function
 ======
 
-func foo() {}
+public func foo() {}
 func > () {}
 func foo() -> Int {}
 func foo(_: Int) {}
@@ -82,7 +86,7 @@ func foo(x: Int, y: Int)(x: Int, y: Int) {}
 ---
 
 (program
-	(function_declaration (identifier))
+	(function_declaration (modifier) (identifier))
 	(function_declaration (operator))
 	(function_declaration (identifier) (type (identifier)))
 	(function_declaration (identifier) (type (identifier)))
@@ -97,11 +101,11 @@ func foo(x: Int, y: Int)(x: Int, y: Int) {}
 enum
 ======
 
-enum A {}
-enum A {
+public enum A {}
+internal enum A {
 	case A
 }
-enum A {
+private enum A {
 	case A(Int)
 }
 enum A {
@@ -111,63 +115,10 @@ enum A {
 ---
 
 (program
-	(enum_declaration (identifier))
-	(enum_declaration (identifier) (case_declaration (identifier)))
-	(enum_declaration (identifier) (case_declaration (identifier) (tuple_type (type (identifier)))))
+	(enum_declaration (modifier) (identifier))
+	(enum_declaration (modifier) (identifier) (case_declaration (identifier)))
+	(enum_declaration (modifier) (identifier) (case_declaration (identifier) (tuple_type (type (identifier)))))
 	(enum_declaration (identifier) (case_declaration (identifier) (static_string_literal))))
-
-======
-struct
-======
-
-struct A {}
-
----
-
-(program
-	(struct_declaration (identifier)))
-
-======
-class
-======
-
-class A {}
-
----
-
-(program
-	(class_declaration (identifier)))
-
-
-======
-protocol
-======
-
-protocol A {}
-protocol A {
-	var a: Int { get }
-	func f()
-	init()
-	init?()
-	init!()
-	subscript(_: ()) -> Int { get }
-	typealias A
-	typealias B = C
-}
-
----
-
-(program
-	(protocol_declaration (identifier))
-	(protocol_declaration (identifier)
-		(protocol_variable_declaration (identifier) (type (identifier)))
-		(protocol_method_declaration (identifier))
-		(protocol_initializer_declaration)
-		(protocol_initializer_declaration)
-		(protocol_initializer_declaration)
-		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))
-		(protocol_associated_type_declaration (identifier))
-		(protocol_associated_type_declaration (identifier) (type (identifier)))))
 
 ======
 initializer
@@ -184,31 +135,17 @@ struct S {
 		(initializer_declaration)))
 
 ======
-deinitializer
-======
-
-class C {
-	deinit {}
-}
-
----
-
-(program
-	(class_declaration (identifier)
-		(deinitializer_declaration)))
-
-======
 extension
 ======
 
-extension A {
+private extension A {
 	func f() {}
 }
 
 ---
 
 (program
-	(extension_declaration (identifier)
+	(extension_declaration (modifier) (identifier)
 		(function_declaration (identifier))))
 
 ======
