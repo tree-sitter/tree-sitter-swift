@@ -73,7 +73,7 @@ function
 ======
 
 public func foo() {}
-func > () {}
+func > (lhs: Int, rhs: Int) -> Bool {}
 func foo() -> Int {}
 func foo(_: Int) {}
 func foo(x: Int) {}
@@ -85,7 +85,7 @@ func foo(x: Int, y: Int) {}
 
 (program
 	(function_declaration (modifier) (identifier))
-	(function_declaration (operator))
+	(function_declaration (operator) (identifier) (type (identifier)) (identifier) (type (identifier)) (type (identifier)))
 	(function_declaration (identifier) (type (identifier)))
 	(function_declaration (identifier) (type (identifier)))
 	(function_declaration (identifier) (identifier) (type (identifier)))
