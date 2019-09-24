@@ -15,7 +15,7 @@ for x: Int in y {}
 while statement
 ======
 
-while #available(tvOS 1.0) {}
+while #available(iOS 13.0, *) {}
 while let x = y, z = y {}
 
 ---
