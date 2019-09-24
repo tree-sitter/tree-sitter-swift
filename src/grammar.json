@@ -1806,11 +1806,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_parameter_clause"
-          }
+          "type": "SYMBOL",
+          "name": "_parameter_clause"
         },
         {
           "type": "CHOICE",

@@ -221,7 +221,7 @@ module.exports = grammar({
     _function_head: $ => seq(optional($.modifier), 'func', choice($.identifier, $.operator)),
 
     _function_signature: $ => seq(
-      repeat1($._parameter_clause),
+      $._parameter_clause,
       optional(choice('throws', 'rethrows')),
       optional(seq('->', $.type))
     ),
