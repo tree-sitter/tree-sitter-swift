@@ -186,14 +186,106 @@ do {} catch let e {}
 	(do_statement (catch_clause))
 	(do_statement (catch_clause (value_binding_pattern (identifier)))))
 
+
 ======
-build configuration statement
+conditional compilation - `os` variants
 ======
 
-#if os(iOS)
+#if os(iOS) || os(macOS)
 #endif
+#if os(tvOS)
+#endif
+#if os(iOS) && os(Linux)
+#endif
+
+---
+
+(program
+	(build_configuration_statement)
+  (build_configuration_statement)
+  (build_configuration_statement))
+
+======
+conditional compilation - `arch` variants
+======
+
 #if arch(x86_64)
 #endif
+#if arch(arm) || arch(arm64)
+#endif
+#if arch(i386) && arch(x86_64)
+#endif
+
+---
+
+(program
+	(build_configuration_statement)
+  (build_configuration_statement)
+  (build_configuration_statement))
+
+======
+conditional compilation - `canImport`
+======
+
+#if canImport(UIKit)
+#elseif canImport(Foundation)
+#endif
+
+---
+
+(program
+	(build_configuration_statement (identifier) (identifier)))
+
+======
+conditional compilation - `targetEnvironment`
+======
+
+#if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
+#endif
+#if targetEnvironment(macCatalyst)
+#endif
+
+---
+
+(program
+	(build_configuration_statement)
+  (build_configuration_statement))
+
+======
+conditional compilation - `compiler` version
+======
+
+#if compiler(>=5)
+#endif
+#if compiler(<4)
+#endif
+
+---
+
+(program
+	(build_configuration_statement (semantic_version))
+  (build_configuration_statement (semantic_version)))
+
+======
+conditional compilation - `swift` version
+======
+
+
+#if swift(>=5)
+#endif
+#if compiler(<4.2)
+#endif
+
+---
+
+(program
+	(build_configuration_statement (semantic_version))
+  (build_configuration_statement (semantic_version)))
+
+======
+conditional compilation - Booleans and Identifiers
+======
+
 #if x
 #endif
 #if true
@@ -211,19 +303,20 @@ build configuration statement
 #elseif x
 #else
 #endif
+#if TREE_SITTER_DEBUG
+#endif
 
 ---
 
 (program
-	(build_configuration_statement)
-	(build_configuration_statement)
 	(build_configuration_statement (identifier))
 	(build_configuration_statement (boolean_literal))
 	(build_configuration_statement (boolean_literal))
 	(build_configuration_statement (boolean_literal))
 	(build_configuration_statement (boolean_literal) (boolean_literal))
 	(build_configuration_statement (boolean_literal) (boolean_literal))
-	(build_configuration_statement (boolean_literal) (boolean_literal) (identifier)))
+	(build_configuration_statement (boolean_literal) (boolean_literal) (identifier))
+  (build_configuration_statement (identifier)))
 
 ======
 line control statement

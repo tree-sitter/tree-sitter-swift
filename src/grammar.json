@@ -1131,7 +1131,7 @@
                 },
                 {
                   "type": "STRING",
-                  "value": "OSX"
+                  "value": "macOS"
                 },
                 {
                   "type": "STRING",
@@ -1140,6 +1140,10 @@
                 {
                   "type": "STRING",
                   "value": "tvOS"
+                },
+                {
+                  "type": "STRING",
+                  "value": "Linux"
                 }
               ]
             },
@@ -1180,6 +1184,100 @@
                   "value": "arm64"
                 }
               ]
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "canImport"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "targetEnvironment"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "simulator"
+                },
+                {
+                  "type": "STRING",
+                  "value": "macCatalyst"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "compiler"
+                },
+                {
+                  "type": "STRING",
+                  "value": "swift"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ">="
+                },
+                {
+                  "type": "STRING",
+                  "value": "<"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "semantic_version"
             },
             {
               "type": "STRING",
@@ -3384,6 +3482,14 @@
           ]
         }
       }
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "semantic_version": {
+      "type": "PATTERN",
+      "value": "(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)"
     },
     "static_string_literal": {
       "type": "PATTERN",

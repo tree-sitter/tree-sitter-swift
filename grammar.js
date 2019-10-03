@@ -136,8 +136,11 @@ module.exports = grammar({
     ),
 
     _build_configuration: $ => choice(
-      seq('os', '(', choice('iOS', 'OSX', 'watchOS', 'tvOS'), ')'),
+      seq('os', '(', choice('iOS', 'macOS', 'watchOS', 'tvOS', 'Linux'), ')'),
       seq('arch', '(', choice('i386', 'x86_64', 'arm', 'arm64'), ')'),
+      seq('canImport', '(', $.identifier, ')'),
+      seq('targetEnvironment', '(', choice('simulator', 'macCatalyst'), ')'),
+      seq(choice('compiler', 'swift'), '(', choice('>=', '<'), $.semantic_version, ')'),
       $.identifier,
       $.boolean_literal,
       seq('(', $._build_configuration, ')'),
@@ -459,6 +462,10 @@ module.exports = grammar({
       const _operator_head = choice('/', '=', '-', '+', '!', '*', '%', '<', '>', '&', '|', '^', '~', '?');
       return token(repeat1(_operator_head));
     },
+
+    number: $ => /\d+/,
+
+    semantic_version: $ => /(\d+\.)?(\d+\.)?(\*|\d+)/,
 
     static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
 

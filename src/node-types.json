@@ -185,6 +185,10 @@
           "named": true
         },
         {
+          "type": "semantic_version",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -3613,6 +3617,14 @@
     "named": false
   },
   {
+    "type": "macOS",
+    "named": false
+  },
+  {
+    "type": "Linux",
+    "named": false
+  },
+  {
     "type": "arch",
     "named": false
   },
@@ -3630,6 +3642,38 @@
   },
   {
     "type": "arm64",
+    "named": false
+  },
+  {
+    "type": "canImport",
+    "named": false
+  },
+  {
+    "type": "targetEnvironment",
+    "named": false
+  },
+  {
+    "type": "simulator",
+    "named": false
+  },
+  {
+    "type": "macCatalyst",
+    "named": false
+  },
+  {
+    "type": "compiler",
+    "named": false
+  },
+  {
+    "type": "swift",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "<",
     "named": false
   },
   {
@@ -3818,6 +3862,14 @@
   },
   {
     "type": "operator",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "semantic_version",
     "named": true
   },
   {
