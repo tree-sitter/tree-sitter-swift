@@ -77,6 +77,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "diagnostic_statement"
+            },
+            {
+              "type": "SYMBOL",
               "name": "line_control_statement"
             }
           ]
@@ -1394,6 +1398,36 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "diagnostic_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#error"
+            },
+            {
+              "type": "STRING",
+              "value": "#warning"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "static_string_literal"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
         }
       ]
     },

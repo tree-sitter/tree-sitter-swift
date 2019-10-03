@@ -57,6 +57,7 @@ module.exports = grammar({
         $.defer_statement,
         $.do_statement,
         $.build_configuration_statement,
+        $.diagnostic_statement,
         $.line_control_statement),
       choice(';', /\n/),
     ),
@@ -150,6 +151,10 @@ module.exports = grammar({
     ),
 
     line_control_statement: $ => seq('#line', optional(seq(/[0-9]+/, $.static_string_literal))),
+
+    diagnostic_statement: $ => seq(
+      choice('#error', '#warning'), '(', $.static_string_literal ,')'
+    ),
 
     //
     // Declarations

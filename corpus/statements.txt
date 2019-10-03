@@ -319,21 +319,6 @@ conditional compilation - Booleans and Identifiers
   (build_configuration_statement (identifier)))
 
 ======
-line control statement
-======
-
-#line
-#line 1 ""
-#line 100 "a file.swift"
-
----
-
-(program
-	(line_control_statement)
-	(line_control_statement (static_string_literal))
-	(line_control_statement (static_string_literal)))
-
-======
 multiple statements on a line
 ======
 

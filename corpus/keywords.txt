@@ -1,0 +1,27 @@
+======
+diagnostic statements - #error
+======
+
+#error("error message")
+#warning("warning message")
+
+---
+
+(program
+  (diagnostic_statement (static_string_literal))
+  (diagnostic_statement (static_string_literal)))
+
+======
+line control statement
+======
+
+#line
+#line 1 ""
+#line 100 "a file.swift"
+
+---
+
+(program
+	(line_control_statement)
+	(line_control_statement (static_string_literal))
+	(line_control_statement (static_string_literal)))

@@ -117,6 +117,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -330,6 +334,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -490,6 +498,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -793,6 +805,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -928,6 +944,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -1027,6 +1047,21 @@
     }
   },
   {
+    "type": "diagnostic_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "static_string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "do_statement",
     "named": true,
     "fields": {},
@@ -1064,6 +1099,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -1379,6 +1418,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -1542,6 +1585,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -1697,6 +1744,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -1841,6 +1892,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -1999,6 +2054,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -2336,6 +2395,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -2621,6 +2684,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -2843,6 +2910,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -3170,6 +3241,10 @@
           "named": true
         },
         {
+          "type": "diagnostic_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -3342,6 +3417,10 @@
         },
         {
           "type": "deinitializer_declaration",
+          "named": true
+        },
+        {
+          "type": "diagnostic_statement",
           "named": true
         },
         {
@@ -3690,6 +3769,14 @@
   },
   {
     "type": "#line",
+    "named": false
+  },
+  {
+    "type": "#error",
+    "named": false
+  },
+  {
+    "type": "#warning",
     "named": false
   },
   {
