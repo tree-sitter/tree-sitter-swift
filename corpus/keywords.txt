@@ -12,6 +12,23 @@ diagnostic statements - #error
   (diagnostic_statement (static_string_literal)))
 
 ======
+availability condition
+======
+
+if #available(iOS 13.0, *) {}
+if #available(iOS 13.0, macOS 10.15.1) {}
+if #available(iOS 13.0, macOS 10.15, watchOS 6.0.1, *) {}
+if #available(*) {}
+
+---
+
+(program
+  (if_statement (availability_condition))
+  (if_statement (availability_condition))
+  (if_statement (availability_condition))
+  (if_statement (availability_condition)))
+
+======
 line control statement
 ======
 

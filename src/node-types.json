@@ -3556,6 +3556,30 @@
     "named": false
   },
   {
+    "type": "iOS",
+    "named": false
+  },
+  {
+    "type": "iOSApplicationExtension",
+    "named": false
+  },
+  {
+    "type": "macOS",
+    "named": false
+  },
+  {
+    "type": "macOSApplicationExtension",
+    "named": false
+  },
+  {
+    "type": "watchOS",
+    "named": false
+  },
+  {
+    "type": "tvOS",
+    "named": false
+  },
+  {
     "type": "#available",
     "named": false
   },
@@ -3565,30 +3589,6 @@
   },
   {
     "type": "*",
-    "named": false
-  },
-  {
-    "type": "iOS",
-    "named": false
-  },
-  {
-    "type": "iOSApplicationExtension",
-    "named": false
-  },
-  {
-    "type": "OSX",
-    "named": false
-  },
-  {
-    "type": "OSXApplicationExtension",
-    "named": false
-  },
-  {
-    "type": "watchOS",
-    "named": false
-  },
-  {
-    "type": "tvOS",
     "named": false
   },
   {
@@ -3693,10 +3693,6 @@
   },
   {
     "type": "os",
-    "named": false
-  },
-  {
-    "type": "macOS",
     "named": false
   },
   {

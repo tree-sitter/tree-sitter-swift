@@ -308,6 +308,35 @@
         }
       ]
     },
+    "_availability_platforms": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "iOS"
+        },
+        {
+          "type": "STRING",
+          "value": "iOSApplicationExtension"
+        },
+        {
+          "type": "STRING",
+          "value": "macOS"
+        },
+        {
+          "type": "STRING",
+          "value": "macOSApplicationExtension"
+        },
+        {
+          "type": "STRING",
+          "value": "watchOS"
+        },
+        {
+          "type": "STRING",
+          "value": "tvOS"
+        }
+      ]
+    },
     "availability_condition": {
       "type": "SEQ",
       "members": [
@@ -333,33 +362,8 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "iOS"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "iOSApplicationExtension"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "OSX"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "OSXApplicationExtension"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "watchOS"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "tvOS"
-                        }
-                      ]
+                      "type": "SYMBOL",
+                      "name": "_availability_platforms"
                     },
                     {
                       "type": "TOKEN",
@@ -439,33 +443,8 @@
                         "type": "SEQ",
                         "members": [
                           {
-                            "type": "CHOICE",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "iOS"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "iOSApplicationExtension"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "OSX"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "OSXApplicationExtension"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "watchOS"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "tvOS"
-                              }
-                            ]
+                            "type": "SYMBOL",
+                            "name": "_availability_platforms"
                           },
                           {
                             "type": "TOKEN",

@@ -81,7 +81,20 @@ module.exports = grammar({
 
     _condition: $ => choice($.availability_condition, $.case_condition, $.optional_binding_condition),
 
-    availability_condition: $ => seq('#available', '(', commaSep1(choice('*', seq(choice('iOS', 'iOSApplicationExtension', 'OSX', 'OSXApplicationExtension', 'watchOS', 'tvOS'), token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/))))))))), ')'),
+    _availability_platforms: $ => choice('iOS', 'iOSApplicationExtension', 'macOS', 'macOSApplicationExtension', 'watchOS', 'tvOS'),
+
+    availability_condition: $ => seq(
+      '#available',
+      '(',
+      commaSep1(
+        choice(
+          '*',
+          seq($._availability_platforms,
+            token(seq(/[0-9]+/, optional(seq('.', /[0-9]+/, optional(seq('.', /[0-9]+/)))))))
+        )
+      ),
+      ')'
+      ),
 
     case_condition: $ => seq('case', $._pattern, '=', $._expression),
 
