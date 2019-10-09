@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "optional_pattern",
           "named": true
         },
@@ -173,6 +177,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -245,6 +253,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -395,6 +407,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -565,6 +581,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -731,6 +751,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "optional_pattern",
           "named": true
         },
@@ -858,6 +882,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -997,6 +1025,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -1155,6 +1187,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -1482,6 +1518,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -1645,6 +1685,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
@@ -1800,6 +1844,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -1948,6 +1996,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -2110,6 +2162,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -2277,6 +2333,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "optional_pattern",
           "named": true
         },
@@ -2332,6 +2392,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -2448,6 +2512,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -2572,6 +2640,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -2595,6 +2667,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator",
           "named": true
         },
@@ -2615,6 +2691,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -2740,6 +2820,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -2796,6 +2880,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         }
       ]
@@ -2969,6 +3057,10 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "operator_declaration",
           "named": true
         },
@@ -3034,6 +3126,10 @@
         {
           "type": "identifier",
           "named": true
+        },
+        {
+          "type": "number",
+          "named": true
         }
       ]
     }
@@ -3048,6 +3144,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         }
       ]
@@ -3075,6 +3175,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -3179,6 +3283,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -3306,6 +3414,10 @@
         },
         {
           "type": "modifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -3473,6 +3585,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -3936,6 +4052,14 @@
     "named": false
   },
   {
+    "type": "static_string_literal",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
     "type": "...",
     "named": false
   },
@@ -3948,15 +4072,7 @@
     "named": true
   },
   {
-    "type": "number",
-    "named": true
-  },
-  {
     "type": "semantic_version",
-    "named": true
-  },
-  {
-    "type": "static_string_literal",
     "named": true
   },
   {

@@ -435,7 +435,10 @@ module.exports = grammar({
     //
     // Expressions
     //
-    _expression: $ => $.identifier,
+    _expression: $ => choice(
+      $.identifier,
+      $.number,
+    ),
 
     _expression_list: $ => commaSep1($._expression),
 
@@ -446,7 +449,44 @@ module.exports = grammar({
 
     static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
 
-    number: $ => /\d+/,
+    number: $ => {
+      const decimal_digits = /\d(_?\d)*/
+      const signed_operators = optional(/[-\+]/)
+      const signed_integer = seq(signed_operators, decimal_digits)
+      const decimal_integer_literal = seq(
+        choice(
+          '0',
+          seq(
+            optional('0'), /[1-9]/,
+            optional(seq(optional('_'), decimal_digits))
+          )
+        )
+      )
+      const hex_literal = seq(
+        choice('0x', '0X'),
+        /[\da-fA-F](_?[\da-fA-F])*/
+      )
+
+      const exponent_part = seq(choice('e', 'E'), signed_integer)
+      const binary_literal = seq(choice('0b', '0B'), /[0-1](_?[0-1])*/)
+      const octal_literal = seq(choice('0o', '0O'), /[0-7](_?[0-7])*/)
+      const bigint_literal = seq(choice(hex_literal, binary_literal, octal_literal, decimal_digits), 'n')
+
+      const decimal_literal = choice(
+        seq(signed_operators, decimal_integer_literal, '.', optional(decimal_digits), optional(exponent_part)),
+        seq(signed_operators, '.', decimal_digits, optional(exponent_part)),
+        seq(signed_operators, decimal_integer_literal, exponent_part),
+        seq(signed_operators, decimal_digits),
+      )
+
+      return token(choice(
+        hex_literal,
+        decimal_literal,
+        binary_literal,
+        octal_literal,
+        bigint_literal
+      ))
+    },
 
     //
     // Types

@@ -1,0 +1,66 @@
+======
+Integer Literals
+======
+
+42
+4_2
+0600
+0_600
+170141183460469231731687303715884105727
+170_141183_460469_231731_687303_715884_105727
+-0.333
+-5_0_0
++6
++6_0
+6
+6_0
+
+---
+
+(program
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number))
+
+======
+Floating-point Literals
+======
+
+0.
+72.40
+072.40
+2.71828
+.25
+1_5.
++.25
+-1_5.
+0x1ABCDEFabcdef;
+0o7632157312;
+0b1010101001;
+1e+3;
+
+
+---
+
+(program
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number)
+  (number))
