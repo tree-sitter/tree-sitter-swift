@@ -439,7 +439,14 @@ module.exports = grammar({
 
     _expression_list: $ => commaSep1($._expression),
 
+    //
+    // Standard Library Types
+    //
     boolean_literal: $ => choice('true', 'false'),
+
+    static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
+
+    number: $ => /\d+/,
 
     //
     // Types
@@ -481,11 +488,8 @@ module.exports = grammar({
       return token(repeat1(_operator_head));
     },
 
-    number: $ => /\d+/,
-
     semantic_version: $ => /(\d+\.)?(\d+\.)?(\*|\d+)/,
 
-    static_string_literal: $ => /"((\\([\\0tnr'"]|u\{[a-fA-F0-9]{1,8}\}))|[^"\\\u000a\u000d])*"/,
 
     comment: $ => token(prec(PREC.COMMENT, choice(
       // Single-line comments (including documentation comments)
