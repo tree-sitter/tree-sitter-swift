@@ -64,3 +64,16 @@ Floating-point Literals
   (number)
   (number)
   (number))
+
+======
+Boolean Literals
+======
+
+true
+var foo = false
+
+---
+
+(program
+  (boolean)
+  (variable_declaration (identifier) (boolean)))

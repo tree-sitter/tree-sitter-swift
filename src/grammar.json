@@ -3123,6 +3123,15 @@
         {
           "type": "SYMBOL",
           "name": "number"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "boolean_literal"
+          },
+          "named": true,
+          "value": "boolean"
         }
       ]
     },
