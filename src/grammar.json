@@ -3132,6 +3132,10 @@
           },
           "named": true,
           "value": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nil"
         }
       ]
     },
@@ -3696,6 +3700,10 @@
           }
         ]
       }
+    },
+    "nil": {
+      "type": "STRING",
+      "value": "nil"
     },
     "type": {
       "type": "CHOICE",

@@ -28,6 +28,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -185,6 +189,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -265,6 +273,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -423,6 +435,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -601,6 +617,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -775,6 +795,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -910,6 +934,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -1057,6 +1085,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -1223,6 +1255,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -1558,6 +1594,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -1729,6 +1769,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -1892,6 +1936,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -2048,6 +2096,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -2218,6 +2270,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -2393,6 +2449,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -2456,6 +2516,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -2580,6 +2644,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -2712,6 +2780,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -2743,6 +2815,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -2771,6 +2847,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -2904,6 +2984,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -2968,6 +3052,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -3149,6 +3237,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -3224,6 +3316,10 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         }
@@ -3244,6 +3340,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -3279,6 +3379,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -3391,6 +3495,10 @@
         },
         {
           "type": "is_pattern",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -3526,6 +3634,10 @@
         },
         {
           "type": "modifier",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -3701,6 +3813,10 @@
         },
         {
           "type": "line_control_statement",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -4173,6 +4289,10 @@
   },
   {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "nil",
     "named": true
   },
   {

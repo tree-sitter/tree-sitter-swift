@@ -439,6 +439,7 @@ module.exports = grammar({
       $.identifier,
       $.number,
       alias($.boolean_literal, $.boolean),
+      $.nil,
     ),
 
     _expression_list: $ => commaSep1($._expression),
@@ -488,6 +489,8 @@ module.exports = grammar({
         bigint_literal
       ))
     },
+
+    nil: $ => 'nil',
 
     //
     // Types
