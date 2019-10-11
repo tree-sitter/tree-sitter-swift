@@ -785,65 +785,108 @@
   {
     "type": "constant_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "as_pattern",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "enum_case_pattern",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "is_pattern",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "optional_pattern",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "tuple_pattern",
+            "named": true
+          },
+          {
+            "type": "value_binding_pattern",
+            "named": true
+          },
+          {
+            "type": "wildcard_pattern",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "as_pattern",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "enum_case_pattern",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "is_pattern",
-          "named": true
-        },
-        {
           "type": "modifier",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "optional_pattern",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        },
-        {
-          "type": "value_binding_pattern",
-          "named": true
-        },
-        {
-          "type": "wildcard_pattern",
           "named": true
         }
       ]
@@ -3635,15 +3678,106 @@
   {
     "type": "variable_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "as_pattern",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "enum_case_pattern",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "is_pattern",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "optional_pattern",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "tuple_pattern",
+            "named": true
+          },
+          {
+            "type": "value_binding_pattern",
+            "named": true
+          },
+          {
+            "type": "wildcard_pattern",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "as_pattern",
-          "named": true
-        },
         {
           "type": "boolean",
           "named": true
@@ -3682,10 +3816,6 @@
         },
         {
           "type": "do_statement",
-          "named": true
-        },
-        {
-          "type": "enum_case_pattern",
           "named": true
         },
         {
@@ -3729,10 +3859,6 @@
           "named": true
         },
         {
-          "type": "is_pattern",
-          "named": true
-        },
-        {
           "type": "labeled_statement",
           "named": true
         },
@@ -3754,10 +3880,6 @@
         },
         {
           "type": "operator_declaration",
-          "named": true
-        },
-        {
-          "type": "optional_pattern",
           "named": true
         },
         {
@@ -3793,19 +3915,7 @@
           "named": true
         },
         {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        },
-        {
           "type": "typealias_declaration",
-          "named": true
-        },
-        {
-          "type": "value_binding_pattern",
           "named": true
         },
         {
@@ -3814,10 +3924,6 @@
         },
         {
           "type": "while_statement",
-          "named": true
-        },
-        {
-          "type": "wildcard_pattern",
           "named": true
         }
       ]

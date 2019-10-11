@@ -61,6 +61,11 @@ public final class C {
 
 (program
 	(class_declaration (modifier) (modifier) (identifier)
-		(variable_declaration (identifier) (type (identifier)) (identifier))
-    (constant_declaration (identifier) (type (identifier)))
-    (function_declaration (identifier))))
+  (variable_declaration
+    name: (identifier)
+    type: (type (identifier))
+    value: (identifier))
+  (constant_declaration
+    name: (identifier)
+    type: (type (identifier)))
+  (function_declaration (identifier))))

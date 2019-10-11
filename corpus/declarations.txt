@@ -27,10 +27,22 @@ let foo, bar = foo, quux: Int = baz
 ---
 
 (program
-	(constant_declaration (modifier) (identifier))
-	(constant_declaration (modifier) (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier))
-	(constant_declaration (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
+  (constant_declaration (modifier)
+    name: (identifier))
+  (constant_declaration (modifier)
+    name: (identifier)
+    value: (identifier))
+  (constant_declaration
+    name: (identifier)
+    name: (identifier)
+    value: (identifier))
+  (constant_declaration
+    name: (identifier)
+    name: (identifier)
+    value: (identifier)
+    name: (identifier)
+    type: (type (identifier))
+    value: (identifier)))
 
 ======
 variable
@@ -47,13 +59,31 @@ public var foo, bar = foo, quux: Int = baz
 ---
 
 (program
-	(variable_declaration (modifier) (identifier))
-	(variable_declaration (identifier) (identifier))
-	(variable_declaration (identifier) (type (identifier)))
-	(variable_declaration (identifier) (type (identifier)))
-	(variable_declaration (identifier) (type (identifier)))
-	(variable_declaration (identifier) (identifier) (identifier))
-	(variable_declaration (modifier) (identifier) (identifier) (identifier) (identifier) (type (identifier)) (identifier)))
+  (variable_declaration (modifier)
+    name: (identifier))
+  (variable_declaration
+    name: (identifier)
+    value: (identifier))
+  (variable_declaration
+    name: (identifier)
+    type: (type (identifier)))
+  (variable_declaration
+    name: (identifier)
+    type: (type (identifier)))
+  (variable_declaration
+    name: (identifier)
+    type: (type (identifier)))
+  (variable_declaration
+    name: (identifier)
+    name: (identifier)
+    value: (identifier))
+  (variable_declaration (modifier)
+    name: (identifier)
+    name: (identifier)
+    value: (identifier)
+    name: (identifier)
+    type: (type (identifier))
+    value: (identifier)))
 
 ======
 typealias

@@ -201,9 +201,9 @@ module.exports = grammar({
     constant_declaration: $ => seq(optional($.modifier), 'let', commaSep1($._pattern_initializer)),
 
     _pattern_initializer: $ => seq(
-      $._pattern,
-      optional($._type_annotation),
-      optional(seq('=', $._expression))
+      field('name', $._pattern),
+      optional(field('type', $._type_annotation)),
+      optional(seq('=', field('value', $._expression)))
     ),
 
     variable_declaration: $ => seq(
@@ -211,8 +211,8 @@ module.exports = grammar({
       choice(
         commaSep1($._pattern_initializer),
         seq(
-          $._variable_name,
-          $._type_annotation,
+          field('name', $._variable_name),
+          field('type', $._type_annotation),
           choice($._code_block, $._getter_setter_keyword_block)
         )
       )
