@@ -1,4 +1,15 @@
 ======
+String Literals
+======
+
+"Foo Bar Biz Buzz"
+
+---
+
+(program
+  (string))
+
+======
 Integer Literals
 ======
 

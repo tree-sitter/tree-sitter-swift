@@ -40,6 +40,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "tuple_pattern",
           "named": true
         },
@@ -217,6 +221,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -285,6 +293,10 @@
         },
         {
           "type": "optional_pattern",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -463,6 +475,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -645,6 +661,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -807,6 +827,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "tuple_pattern",
           "named": true
         },
@@ -961,6 +985,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -1109,6 +1137,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -1279,6 +1311,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -1622,6 +1658,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -1797,6 +1837,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -1964,6 +2008,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -2124,6 +2172,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -2297,6 +2349,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -2461,6 +2517,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "tuple_pattern",
           "named": true
         },
@@ -2528,6 +2588,10 @@
         },
         {
           "type": "optional_pattern",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -2671,6 +2735,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -2788,6 +2856,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -2827,6 +2899,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -2855,6 +2931,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -3008,6 +3088,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -3060,6 +3144,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -3261,6 +3349,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -3322,6 +3414,10 @@
         {
           "type": "number",
           "named": true
+        },
+        {
+          "type": "string",
+          "named": true
         }
       ]
     }
@@ -3348,6 +3444,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -3391,6 +3491,10 @@
         },
         {
           "type": "optional_pattern",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -3507,6 +3611,10 @@
         },
         {
           "type": "optional_pattern",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -3662,6 +3770,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -3841,6 +3953,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {

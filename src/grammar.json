@@ -3136,6 +3136,15 @@
         {
           "type": "SYMBOL",
           "name": "nil"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "static_string_literal"
+          },
+          "named": true,
+          "value": "string"
         }
       ]
     },

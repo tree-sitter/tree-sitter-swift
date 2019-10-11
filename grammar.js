@@ -440,6 +440,7 @@ module.exports = grammar({
       $.number,
       alias($.boolean_literal, $.boolean),
       $.nil,
+      alias($.static_string_literal, $.string),
     ),
 
     _expression_list: $ => commaSep1($._expression),
