@@ -31,7 +31,7 @@ public protocol A {
 (program
 	(protocol_declaration (modifier) (identifier)
 		(protocol_variable_declaration (identifier) (type (identifier)))
-		(protocol_method_declaration (identifier))
+		(protocol_method_declaration (identifier) (parameter_list))
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)

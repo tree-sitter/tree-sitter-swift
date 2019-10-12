@@ -40,15 +40,20 @@ func apply() { }
 
 (program
     (comment)
-    (variable_declaration (identifier)
+    (variable_declaration
+      name: (identifier)
       (comment)
-      (identifier))
+      value: (identifier))
 
     (comment)
-    (constant_declaration (identifier) (identifier))
+    (constant_declaration
+      name: (identifier)
+      value: (identifier))
 
     (comment)
     (comment)
     (comment)
-    (function_declaration (identifier))
+    (function_declaration
+      name: (identifier)
+      (parameter_list))
 )

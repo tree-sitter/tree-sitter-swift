@@ -237,26 +237,50 @@ module.exports = grammar({
 
     _typealias_head: $ => seq(optional($.modifier), 'typealias', $.identifier),
 
-    function_declaration: $ => seq($._function_head, $._function_signature, optional($._code_block)),
+    function_declaration: $ => seq(
+      $._function_head,
+      $._function_signature,
+      optional($._code_block)
+    ),
 
-    _function_head: $ => seq(optional($.modifier), 'func', choice($.identifier, $.operator)),
+    _function_head: $ => seq(
+      optional($.modifier),
+      'func',
+      field('name', choice($.identifier, $.operator))
+    ),
 
     _function_signature: $ => seq(
-      $._parameter_clause,
+      $.parameter_list,
       optional(choice('throws', 'rethrows')),
-      optional(seq('->', $.type))
+      optional($._function_return_statement)
     ),
+
+    parameter_list: $ => seq(
+      '(',
+      optional(seq(
+        commaSep1(
+          alias($._single_parameter, $.parameter_declaration),
+          optional(',')
+        ))),
+      ')'
+    ),
+
+    _function_return_statement: $ => seq('->', field('return', $.type)),
 
     _parameter_clause: $ => seq(
       '(',
-      commaSep(
-        seq(optional(choice('let', 'var', 'inout')),
-        optional(choice($.identifier, '_')),
-        choice($.identifier, '_'),
-        $._type_annotation,
-        optional(seq('=', $._expression)))
-      ),
+      optional(seq(
+        commaSep1($._single_parameter),
+        optional(',')
+      )),
       ')'
+    ),
+
+    _single_parameter: $ => seq(
+      optional(choice($.identifier, '_')),
+      optional($.identifier),
+      $._type_annotation,
+      optional(seq('=', $._expression))
     ),
 
     enum_declaration: $ => seq(

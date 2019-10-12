@@ -1754,7 +1754,32 @@
   {
     "type": "function_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -1860,11 +1885,11 @@
           "named": true
         },
         {
-          "type": "operator",
+          "type": "operator_declaration",
           "named": true
         },
         {
-          "type": "operator_declaration",
+          "type": "parameter_list",
           "named": true
         },
         {
@@ -1897,10 +1922,6 @@
         },
         {
           "type": "throw_statement",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         },
         {
@@ -2653,6 +2674,21 @@
     }
   },
   {
+    "type": "parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "precedence_clause",
     "named": true,
     "fields": {}
@@ -2912,41 +2948,42 @@
   {
     "type": "protocol_method_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "modifier",
           "named": true
         },
         {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "type",
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -4398,10 +4435,6 @@
     "named": false
   },
   {
-    "type": "inout",
-    "named": false
-  },
-  {
     "type": "_",
     "named": false
   },
@@ -4516,6 +4549,10 @@
   {
     "type": "nil",
     "named": true
+  },
+  {
+    "type": "inout",
+    "named": false
   },
   {
     "type": "...",

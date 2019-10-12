@@ -68,4 +68,7 @@ public final class C {
   (constant_declaration
     name: (identifier)
     type: (type (identifier)))
-  (function_declaration (identifier))))
+  (function_declaration
+    name: (identifier)
+    (parameter_list)))
+)
