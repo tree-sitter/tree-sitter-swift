@@ -265,7 +265,10 @@ module.exports = grammar({
       ')'
     ),
 
-    _function_return_statement: $ => seq('->', field('return', $.type)),
+    _function_return_statement: $ => seq(
+      '->',
+      field('return', seq($.type, optional(choice('!', '?'))))
+    ),
 
     _parameter_clause: $ => seq(
       '(',
@@ -280,6 +283,7 @@ module.exports = grammar({
       optional(choice($.identifier, '_')),
       optional($.identifier),
       $._type_annotation,
+      optional(choice('!', '?')),
       optional(seq('=', $._expression))
     ),
 

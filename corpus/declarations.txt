@@ -166,6 +166,34 @@ public func foo() throws -> Int {}
 )
 
 ======
+functions - optionals
+======
+
+public func foo() -> Int? {}
+public func foo(p1: String?, p2: Int) -> Int {}
+public func foo(p1: String!) -> Int! {}
+
+---
+
+(program
+  (function_declaration (modifier)
+    name: (identifier)
+    (parameter_list)
+    return: (type (identifier)))
+  (function_declaration (modifier)
+    name: (identifier)
+    (parameter_list
+      (parameter_declaration (identifier) (type (identifier)))
+      (parameter_declaration (identifier) (type (identifier))))
+    return: (type (identifier)))
+  (function_declaration (modifier)
+    name: (identifier)
+    (parameter_list
+      (parameter_declaration (identifier) (type (identifier))))
+    return: (type (identifier)))
+)
+
+======
 enum
 ======
 
