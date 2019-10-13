@@ -2494,7 +2494,11 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "protocol_associated_type_declaration"
+                "name": "protocol_typealias_declaration"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "associatedtype_declaration"
               }
             ]
           }
@@ -2590,7 +2594,7 @@
         }
       ]
     },
-    "protocol_associated_type_declaration": {
+    "protocol_typealias_declaration": {
       "type": "SEQ",
       "members": [
         {
@@ -2612,6 +2616,31 @@
                   "name": "type"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "associatedtype_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "associatedtype"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_type_annotation"
             },
             {
               "type": "BLANK"

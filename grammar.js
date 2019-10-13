@@ -344,7 +344,8 @@ module.exports = grammar({
           $.protocol_method_declaration,
           $.protocol_initializer_declaration,
           $.protocol_subscript_declaration,
-          $.protocol_associated_type_declaration)
+          $.protocol_typealias_declaration,
+          $.associatedtype_declaration)
         ),
       '}'
     ),
@@ -366,9 +367,15 @@ module.exports = grammar({
 
     protocol_subscript_declaration: $ => seq($._subscript_head, $._subscript_result, $._getter_setter_keyword_block),
 
-    protocol_associated_type_declaration: $ => seq(
+    protocol_typealias_declaration: $ => seq(
       $._typealias_head,
       optional(seq('=', $.type))
+    ),
+
+    associatedtype_declaration: $ => seq(
+      'associatedtype',
+      $.identifier,
+      optional($._type_annotation)
     ),
 
     initializer_declaration: $ => seq(

@@ -4,12 +4,10 @@ Empty protocol declaration
 
 protocol A {}
 
-
 ---
 
 (program
 	(protocol_declaration (identifier)))
-
 
 ======
 Public protocol declaration
@@ -22,8 +20,6 @@ public protocol A {
 	init?()
 	init!()
 	subscript(_: ()) -> Int { get }
-	typealias A
-	typealias B = C
 }
 
 ---
@@ -35,6 +31,38 @@ public protocol A {
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
-		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))
-		(protocol_associated_type_declaration (identifier))
-		(protocol_associated_type_declaration (identifier) (type (identifier)))))
+		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))))
+
+
+======
+Protocols with a typealias
+======
+
+protocol Sequence {
+  typealias A
+	typealias B = C
+}
+
+---
+
+(program
+	(protocol_declaration (identifier)
+    (protocol_typealias_declaration (identifier))
+		(protocol_typealias_declaration (identifier) (type (identifier)))))
+
+
+======
+Protocols with an associatedtype
+======
+
+protocol Sequence {
+  associatedtype Foo
+  associatedtype Bar: BizProtocol
+}
+
+---
+
+(program
+	(protocol_declaration (identifier)
+    (associatedtype_declaration (identifier))
+    (associatedtype_declaration (identifier) (type (identifier)))))

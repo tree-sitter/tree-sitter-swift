@@ -63,6 +63,25 @@
     }
   },
   {
+    "type": "associatedtype_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "associativity_clause",
     "named": true,
     "fields": {}
@@ -2857,29 +2876,6 @@
     }
   },
   {
-    "type": "protocol_associated_type_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "modifier",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "protocol_declaration",
     "named": true,
     "fields": {},
@@ -2888,15 +2884,15 @@
       "required": true,
       "types": [
         {
+          "type": "associatedtype_declaration",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "modifier",
-          "named": true
-        },
-        {
-          "type": "protocol_associated_type_declaration",
           "named": true
         },
         {
@@ -2909,6 +2905,10 @@
         },
         {
           "type": "protocol_subscript_declaration",
+          "named": true
+        },
+        {
+          "type": "protocol_typealias_declaration",
           "named": true
         },
         {
@@ -3031,6 +3031,29 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "protocol_typealias_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
@@ -4484,6 +4507,10 @@
   },
   {
     "type": "final",
+    "named": false
+  },
+  {
+    "type": "associatedtype",
     "named": false
   },
   {
