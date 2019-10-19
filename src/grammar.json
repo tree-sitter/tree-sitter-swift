@@ -2317,7 +2317,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "tuple_type"
+                  "name": "_tuple_type"
                 },
                 {
                   "type": "SEQ",
@@ -3772,14 +3772,111 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_type_identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_tuple_type"
+          },
+          "named": true,
+          "value": "tuple"
         },
         {
           "type": "SYMBOL",
-          "name": "tuple_type"
+          "name": "standard_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_type_identifier"
         }
       ]
+    },
+    "standard_type": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "Bool"
+          },
+          {
+            "type": "STRING",
+            "value": "Character"
+          },
+          {
+            "type": "STRING",
+            "value": "StaticString"
+          },
+          {
+            "type": "STRING",
+            "value": "String"
+          },
+          {
+            "type": "STRING",
+            "value": "Void"
+          },
+          {
+            "type": "STRING",
+            "value": "Double"
+          },
+          {
+            "type": "STRING",
+            "value": "Float"
+          },
+          {
+            "type": "STRING",
+            "value": "Int"
+          },
+          {
+            "type": "STRING",
+            "value": "UInt"
+          },
+          {
+            "type": "STRING",
+            "value": "UInt8"
+          },
+          {
+            "type": "STRING",
+            "value": "UInt16"
+          },
+          {
+            "type": "STRING",
+            "value": "UInt32"
+          },
+          {
+            "type": "STRING",
+            "value": "UInt64"
+          },
+          {
+            "type": "STRING",
+            "value": "Int8"
+          },
+          {
+            "type": "STRING",
+            "value": "Int16"
+          },
+          {
+            "type": "STRING",
+            "value": "Int32"
+          },
+          {
+            "type": "STRING",
+            "value": "Int64"
+          },
+          {
+            "type": "STRING",
+            "value": "Float32"
+          },
+          {
+            "type": "STRING",
+            "value": "Float64"
+          },
+          {
+            "type": "STRING",
+            "value": "Float80"
+          }
+        ]
+      }
     },
     "_type_annotation": {
       "type": "SEQ",
@@ -3832,7 +3929,7 @@
       "type": "SYMBOL",
       "name": "identifier"
     },
-    "tuple_type": {
+    "_tuple_type": {
       "type": "SEQ",
       "members": [
         {

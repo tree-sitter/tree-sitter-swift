@@ -301,7 +301,7 @@ module.exports = grammar({
       'case',
       $.identifier,
       optional(
-        choice($.tuple_type, seq('=', choice($.static_string_literal, $.boolean_literal)))
+        choice($._tuple_type, seq('=', choice($.static_string_literal, $.boolean_literal)))
       )
     ),
 
@@ -528,7 +528,26 @@ module.exports = grammar({
     //
     // Types
     //
-    type: $ => choice($._type_identifier, $.tuple_type),
+    type: $ => choice(
+      alias($._tuple_type, $.tuple),
+      $.standard_type,
+      $._type_identifier,
+    ),
+
+    standard_type: $ => token(choice(
+      'Bool',
+      'Character',
+      'StaticString',
+      'String',
+      'Void',
+      'Double',
+      'Float',
+      'Int',
+      'UInt',
+      ...[8, 16, 32, 64].map(n => `UInt${n}`),
+      ...[8, 16, 32, 64].map(n => `Int${n}`),
+      ...[32, 64, 80].map(n => `Float${n}`),
+    )),
 
     _type_annotation: $ => seq(':', $.type),
 
@@ -536,7 +555,7 @@ module.exports = grammar({
 
     _type_name: $ => $.identifier,
 
-    tuple_type: $ => seq(
+    _tuple_type: $ => seq(
       '(',
       commaSep(
         seq(optional('inout'), choice($.type, seq($.identifier, $._type_annotation)))

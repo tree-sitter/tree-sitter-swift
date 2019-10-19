@@ -9,7 +9,7 @@ for x: Int in y {}
 
 (program
 	(for_statement (identifier) (identifier))
-	(for_statement (identifier) (type (identifier)) (identifier)))
+	(for_statement (identifier) (type (standard_type)) (identifier)))
 
 ======
 while statement
@@ -85,8 +85,8 @@ default:
 		(case_statement (tuple_pattern))
 		(case_statement (enum_case_pattern (identifier)))
 		(case_statement (enum_case_pattern (identifier) (tuple_pattern (wildcard_pattern) (wildcard_pattern))))
-		(case_statement (is_pattern (type (identifier))))
-		(case_statement (as_pattern (wildcard_pattern) (type (identifier))))
+		(case_statement (is_pattern (type (standard_type))))
+		(case_statement (as_pattern (wildcard_pattern) (type (standard_type))))
 		(case_statement)))
 
 ======

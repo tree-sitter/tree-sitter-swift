@@ -41,7 +41,7 @@ let foo, bar = foo, quux: Int = baz
     name: (identifier)
     value: (identifier)
     name: (identifier)
-    type: (type (identifier))
+    type: (type (standard_type))
     value: (identifier)))
 
 ======
@@ -66,13 +66,13 @@ public var foo, bar = foo, quux: Int = baz
     value: (identifier))
   (variable_declaration
     name: (identifier)
-    type: (type (identifier)))
+    type: (type (standard_type)))
   (variable_declaration
     name: (identifier)
-    type: (type (identifier)))
+    type: (type (standard_type)))
   (variable_declaration
     name: (identifier)
-    type: (type (identifier)))
+    type: (type (standard_type)))
   (variable_declaration
     name: (identifier)
     name: (identifier)
@@ -82,7 +82,7 @@ public var foo, bar = foo, quux: Int = baz
     name: (identifier)
     value: (identifier)
     name: (identifier)
-    type: (type (identifier))
+    type: (type (standard_type))
     value: (identifier)))
 
 ======
@@ -95,8 +95,8 @@ public typealias Bar = String
 ---
 
 (program
-	(typealias_declaration (identifier) (type (identifier)))
-  (typealias_declaration (modifier) (identifier) (type (identifier))))
+	(typealias_declaration (identifier) (type (standard_type)))
+  (typealias_declaration (modifier) (identifier) (type (standard_type))))
 
 ======
 functions
@@ -120,34 +120,34 @@ func foo(x: Int, y: Int) {}
   (function_declaration
     name: (operator)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier)))
-      (parameter_declaration (identifier) (type (identifier))))
-    return: (type (identifier)))
+      (parameter_declaration (identifier) (type (standard_type)))
+      (parameter_declaration (identifier) (type (standard_type))))
+    return: (type (standard_type)))
   (function_declaration
     name: (identifier)
     (parameter_list)
-    return: (type (identifier)))
+    return: (type (standard_type)))
   (function_declaration
     name: (identifier)
     (parameter_list
-      (parameter_declaration (type (identifier)))))
+      (parameter_declaration (type (standard_type)))))
   (function_declaration
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier)))))
+      (parameter_declaration (identifier) (type (standard_type)))))
   (function_declaration
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier)))))
+      (parameter_declaration (identifier) (type (standard_type)))))
   (function_declaration
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (identifier) (type (identifier)))))
+      (parameter_declaration (identifier) (identifier) (type (standard_type)))))
   (function_declaration
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier)))
-      (parameter_declaration (identifier) (type (identifier)))))
+      (parameter_declaration (identifier) (type (standard_type)))
+      (parameter_declaration (identifier) (type (standard_type)))))
 )
 
 ======
@@ -162,7 +162,7 @@ public func foo() throws -> Int {}
   (function_declaration (modifier)
     name: (identifier)
     (parameter_list)
-    return: (type (identifier)))
+    return: (type (standard_type)))
 )
 
 ======
@@ -170,7 +170,7 @@ functions - optionals
 ======
 
 public func foo() -> Int? {}
-public func foo(p1: String?, p2: Int) -> Int {}
+public func foo(p1: String?, p2: Int) -> Void {}
 public func foo(p1: String!) -> Int! {}
 
 ---
@@ -179,18 +179,18 @@ public func foo(p1: String!) -> Int! {}
   (function_declaration (modifier)
     name: (identifier)
     (parameter_list)
-    return: (type (identifier)))
+    return: (type (standard_type)))
   (function_declaration (modifier)
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier)))
-      (parameter_declaration (identifier) (type (identifier))))
-    return: (type (identifier)))
+      (parameter_declaration (identifier) (type (standard_type)))
+      (parameter_declaration (identifier) (type (standard_type))))
+    return: (type (standard_type)))
   (function_declaration (modifier)
     name: (identifier)
     (parameter_list
-      (parameter_declaration (identifier) (type (identifier))))
-    return: (type (identifier)))
+      (parameter_declaration (identifier) (type (standard_type))))
+    return: (type (standard_type)))
 )
 
 ======
@@ -213,7 +213,7 @@ enum A {
 (program
 	(enum_declaration (modifier) (identifier))
 	(enum_declaration (modifier) (identifier) (case_declaration (identifier)))
-	(enum_declaration (modifier) (identifier) (case_declaration (identifier) (tuple_type (type (identifier)))))
+	(enum_declaration (modifier) (identifier) (case_declaration (identifier) (type (standard_type))))
 	(enum_declaration (identifier) (case_declaration (identifier) (static_string_literal))))
 
 ======
