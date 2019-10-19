@@ -12,6 +12,10 @@
           "named": true
         },
         {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
           "type": "standard_type",
           "named": true
         },
@@ -95,6 +99,10 @@
       "types": [
         {
           "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -374,6 +382,10 @@
         },
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -845,6 +857,10 @@
             "named": false
           },
           {
+            "type": ":",
+            "named": false
+          },
+          {
             "type": "[",
             "named": false
           },
@@ -915,6 +931,10 @@
             "named": true
           },
           {
+            "type": "dictionary_type",
+            "named": true
+          },
+          {
             "type": "type",
             "named": true
           }
@@ -926,6 +946,10 @@
         "types": [
           {
             "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
             "named": false
           },
           {
@@ -1305,6 +1329,33 @@
       "types": [
         {
           "type": "static_string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dictionary_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
+          "type": "standard_type",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         }
       ]
@@ -1692,6 +1743,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -2431,6 +2486,10 @@
           "named": true
         },
         {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -3002,6 +3061,10 @@
           "named": true
         },
         {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3093,6 +3156,10 @@
           "named": true
         },
         {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3148,6 +3215,10 @@
       "types": [
         {
           "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -3472,6 +3543,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -3832,6 +3907,10 @@
             "named": false
           },
           {
+            "type": ":",
+            "named": false
+          },
+          {
             "type": "[",
             "named": false
           },
@@ -3902,6 +3981,10 @@
             "named": true
           },
           {
+            "type": "dictionary_type",
+            "named": true
+          },
+          {
             "type": "type",
             "named": true
           }
@@ -3913,6 +3996,10 @@
         "types": [
           {
             "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
             "named": false
           },
           {
@@ -4707,6 +4794,10 @@
   },
   {
     "type": "]",
+    "named": false
+  },
+  {
+    "type": "Dictionary",
     "named": false
   },
   {

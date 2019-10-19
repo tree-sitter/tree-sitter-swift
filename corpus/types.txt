@@ -45,3 +45,51 @@ var foo: [AnyHashable] = [ ]
     name: (identifier)
     type: (array_type (type_identifier))
     value: (array)))
+
+======
+Dictionary type
+======
+
+let foo: Dictionary<String, String>
+var foo: [Int: AnyHashable]
+let foo: [AnyHashable: Any]
+
+---
+
+(program
+  (constant_declaration
+    name: (identifier)
+    type: (dictionary_type (standard_type) (standard_type)))
+  (variable_declaration
+    name: (identifier)
+    type: (dictionary_type (standard_type) (type_identifier)))
+  (constant_declaration
+    name: (identifier)
+    type: (dictionary_type (type_identifier) (type_identifier))))
+
+======
+Dictionary type with initialization
+======
+
+var strings: Dictionary<String, String> = [ "Foo" : "Bar" ]
+let numbers = [
+    0: "Zero",
+    1: "One",
+    2: "Two"
+]
+var foo: [AnyHashable: Any] = [ : ]
+
+---
+
+(program
+  (variable_declaration
+    name: (identifier)
+    type: (dictionary_type (standard_type) (standard_type))
+    value: (dictionary (string) (string)))
+  (constant_declaration
+    name: (identifier)
+    value: (dictionary (number) (string) (number) (string) (number) (string)))
+  (variable_declaration
+    name: (identifier)
+    type: (dictionary_type (type_identifier) (type_identifier))
+    value: (dictionary)))
