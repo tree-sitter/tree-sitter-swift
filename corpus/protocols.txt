@@ -31,7 +31,7 @@ public protocol A {
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
 		(protocol_initializer_declaration)
-		(protocol_subscript_declaration (type (tuple_type)) (type (identifier)))))
+		(protocol_subscript_declaration (type) (type (identifier)))))
 
 
 ======

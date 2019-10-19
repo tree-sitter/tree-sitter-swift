@@ -2317,7 +2317,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "tuple_type"
+                  "name": "_tuple_type"
                 },
                 {
                   "type": "SEQ",
@@ -3777,7 +3777,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "tuple_type"
+          "name": "_tuple_type"
         }
       ]
     },
@@ -3832,7 +3832,7 @@
       "type": "SYMBOL",
       "name": "identifier"
     },
-    "tuple_type": {
+    "_tuple_type": {
       "type": "SEQ",
       "members": [
         {
