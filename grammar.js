@@ -19,7 +19,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$._variable_declaration_head, $.value_binding_pattern],
-    [$._pattern, $._expression_list],
     [$._condition, $._condition_clause],
     [
       $._variable_name,
@@ -477,8 +476,6 @@ module.exports = grammar({
       $.nil,
       alias($.static_string_literal, $.string),
     ),
-
-    _expression_list: $ => commaSep1($._expression),
 
     //
     // Standard Library Types
