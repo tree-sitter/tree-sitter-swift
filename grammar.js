@@ -475,6 +475,7 @@ module.exports = grammar({
       alias($.boolean_literal, $.boolean),
       $.nil,
       alias($.static_string_literal, $.string),
+      alias($._array_declaration, $.array)
     ),
 
     //
@@ -534,6 +535,12 @@ module.exports = grammar({
       $._type_identifier,
     ),
 
+    _type_declarator: $ => choice(
+      $.standard_type,
+      $.array_type,
+      alias($.identifier, $.type_identifier)
+    ),
+
     standard_type: $ => token(choice(
       'Bool',
       'Character',
@@ -549,9 +556,34 @@ module.exports = grammar({
       ...[32, 64, 80].map(n => `Float${n}`),
     )),
 
-    _type_annotation: $ => seq(':', $.type),
+    array_type: $ => choice($._array_type_shorthand, $._array_type_full),
 
-    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq($._type_name, optional(seq('.', $._type_identifier)))),
+    _array_type_full: $ => seq(
+      'Array',
+      '<',
+      $._type_declarator,
+      '>'
+    ),
+
+    _array_type_shorthand: $ => seq(
+      '[',
+      $._type_declarator,
+      ']'
+    ),
+
+    _array_declaration: $ => seq(
+      '[',
+      commaSep(optional(
+        $._expression
+      )),
+      ']'
+    ),
+
+    _type_annotation: $ => seq(':', choice($.type, $.array_type)),
+
+    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq(
+      $._type_name, optional(seq('.', $._type_identifier)))
+    ),
 
     _type_name: $ => $.identifier,
 

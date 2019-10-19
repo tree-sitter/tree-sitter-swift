@@ -1,0 +1,47 @@
+======
+Array type
+======
+
+let foo: [String]
+var bar: Array<Int>
+let biz: [FooType]
+
+---
+
+(program
+  (constant_declaration
+    name: (identifier)
+    type: (array_type (standard_type)))
+  (variable_declaration
+    name: (identifier)
+    type: (array_type (standard_type)))
+  (constant_declaration
+    name: (identifier)
+    type: (array_type (type_identifier))))
+
+======
+Array type with initialization
+======
+
+let ints: [Int] = [
+  0, 1, 2, 3, 4, 5
+]
+var mixed = [
+  0, Foo, 2, "Three", 4, "Five"
+]
+var foo: [AnyHashable] = [ ]
+
+---
+
+(program
+  (constant_declaration
+    name: (identifier)
+    type: (array_type (standard_type))
+    value: (array (number) (number) (number) (number) (number) (number)))
+  (variable_declaration
+    name: (identifier)
+    value: (array (number) (identifier) (number) (string) (number) (string)))
+  (variable_declaration
+    name: (identifier)
+    type: (array_type (type_identifier))
+    value: (array)))
