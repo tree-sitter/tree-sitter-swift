@@ -24,6 +24,7 @@ module.exports = grammar({
       $._variable_name,
       $._expression // conflict between var foo: Int { … } and var foo: Int = …
     ],
+    [$._array_declaration, $._dictionary_declaration],
   ],
 
   word: $ => $.identifier,
@@ -475,6 +476,8 @@ module.exports = grammar({
       alias($.boolean_literal, $.boolean),
       $.nil,
       alias($.static_string_literal, $.string),
+      alias($._array_declaration, $.array),
+      alias($._dictionary_declaration, $.dictionary)
     ),
 
     //
@@ -534,6 +537,13 @@ module.exports = grammar({
       $._type_identifier,
     ),
 
+    _type_declarator: $ => choice(
+      $.standard_type,
+      $.array_type,
+      $.dictionary_type,
+      alias($.identifier, $.type_identifier)
+    ),
+
     standard_type: $ => token(choice(
       'Bool',
       'Character',
@@ -549,9 +559,63 @@ module.exports = grammar({
       ...[32, 64, 80].map(n => `Float${n}`),
     )),
 
-    _type_annotation: $ => seq(':', $.type),
+    array_type: $ => choice($._array_type_shorthand, $._array_type_full),
 
-    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq($._type_name, optional(seq('.', $._type_identifier)))),
+    _array_type_full: $ => seq(
+      'Array',
+      '<',
+      $._type_declarator,
+      '>'
+    ),
+
+    _array_type_shorthand: $ => seq(
+      '[',
+      $._type_declarator,
+      ']'
+    ),
+
+    _array_declaration: $ => seq(
+      '[',
+      commaSep(optional(
+        $._expression
+      )),
+      ']'
+    ),
+
+    dictionary_type: $ => choice($._dictionary_type_shorthand, $._dictionary_type_full),
+
+    _dictionary_type_full: $ => seq(
+      'Dictionary',
+      '<',
+      $._type_declarator,
+      ',',
+      $._type_declarator,
+      '>'
+    ),
+
+    _dictionary_type_shorthand: $ => seq(
+      '[',
+      $._type_declarator,
+      ':',
+      $._type_declarator,
+      ']'
+    ),
+
+    _dictionary_declaration: $ => seq(
+      '[',
+      commaSep(seq(
+        optional($._expression),
+        ':',
+        optional($._expression)
+      )),
+      ']'
+    ),
+
+    _type_annotation: $ => seq(':', choice($.type, $.array_type, $.dictionary_type)),
+
+    _type_identifier: $ => prec.left(PREC.TYPE_IDENTIFIER, seq(
+      $._type_name, optional(seq('.', $._type_identifier)))
+    ),
 
     _type_name: $ => $.identifier,
 
