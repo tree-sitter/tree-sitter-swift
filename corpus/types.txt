@@ -93,3 +93,30 @@ var foo: [AnyHashable: Any] = [ : ]
     name: (identifier)
     type: (dictionary_type (type_identifier) (type_identifier))
     value: (dictionary)))
+
+======
+Tuple declaration
+======
+
+var foo: (Int, Int)
+let foo: (top: Int, bottom: Int)
+func foo() -> (min: Int, max: Int)? {}
+func foo() -> (String, String) {}
+
+---
+
+(program
+  (variable_declaration
+    name: (identifier)
+    type: (type (tuple (type (standard_type)) (type (standard_type)))))
+  (constant_declaration
+    name: (identifier)
+    type: (type (tuple (identifier) (type (standard_type)) (identifier) (type (standard_type)))))
+  (function_declaration
+    name: (identifier)
+    (parameter_list)
+    return: (type (tuple (identifier) (type (standard_type)) (identifier) (type (standard_type)))))
+  (function_declaration
+    name: (identifier)
+    (parameter_list)
+    return: (type (tuple (type (standard_type)) (type (standard_type))))))
