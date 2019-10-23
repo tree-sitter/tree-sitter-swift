@@ -2,17 +2,12 @@
 // https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html
 
 const PREC = {
-  COMMENT: -1,
-  DECLARATION: 1,
-  CAST: 132,
-  CONJUNCTIVE: 120,
-  DISJUNCTIVE: 110,
-  OPTIONAL_PATTERN: 10,
-  TYPE_IDENTIFIER: 10,
-  OPTIONAL_BINDING_CONDITION: 10,
-  BREAK_STATEMENT: 10,
-  CONTINUE_STATEMENT: 10,
-  RETURN_STATEMENT: 10,
+  CAST: 10,
+  OPTIONAL_PATTERN: 20,
+  TYPE_IDENTIFIER: 30,
+  OPTIONAL_BINDING_CONDITION: 40,
+  DISJUNCTIVE: 50,
+  CONJUNCTIVE: 60,
 };
 
 module.exports = grammar({
@@ -125,13 +120,13 @@ module.exports = grammar({
 
     labeled_statement: $ => seq($.identifier, ':', choice($._loop_statement, $.if_statement)),
 
-    break_statement: $ => prec(PREC.BREAK_STATEMENT, seq('break', optional($.identifier))),
+    break_statement: $ => seq('break', optional($.identifier)),
 
-    continue_statement: $ => prec(PREC.CONTINUE_STATEMENT, seq('continue', optional($.identifier))),
+    continue_statement: $ => seq('continue', optional($.identifier)),
 
     fallthrough_statement: $ => 'fallthrough',
 
-    return_statement: $ => prec(PREC.RETURN_STATEMENT, seq('return', optional($._expression))),
+    return_statement: $ => seq('return', optional($._expression)),
 
     throw_statement: $ => seq('throw', optional($._expression)),
 
@@ -562,14 +557,14 @@ module.exports = grammar({
       ')',
     ),
 
-    _tuple_declaration: $ => prec(PREC.DECLARATION, seq(
+    _tuple_declaration: $ => seq(
       '(',
       commaSep(seq(
         optional(seq($.identifier, ':')),
         $._expression,
       )),
       ')',
-    )),
+    ),
 
     array_type: $ => choice($._array_type_shorthand, $._array_type_full),
 
@@ -654,14 +649,14 @@ module.exports = grammar({
     semantic_version: $ => /(\d+\.)?(\d+\.)?(\*|\d+)/,
 
 
-    comment: $ => token(prec(PREC.COMMENT, choice(
+    comment: $ => token(choice(
       // Single-line comments (including documentation comments)
       seq(/\/{2,3}[^/].*/),
       // Multiple-line comments (including documentation comments).
       seq(
         /\/\*{1,}[^*]*\*+([^/*][^*]*\*+)*\//,
       ),
-    ))),
+    )),
   }
 });
 
