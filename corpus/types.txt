@@ -108,7 +108,7 @@ func foo() -> (String, String) {}
 (program
   (variable_declaration
     name: (identifier)
-    type: (type (tuple (type (standard_type)) (type (standard_type)))))
+    type: (type (tuple (standard_type) (standard_type))))
   (constant_declaration
     name: (identifier)
     type: (type (tuple (identifier) (type (standard_type)) (identifier) (type (standard_type)))))
@@ -119,4 +119,43 @@ func foo() -> (String, String) {}
   (function_declaration
     name: (identifier)
     (parameter_list)
-    return: (type (tuple (type (standard_type)) (type (standard_type))))))
+    return: (type (tuple (standard_type) (standard_type)))))
+
+======
+Empty tuple declaration
+======
+
+let foo: ()
+func foo() -> ((), Int) {}
+
+---
+
+(program
+  (constant_declaration
+    name: (identifier)
+    type: (type (tuple)))
+    (function_declaration
+      name: (identifier)
+      (parameter_list)
+      return: (type (tuple (tuple_type) (standard_type)))))
+
+======
+Tuple usage
+======
+
+var foo = (10, 12)
+let foo = (top: 10, bottom: 12)
+return ("Foo", "Bar")
+return (first: "Foo", last: "Bar")
+
+---
+
+(program
+  (variable_declaration
+    name: (identifier)
+    value: (tuple (number) (number)))
+  (constant_declaration
+    name: (identifier)
+    value: (tuple (identifier) (number) (identifier) (number)))
+  (return_statement (tuple (string) (string)))
+  (return_statement (tuple (identifier) (string) (identifier) (string))))

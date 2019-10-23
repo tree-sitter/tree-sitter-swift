@@ -3,6 +3,7 @@
 
 const PREC = {
   COMMENT: -1,
+  DECLARATION: 1,
   CAST: 132,
   CONJUNCTIVE: 120,
   DISJUNCTIVE: 110,
@@ -302,7 +303,7 @@ module.exports = grammar({
       'case',
       $.identifier,
       optional(
-        choice($._tuple_type, seq('=', choice($.static_string_literal, $.boolean_literal)))
+        choice($.tuple_type, seq('=', choice($.static_string_literal, $.boolean_literal)))
       )
     ),
 
@@ -434,7 +435,6 @@ module.exports = grammar({
     _pattern: $ => choice(
       $.wildcard_pattern,
       $.value_binding_pattern,
-      $.tuple_pattern,
       $.enum_case_pattern,
       $.optional_pattern,
       $.is_pattern,
@@ -446,19 +446,11 @@ module.exports = grammar({
 
     value_binding_pattern: $ => seq(choice('var', 'let'), $._pattern),
 
-    tuple_pattern: $ => seq(
-      '(',
-      optional($._tuple_pattern_element_list),
-      ')'
-    ),
-
-    _tuple_pattern_element_list: $ => commaSep1($._pattern),
-
     enum_case_pattern: $ => seq(
       optional($._type_identifier),
       '.',
       $.identifier,
-      optional($.tuple_pattern)
+      optional(alias($._tuple_declaration, $.tuple))
     ),
 
     optional_pattern: $ => prec(PREC.OPTIONAL_PATTERN, seq($._pattern, '?')),
@@ -477,7 +469,8 @@ module.exports = grammar({
       $.nil,
       alias($.static_string_literal, $.string),
       alias($._array_declaration, $.array),
-      alias($._dictionary_declaration, $.dictionary)
+      alias($._dictionary_declaration, $.dictionary),
+      alias($._tuple_declaration, $.tuple),
     ),
 
     //
@@ -532,13 +525,14 @@ module.exports = grammar({
     // Types
     //
     type: $ => choice(
-      alias($._tuple_type, $.tuple),
+      alias($.tuple_type, $.tuple),
       $.standard_type,
       $._type_identifier,
     ),
 
     _type_declarator: $ => choice(
       $.standard_type,
+      $.tuple_type,
       $.array_type,
       $.dictionary_type,
       alias($.identifier, $.type_identifier)
@@ -557,6 +551,24 @@ module.exports = grammar({
       ...[8, 16, 32, 64].map(n => `UInt${n}`),
       ...[8, 16, 32, 64].map(n => `Int${n}`),
       ...[32, 64, 80].map(n => `Float${n}`),
+    )),
+
+    tuple_type: $ => seq(
+      '(',
+      commaSep(choice(
+        seq($._variable_name, $._type_annotation),
+        $._type_declarator
+      )),
+      ')',
+    ),
+
+    _tuple_declaration: $ => prec(PREC.DECLARATION, seq(
+      '(',
+      commaSep(seq(
+        optional(seq($.identifier, ':')),
+        $._expression,
+      )),
+      ')',
     )),
 
     array_type: $ => choice($._array_type_shorthand, $._array_type_full),
@@ -618,15 +630,6 @@ module.exports = grammar({
     ),
 
     _type_name: $ => $.identifier,
-
-    _tuple_type: $ => seq(
-      '(',
-      commaSep(
-        seq(optional('inout'), choice($.type, seq($.identifier, $._type_annotation)))
-      ),
-      optional('...'),
-      ')'
-    ),
 
     //
     // Lexical Structure

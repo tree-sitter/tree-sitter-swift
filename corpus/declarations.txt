@@ -213,7 +213,7 @@ enum A {
 (program
 	(enum_declaration (modifier) (identifier))
 	(enum_declaration (modifier) (identifier) (case_declaration (identifier)))
-	(enum_declaration (modifier) (identifier) (case_declaration (identifier) (type (standard_type))))
+	(enum_declaration (modifier) (identifier) (case_declaration (identifier) (tuple_type (standard_type))))
 	(enum_declaration (identifier) (case_declaration (identifier) (static_string_literal))))
 
 ======

@@ -20,6 +20,10 @@
           "named": true
         },
         {
+          "type": "tuple_type",
+          "named": true
+        },
+        {
           "type": "type_identifier",
           "named": true
         }
@@ -68,10 +72,6 @@
         },
         {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
           "named": true
         },
         {
@@ -354,10 +354,6 @@
           "named": true
         },
         {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
           "type": "value_binding_pattern",
           "named": true
         },
@@ -377,15 +373,7 @@
       "required": true,
       "types": [
         {
-          "type": "array_type",
-          "named": true
-        },
-        {
           "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "dictionary_type",
           "named": true
         },
         {
@@ -397,7 +385,7 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "tuple_type",
           "named": true
         }
       ]
@@ -557,10 +545,6 @@
         },
         {
           "type": "throw_statement",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
           "named": true
         },
         {
@@ -743,10 +727,6 @@
           "named": true
         },
         {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -853,6 +833,14 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
             "type": ",",
             "named": false
           },
@@ -905,10 +893,6 @@
             "named": true
           },
           {
-            "type": "tuple_pattern",
-            "named": true
-          },
-          {
             "type": "value_binding_pattern",
             "named": true
           },
@@ -944,6 +928,14 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": ",",
             "named": false
@@ -1355,6 +1347,10 @@
           "named": true
         },
         {
+          "type": "tuple_type",
+          "named": true
+        },
+        {
           "type": "type_identifier",
           "named": true
         }
@@ -1529,11 +1525,23 @@
       "required": true,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "tuple_pattern",
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -1855,10 +1863,6 @@
         },
         {
           "type": "throw_statement",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
           "named": true
         },
         {
@@ -2738,10 +2742,6 @@
           "named": true
         },
         {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
           "type": "value_binding_pattern",
           "named": true
         },
@@ -2809,10 +2809,6 @@
         },
         {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
           "named": true
         },
         {
@@ -3731,7 +3727,7 @@
     }
   },
   {
-    "type": "tuple_pattern",
+    "type": "tuple_type",
     "named": true,
     "fields": {},
     "children": {
@@ -3739,15 +3735,11 @@
       "required": false,
       "types": [
         {
-          "type": "as_pattern",
+          "type": "array_type",
           "named": true
         },
         {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "enum_case_pattern",
+          "type": "dictionary_type",
           "named": true
         },
         {
@@ -3755,35 +3747,19 @@
           "named": true
         },
         {
-          "type": "is_pattern",
+          "type": "standard_type",
           "named": true
         },
         {
-          "type": "nil",
+          "type": "tuple_type",
           "named": true
         },
         {
-          "type": "number",
+          "type": "type",
           "named": true
         },
         {
-          "type": "optional_pattern",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
-          "type": "value_binding_pattern",
-          "named": true
-        },
-        {
-          "type": "wildcard_pattern",
+          "type": "type_identifier",
           "named": true
         }
       ]
@@ -3880,10 +3856,6 @@
           "named": true
         },
         {
-          "type": "tuple_pattern",
-          "named": true
-        },
-        {
           "type": "value_binding_pattern",
           "named": true
         },
@@ -3902,6 +3874,14 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": ",",
             "named": false
@@ -3955,10 +3935,6 @@
             "named": true
           },
           {
-            "type": "tuple_pattern",
-            "named": true
-          },
-          {
             "type": "value_binding_pattern",
             "named": true
           },
@@ -3994,6 +3970,14 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": ",",
             "named": false
@@ -4798,14 +4782,6 @@
   },
   {
     "type": "Dictionary",
-    "named": false
-  },
-  {
-    "type": "inout",
-    "named": false
-  },
-  {
-    "type": "...",
     "named": false
   },
   {
