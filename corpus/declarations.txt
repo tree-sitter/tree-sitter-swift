@@ -194,6 +194,39 @@ public func foo(p1: String!) -> Int! {}
 )
 
 ======
+functions - generic functions
+======
+
+public func foo<T>() -> T? {}
+public func foo<T: Comparable>() -> T? {}
+public func foo<Foo, Bar>(p1: Foo) -> Bar {}
+
+---
+
+(program
+  (function_declaration (modifier)
+    name: (identifier)
+    (generic_clause
+      name: (identifier))
+    (parameter_list)
+    return: (type (identifier)))
+  (function_declaration (modifier)
+    name: (identifier)
+    (generic_clause
+      name: (identifier)
+      type: (type_identifier))
+    (parameter_list)
+    return: (type (identifier)))
+  (function_declaration (modifier)
+    name: (identifier)
+    (generic_clause
+      name: (identifier)
+      name: (identifier))
+    (parameter_list
+      (parameter_declaration (identifier) (type (identifier))))
+    return: (type (identifier))))
+
+======
 enum
 ======
 

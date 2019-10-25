@@ -246,6 +246,7 @@ module.exports = grammar({
     ),
 
     _function_signature: $ => seq(
+      optional($.generic_clause),
       $.parameter_list,
       optional(choice('throws', 'rethrows')),
       optional($._function_return_statement)
@@ -309,6 +310,20 @@ module.exports = grammar({
       'open',
       'internal',
       'final'
+    ),
+
+    generic_clause: $ => seq(
+      '<',
+      commaSep($._single_generic_parameter),
+      '>'
+    ),
+
+    _single_generic_parameter: $ => seq(
+      field('name', $.identifier),
+      optional(seq(
+        ':',
+        field('type', $._type_declarator)
+      ))
     ),
 
     struct_declaration: $ => seq(
