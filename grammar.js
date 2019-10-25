@@ -194,7 +194,7 @@ module.exports = grammar({
       )
     ),
 
-    constant_declaration: $ => seq(optional($.modifier), 'let', commaSep1($._pattern_initializer)),
+    constant_declaration: $ => seq(repeat($.modifier), 'let', commaSep1($._pattern_initializer)),
 
     _pattern_initializer: $ => seq(
       field('name', $._pattern),
@@ -214,7 +214,7 @@ module.exports = grammar({
       )
     ),
 
-    _variable_declaration_head: $ => seq(optional($.modifier), 'var'),
+    _variable_declaration_head: $ => seq(repeat($.modifier), 'var'),
 
     _variable_name: $ => $.identifier,
 
@@ -240,7 +240,7 @@ module.exports = grammar({
     ),
 
     _function_head: $ => seq(
-      optional($.modifier),
+      repeat($.modifier),
       'func',
       field('name', choice($.identifier, $.operator))
     ),
@@ -304,12 +304,23 @@ module.exports = grammar({
     ),
 
     modifier: $ => choice(
+      $._access_control_modifier,
+      $._declaration_modifier,
+    ),
+
+    _declaration_modifier: $ => choice(
+      'static',
+      'final',
+      'class'
+    ),
+
+    _access_control_modifier: $ => choice(
       'public',
       'private',
       'fileprivate',
       'open',
       'internal',
-      'final'
+      ...['private', 'fileprivate', 'internal'].map(n => `${n}(set)`),
     ),
 
     generic_clause: $ => seq(

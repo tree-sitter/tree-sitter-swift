@@ -1556,16 +1556,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "modifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "modifier"
+          }
         },
         {
           "type": "STRING",
@@ -1729,16 +1724,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "modifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "modifier"
+          }
         },
         {
           "type": "STRING",
@@ -1891,16 +1881,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "modifier"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "modifier"
+          }
         },
         {
           "type": "STRING",
@@ -2354,6 +2339,36 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "_access_control_modifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_declaration_modifier"
+        }
+      ]
+    },
+    "_declaration_modifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "static"
+        },
+        {
+          "type": "STRING",
+          "value": "final"
+        },
+        {
+          "type": "STRING",
+          "value": "class"
+        }
+      ]
+    },
+    "_access_control_modifier": {
+      "type": "CHOICE",
+      "members": [
+        {
           "type": "STRING",
           "value": "public"
         },
@@ -2375,7 +2390,15 @@
         },
         {
           "type": "STRING",
-          "value": "final"
+          "value": "private(set)"
+        },
+        {
+          "type": "STRING",
+          "value": "fileprivate(set)"
+        },
+        {
+          "type": "STRING",
+          "value": "internal(set)"
         }
       ]
     },

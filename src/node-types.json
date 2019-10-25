@@ -981,7 +981,7 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -4647,6 +4647,10 @@
     "named": false
   },
   {
+    "type": "fileprivate(set)",
+    "named": false
+  },
+  {
     "type": "final",
     "named": false
   },
@@ -4708,6 +4712,10 @@
   },
   {
     "type": "internal",
+    "named": false
+  },
+  {
+    "type": "internal(set)",
     "named": false
   },
   {
@@ -4779,6 +4787,10 @@
     "named": false
   },
   {
+    "type": "private(set)",
+    "named": false
+  },
+  {
     "type": "protocol",
     "named": false
   },
@@ -4817,6 +4829,10 @@
   {
     "type": "standard_type",
     "named": true
+  },
+  {
+    "type": "static",
+    "named": false
   },
   {
     "type": "static_string_literal",

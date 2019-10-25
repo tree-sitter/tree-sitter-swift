@@ -23,6 +23,7 @@ private let foo
 public let foo = bar
 let foo, bar = foo
 let foo, bar = foo, quux: Int = baz
+public static let foo = bar
 
 ---
 
@@ -42,6 +43,9 @@ let foo, bar = foo, quux: Int = baz
     value: (identifier)
     name: (identifier)
     type: (type (standard_type))
+    value: (identifier))
+  (constant_declaration (modifier) (modifier)
+    name: (identifier)
     value: (identifier)))
 
 ======
@@ -55,6 +59,8 @@ var foo: Int { get set }
 var foo: Int { set get }
 var foo, bar = foo
 public var foo, bar = foo, quux: Int = baz
+public private(set) var foo = bar
+public static var foo = bar
 
 ---
 
@@ -83,6 +89,12 @@ public var foo, bar = foo, quux: Int = baz
     value: (identifier)
     name: (identifier)
     type: (type (standard_type))
+    value: (identifier))
+  (variable_declaration (modifier) (modifier)
+    name: (identifier)
+    value: (identifier))
+  (variable_declaration (modifier) (modifier)
+    name: (identifier)
     value: (identifier)))
 
 ======
@@ -225,6 +237,21 @@ public func foo<Foo, Bar>(p1: Foo) -> Bar {}
     (parameter_list
       (parameter_declaration (identifier) (type (identifier))))
     return: (type (identifier))))
+
+
+======
+functions - static
+======
+
+public static func foo() {}
+
+---
+
+(program
+  (function_declaration (modifier) (modifier)
+    name: (identifier)
+    (parameter_list))
+)
 
 ======
 enum
