@@ -4684,7 +4684,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "\\/{2,3}[^\\/].*"
+                "value": "\\/{2,3}[^/].*"
               }
             ]
           },
@@ -4693,7 +4693,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "\\/\\*{1,}[^*]*\\*+([^\\/*][^*]*\\*+)*\\/"
+                "value": "\\/\\*{1,}[^*]*\\*+([^/*][^*]*\\*+)*\\/"
               }
             ]
           }
@@ -4729,6 +4729,7 @@
       "_dictionary_declaration"
     ]
   ],
+  "precedences": [],
   "externals": [],
   "inline": [],
   "supertypes": []

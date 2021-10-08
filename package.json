@@ -2,7 +2,7 @@
   "name": "tree-sitter-swift",
   "version": "0.0.1",
   "description": "Swift grammar for tree-sitter",
-  "main": "index.js",
+  "main": "bindings/node",
   "keywords": [
     "parser",
     "lexer"
@@ -12,7 +12,8 @@
     "url": "https://github.com/robrix/tree-sitter-swift.git"
   },
   "scripts": {
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "generate": "tree-sitter generate"
   },
   "author": "Rob Rix",
   "license": "MIT",
@@ -20,6 +21,6 @@
     "nan": "^2.1.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "0.15.12"
+    "tree-sitter-cli": "0.20.0 "
   }
 }
