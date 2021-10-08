@@ -3,3 +3,6 @@ build
 *.log
 yarn.lock
 package-lock.json
+
+# editor specific ignores
+.idea
