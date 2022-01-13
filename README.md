@@ -3,7 +3,11 @@ tree-sitter-swift
 
 [![Build Status](https://travis-ci.org/tree-sitter/tree-sitter-swift.svg?branch=master)](https://travis-ci.org/tree-sitter/tree-sitter-swift)
 
-Swift grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter)
+Work in progress swift grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter)
+
+## Status - Abandoned
+
+Use [this](https://github.com/alex-pinkus/experimental-tree-sitter-swift) Swift grammar instead.
 
 ## References
 
