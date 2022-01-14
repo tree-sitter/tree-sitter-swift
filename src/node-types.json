@@ -1,5 +1,48 @@
 [
   {
+    "type": "array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "array_type",
     "named": true,
     "fields": {},
@@ -39,11 +82,19 @@
       "required": true,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -72,6 +123,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -160,6 +215,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -197,6 +256,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -300,6 +363,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -320,14 +387,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -356,6 +431,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -405,6 +484,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "as_pattern",
           "named": true
         },
@@ -442,6 +525,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -550,6 +637,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -584,6 +675,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "as_pattern",
           "named": true
         },
@@ -621,6 +716,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -729,6 +828,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -838,28 +941,8 @@
         "required": true,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
+            "type": "array",
+            "named": true
           },
           {
             "type": "as_pattern",
@@ -867,6 +950,10 @@
           },
           {
             "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "dictionary",
             "named": true
           },
           {
@@ -895,6 +982,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "tuple",
             "named": true
           },
           {
@@ -934,31 +1025,15 @@
         "required": false,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
+            "type": "array",
+            "named": true
           },
           {
             "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "dictionary",
             "named": true
           },
           {
@@ -975,6 +1050,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "tuple",
             "named": true
           }
         ]
@@ -1015,6 +1094,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -1048,6 +1131,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -1144,6 +1231,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -1170,6 +1261,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -1203,6 +1298,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -1299,6 +1398,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -1326,6 +1429,49 @@
       "types": [
         {
           "type": "static_string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dictionary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -1371,6 +1517,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -1408,6 +1558,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -1507,6 +1661,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -1530,23 +1688,11 @@
       "required": true,
       "types": [
         {
-          "type": "boolean",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
+          "type": "tuple",
           "named": true
         }
       ]
@@ -1712,8 +1858,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "array_type",
           "named": true
@@ -1756,6 +1906,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -1871,6 +2025,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         },
@@ -1939,6 +2097,10 @@
       "required": true,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -1972,6 +2134,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2083,6 +2249,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -2145,8 +2315,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "availability_condition",
           "named": true
@@ -2189,6 +2363,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2289,6 +2467,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -2312,8 +2494,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "availability_condition",
           "named": true
@@ -2356,6 +2542,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2456,6 +2646,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -2501,6 +2695,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "array_type",
           "named": true
         },
@@ -2538,6 +2736,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2638,6 +2840,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -2754,14 +2960,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2790,6 +3004,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -2823,15 +3041,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -2863,11 +3089,70 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "value_binding_pattern",
           "named": true
         },
         {
           "type": "wildcard_pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
+          "named": true
+        },
+        {
+          "type": "dictionary_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -2902,6 +3187,10 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -2935,6 +3224,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3034,6 +3327,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -3100,11 +3397,19 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "array_type",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3125,6 +3430,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -3199,11 +3508,19 @@
       "required": true,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "array_type",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3224,6 +3541,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -3293,8 +3614,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "boolean",
           "named": true
@@ -3329,6 +3654,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3428,6 +3757,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -3447,11 +3780,19 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3468,6 +3809,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -3557,6 +3902,10 @@
       "required": true,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "array_type",
           "named": true
         },
@@ -3594,6 +3943,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3697,6 +4050,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         },
@@ -3721,14 +4078,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "boolean",
           "named": true
         },
         {
           "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3745,6 +4110,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -3755,11 +4124,19 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3776,6 +4153,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -3790,7 +4171,19 @@
       "required": false,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3802,7 +4195,23 @@
           "named": true
         },
         {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "standard_type",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -3910,15 +4319,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -3950,6 +4367,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "value_binding_pattern",
           "named": true
         },
@@ -3969,28 +4390,8 @@
         "required": true,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
+            "type": "array",
+            "named": true
           },
           {
             "type": "as_pattern",
@@ -3998,6 +4399,10 @@
           },
           {
             "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "dictionary",
             "named": true
           },
           {
@@ -4026,6 +4431,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "tuple",
             "named": true
           },
           {
@@ -4065,31 +4474,15 @@
         "required": false,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
+            "type": "array",
+            "named": true
           },
           {
             "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "dictionary",
             "named": true
           },
           {
@@ -4107,6 +4500,10 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
           }
         ]
       }
@@ -4115,6 +4512,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "boolean",
           "named": true
@@ -4149,6 +4550,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -4252,6 +4657,10 @@
           "named": true
         },
         {
+          "type": "tuple",
+          "named": true
+        },
+        {
           "type": "typealias_declaration",
           "named": true
         },
@@ -4272,8 +4681,12 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "array",
+          "named": true
+        },
         {
           "type": "availability_condition",
           "named": true
@@ -4316,6 +4729,10 @@
         },
         {
           "type": "diagnostic_statement",
+          "named": true
+        },
+        {
+          "type": "dictionary",
           "named": true
         },
         {
@@ -4416,6 +4833,10 @@
         },
         {
           "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         },
         {
@@ -4599,6 +5020,10 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "compiler",
     "named": false
   },
@@ -4760,11 +5185,11 @@
   },
   {
     "type": "operator",
-    "named": false
+    "named": true
   },
   {
     "type": "operator",
-    "named": true
+    "named": false
   },
   {
     "type": "os",
